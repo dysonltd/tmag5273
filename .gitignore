@@ -1,0 +1,16 @@
+# Compiled files
+/target/
+
+# Dependency directories
+Cargo.lock
+Cargo.toml.orig
+Cargo.toml.bkp
+
+# Generated documentation
+/doc/
+
+# Build artifacts
+*.rs.bk
+
+# Editor-specific files
+.idea/

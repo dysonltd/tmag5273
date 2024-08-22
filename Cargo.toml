@@ -1,0 +1,41 @@
+[package]
+name = "tmag5273"
+rust-version = "1.81" # required for core errors functionality when working with no-std environments
+version = "0.1.0"
+edition = "2021"
+authors = [
+    "Scott Gibb <scott.gibb@dyson.com",
+    "Pete Kubiak <pete.kubiak@dyson.com>",
+    "James Sizeland <james.sizeland@dyson.com>",
+]
+repository = "https://stash.dyson.global.corp/projects/NEA/repos/rs-tmag5273-driver/browse"
+description = "Platform agnostic Rust driver for the Texas Instruments TMAG5273 3 Axis Hall Effect Sensor"
+readme = "README.md"
+keywords = [
+    "tmag5273",
+    "Hall effect Sensor",
+    "i2c",
+    "driver",
+    "texas instruments",
+    "embedded-hal",
+]
+categories = ["embedded", "no-std", "driver", "i2c"]
+
+[dependencies]
+num_enum = { version = "0.7.3", default-features = false }
+arbitrary-int = "1.2.7"
+bitbybit = "1.3.2"
+embedded-hal = "1.0.0"
+log = { version = "0.4.22", optional = true }
+defmt = { version = "0.3.8", optional = true }
+
+[dev-dependencies]
+utils = { path = "./utils", default-features = false }
+
+[features]
+default = ["std"]
+
+defmt = ["dep:defmt"]
+log = ["dep:log"]
+std = ["utils/std"]
+rpi = ["utils/rpi"]

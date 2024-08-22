@@ -1,0 +1,186 @@
+@startuml Architecture
+
+
+package src{
+    package tests {
+        Entity cold_start_integration_tests{
+        }
+        Entity setting_registers_tests{
+        }
+    }
+    package registers {
+
+        struct DeviceConfigs{
+        }
+        struct SensorConfigs{
+        }
+        struct ConversionStatus{
+        }
+        struct DeviceConfig1{
+        }
+        struct DeviceConfig2{
+        }
+        struct DeviceId{
+        }
+        struct DeviceStatus{
+        }
+        struct I2cAddress{
+        }
+        struct InterruptConfig{
+        }
+        enum RegisterMap{
+        }
+        struct SensorConfig1{
+        }
+        struct SensorConfig2{
+        }
+        struct TemperatureConfig{
+        }
+        interface ByteFieldDeviceConfiguration {
+        + raw_value() : u16
+        + new_with_raw_value(value: u16) : Self
+        + get_address() : u8
+
+        }
+        interface BitFieldDeviceConfiguration {
+        + raw_value() : u8
+        + new_with_raw_value(value: u8) : Self
+        + get_address() : u8
+        }
+    
+    ConversionStatus .u.|> BitFieldDeviceConfiguration
+    ConversionStatus --> RegisterMap
+    DeviceConfig1 .u.|> BitFieldDeviceConfiguration
+    DeviceConfig1 --> RegisterMap
+    DeviceConfig2 .u.|> BitFieldDeviceConfiguration
+    DeviceConfig2 --> RegisterMap
+    DeviceId .u.|> BitFieldDeviceConfiguration
+    DeviceId --> RegisterMap
+    DeviceStatus .u.|> BitFieldDeviceConfiguration
+    DeviceStatus --> RegisterMap
+    I2cAddress .u.|> BitFieldDeviceConfiguration
+    I2cAddress --> RegisterMap
+    InterruptConfig .u.|> BitFieldDeviceConfiguration
+    InterruptConfig --> RegisterMap
+    SensorConfig1 .u.|> BitFieldDeviceConfiguration
+    SensorConfig1 --> RegisterMap
+    SensorConfig2 .u.|> BitFieldDeviceConfiguration
+    SensorConfig2 --> RegisterMap
+    TemperatureConfig .u.|> BitFieldDeviceConfiguration
+    TemperatureConfig --> RegisterMap
+
+    DeviceConfigs .u.|> ByteFieldDeviceConfiguration
+    DeviceConfigs --> DeviceConfig1
+    DeviceConfigs --> DeviceConfig2
+
+    SensorConfigs .u.|> ByteFieldDeviceConfiguration
+    SensorConfigs --> SensorConfig1
+    SensorConfigs --> SensorConfig2
+    }
+    package lib_rs <<Rectangle>> {
+        struct TMag5273 {
+            + version: Version
+            + i2c: I2C
+            + address: SevenBitAddress
+            + new(i2c: I2C, address: SevenBitAddress) : Result<TMag5273, TMag5273Error>
+            + ...()
+
+            - convert_magnetism(axis: Axis, data: [u8,2], range: f32) : f32
+            - ...()
+        }
+    }
+    lib_rs.TMag5273 --* types_rs.Version
+    lib_rs.TMag5273 -- types_rs.Axis
+    lib_rs.TMag5273 -- types_rs.MagneticChannelOffset
+    lib_rs.TMag5273 -- types_rs.TMag5273Error
+    lib_rs.TMag5273 -- registers
+
+
+
+    package config_rs <<Rectangle>>{
+
+    struct InterruptConfig {
+    }
+
+    struct DeviceConfig{
+
+    }
+    struct SensorConfig{
+
+    }
+
+    struct TMag5273 {
+        + set_interrupts(&mut self, config: InterruptConfig) : Result<(), TMag5273Error>
+        + ...()
+        + get_sensor_config(&mut self) : Result<SensorConfig, TMag5273Error>
+        + ...()
+    }
+    
+    TMag5273 -- DeviceConfig
+    TMag5273 -- SensorConfig
+    TMag5273 -- InterruptConfig
+    }
+
+    package registers_rs <<Rectangle>>{
+        struct TMag5273 {
+            + set_config_register<Register>(&mut self, register: Register) : Result<(), TMag5273Error>
+            + get_config_register<Register>(&mut self) : Result<Register, TMag5273Error>
+            + get_dual_config_register<Register>(&mut self) : Result<Register, TMag5273Error>
+        }
+    }
+    registers_rs.TMag5273 -- ByteFieldDeviceConfiguration
+    registers_rs.TMag5273 -- BitFieldDeviceConfiguration
+
+    package types_rs <<Rectangle>>{
+        enum Version {
+            TMAG5273A1
+            ...
+            + get_default_address(): SevenBitAddress
+        }
+
+        enum Axis{
+            X
+            Y
+            Z
+        }
+        enum MagneticChannelOffset{
+
+        }
+        enum TMag5273Error {
+        }
+     
+        struct TMag5273ChannelData {
+                + X : f32
+                + Y : f32
+                + Z : f32
+                + temperature : f32
+        }
+    
+    }
+    lib_rs.TMag5273 -- types_rs.TMag5273ChannelData
+    config_rs -- lib_rs
+    lib_rs -- registers_rs
+  
+}
+package utils {
+    package src {
+        struct lib {
+            + setup_i2c() : Result<PiI2c::I2c, Box<dyn std::error::Error>>
+            + setup_i2c_and_gpio(): Result<(PiI2c::I2c,rppal::gpio::InputPin), Box<dyn std::error::Error>>
+            + setup_i2c() :  Result<FtdiI2c<Device>, Box<dyn Error>>
+            + setup_i2c_and_gpio() : Result<(FtdiI2c<Device>, hal::InputPin<Device>), Box<dyn Error>>
+        }
+    }
+}
+
+Entity UserApplication{
+    + main()
+}
+UserApplication --> src.config_rs.TMag5273
+UserApplication --> src.lib_rs.TMag5273
+UserApplication --> src.registers_rs.TMag5273
+UserApplication --> src.registers
+
+src.tests --> utils.src.lib
+
+@enduml

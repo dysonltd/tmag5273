@@ -1,0 +1,3 @@
+[alias]
+cold-start-tests = "test -p tmag5273 --lib cold_start_tests -- --test-threads=1"
+registers-tests = "test -p tmag5273 --lib setting_registers_tests -- --test-threads=1"
