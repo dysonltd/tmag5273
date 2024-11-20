@@ -29,9 +29,12 @@
           - name: Super-linter
             uses: super-linter/super-linter@v7.2.0 # x-release-please-version
             env:
-              # To report GitHub Actions status checks
+              # Linters
               VALIDATE_MARKDOWN: true
               VALIDATE_RUST_CLIPPY: true
               VALIDATE_YAML: true
+              # Auto Fix the files
+              FIX_RUST_CLIPPY: true
+              FIX_MARKDOWN: true
               ENABLE_GITHUB_ACTIONS_STEP_SUMMARY: true
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
