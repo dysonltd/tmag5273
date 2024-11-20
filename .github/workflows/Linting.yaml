@@ -31,14 +31,27 @@
             env:
               # Linters
               VALIDATE_MARKDOWN: true
-              VALIDATE_RUST_CLIPPY: true
+              # VALIDATE_RUST_CLIPPY: true # Cant Use as the version is not at 1.81 yet in the linter
               VALIDATE_YAML: true
               # Auto Fix the files
-              FIX_RUST_CLIPPY: true
+              # FIX_RUST_CLIPPY: true # Cant Use as the version is not at 1.81 yet in the linter
               FIX_MARKDOWN: true
               ENABLE_GITHUB_ACTIONS_STEP_SUMMARY: true
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      
+      Clippy:
+        name: Clippy
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+          - name: Clippy check on src
+            run: cargo clippy --manifest-path Cargo.toml -- -D warnings
+          - name: Clippy check on utils
+            run: cargo clippy --manifest-path utils/Cargo.toml -- -D warnings
+          - name: Clippy check on esp32 example
+            run: cargo clippy --manifest-path examples/esp32-c3/Cargo.toml -- -D warnings
+            
       Formatter:
         name: Cargo Formatter
         runs-on: ubuntu-latest
