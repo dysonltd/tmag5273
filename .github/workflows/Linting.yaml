@@ -38,22 +38,14 @@
               FIX_MARKDOWN: true
               ENABLE_GITHUB_ACTIONS_STEP_SUMMARY: true
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              
+
       Formatter:
-        name: Formatter
+        name: Cargo Formatter
         runs-on: ubuntu-latest
         steps:
-          - name: Checkout code
-            uses: actions/checkout@v4  
-          - name: Rustfmt
-            uses: actions-rs/toolchain@v1
-            with:
-              toolchain: stable
-              override: true
-            env:
-              RUSTUP_HOME: ${{ runner.temp }}/rustup
-              CARGO_HOME: ${{ runner.temp }}/cargo
-          - name: Rustfmt check
-            run: cargo fmt -- --check
-          - name: Rustfmt format
-            run: cargo fmt
+          - name: Rustfmt check on src
+            run: cargo fmt --manifest-path Cargo.toml -- --check
+          - name: Rustfmt check on utils
+            run: cargo fmt --manifest-path utils/Cargo.toml -- --check
+          - name: Rustfmt check on esp32 example
+            run: cargo fmt --manifest-path examples/esp32-c3/Cargo.toml -- --check
