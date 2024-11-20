@@ -8,8 +8,8 @@
     permissions: {}
     
     jobs:
-      build:
-        name: Lint
+      Super_Linter:
+        name: Super Linter
         runs-on: ubuntu-latest
     
         permissions:
@@ -38,3 +38,22 @@
               FIX_MARKDOWN: true
               ENABLE_GITHUB_ACTIONS_STEP_SUMMARY: true
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              
+      Formatter:
+        name: Formatter
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4  
+          - name: Rustfmt
+            uses: actions-rs/toolchain@v1
+            with:
+              toolchain: stable
+              override: true
+            env:
+              RUSTUP_HOME: ${{ runner.temp }}/rustup
+              CARGO_HOME: ${{ runner.temp }}/cargo
+          - name: Rustfmt check
+            run: cargo fmt -- --check
+          - name: Rustfmt format
+            run: cargo fmt
