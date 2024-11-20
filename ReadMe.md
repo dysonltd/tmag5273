@@ -1,5 +1,7 @@
 # TMAG5273 Rust Driver
 
+[![Linting](https://github.com/dysonltd/tmag5273/actions/workflows/Linting.yml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/Linting.yml)
+
 ## Summary
 
 This is a platform agnostic Rust Driver for the TMAG52732 3 Axis I2C Hall effect Sensor by Texas Instruments. The driver is based on the [embedded-hal](https://github.com/rust-embedded/embedded-hal) traits. For more information it is recommended to look at the docs using `cargo doc`
