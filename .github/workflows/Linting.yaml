@@ -43,6 +43,8 @@
         name: Cargo Formatter
         runs-on: ubuntu-latest
         steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
           - name: Rustfmt check on src
             run: cargo fmt --manifest-path Cargo.toml -- --check
           - name: Rustfmt check on utils
