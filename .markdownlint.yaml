@@ -195,7 +195,7 @@ MD042: true
 # MD043/required-headings : Required heading structure : https://github.com/DavidAnson/markdownlint/blob/v0.36.1/doc/md043.md
 MD043:
   # List of headings
-  headings: []
+  headings: [ "*" ]
   # Match case of headings
   match_case: false
 
