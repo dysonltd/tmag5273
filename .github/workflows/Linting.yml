@@ -31,8 +31,9 @@
             env:
               # To report GitHub Actions status checks
               VALIDATE_MARKDOWN: true
-              VALIDATE_RUST: true
+              VALIDATE_RUST_CLIPPY: true
               VALIDATE_YAML: true
               VALIDATE_JSON: true
+              ENABLE_GITHUB_ACTIONS_STEP_SUMMARY: true
               MARKDOWN_CONFIG_FILE: .markdownlint.json
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
