@@ -1,11 +1,11 @@
 [package]
 name = "tmag5273"
 rust-version = "1.81" # required for core errors functionality when working with no-std environments
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = [
     "Scott Gibb <scott.gibb@dyson.com",
-    "Pete Kubiak <pete.kubiak@dyson.com>",
+    "Pete Kubiak <peter.kubiak@dyson.com>",
     "James Sizeland <james.sizeland@dyson.com>",
 ]
 repository = "https://stash.dyson.global.corp/projects/NEA/repos/rs-tmag5273-driver/browse"
