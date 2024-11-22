@@ -38,7 +38,8 @@
               FIX_MARKDOWN: true
               ENABLE_GITHUB_ACTIONS_STEP_SUMMARY: true
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+              
+      # Remove this section when Super Linter is updated (https://github.com/dysonltd/tmag5273/issues/3)
       Clippy:
         name: Clippy
         runs-on: ubuntu-latest
