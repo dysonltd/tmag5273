@@ -5,19 +5,17 @@
       # push: null
       pull_request: null
     
-    permissions: {issues: write, pull-requests: write}
+    permissions: 
+      contents: read
+      packages: read
+      issues: write
+      statuses: write
+      pull-requests: write
     
     jobs:
       super_linter_check:
         name: Super Linter (Check)
-        runs-on: ubuntu-latest
-    
-        permissions:
-          contents: read
-          packages: read
-          # To report GitHub Actions status checks
-          statuses: write
-    
+        runs-on: ubuntu-latest    
         steps:
           - name: Checkout code
             uses: actions/checkout@v4
@@ -45,11 +43,6 @@
       
       super_linter_fix:
         name: Super Linter (Fix)
-        permissions:
-        # To write linting fixes
-          contents: write
-          # To write Super-linter status checks
-          statuses: write
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
