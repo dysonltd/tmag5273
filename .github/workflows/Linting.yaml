@@ -32,6 +32,7 @@
               # Linters
               VALIDATE_NATURAL_LANGUAGE: true
               VALIDATE_MARKDOWN: true
+              MARKDOWN_CUSTOM_RULE_GLOBS: '**/*.md'
               # VALIDATE_RUST_CLIPPY: true # Cant Use as the version is not at 1.81 yet in the linter
               VALIDATE_JSON: true
               VALIDATE_YAML: true
