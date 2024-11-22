@@ -38,6 +38,7 @@
               VALIDATE_YAML: true
               VALIDATE_GITHUB_ACTIONS: true
               # Output Settings
+              SAVE_SUPER_LINTER_SUMMARY: true
               ENABLE_GITHUB_ACTIONS_STEP_SUMMARY: true
               MULTI_STATUS: true
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,6 +63,10 @@
               # FIX_RUST_CLIPPY: true # Cant Use as the version is not at 1.81 yet in the linter
               FIX_MARKDOWN: true
               FIX_JSON: true
+              # Output Settings
+              SAVE_SUPER_LINTER_SUMMARY: true
+              ENABLE_GITHUB_ACTIONS_STEP_SUMMARY: true
+              MULTI_STATUS: true
               # To reuse the same Super-linter configuration that you use in the
               # lint job without duplicating it, see
               # https://github.com/super-linter/super-linter/blob/main/docs/run-linter-locally.md#share-environment-variables-between-environments
