@@ -50,7 +50,7 @@
           - name: Clippy check on utils
             run: cargo clippy --manifest-path utils/Cargo.toml -- -D warnings
           - name: Clippy check on esp32 example
-            run:  cd examples/esp32c3
+            run:  cd examples/esp32-c3 &&\
                   cargo clippy --manifest-path ./Cargo.toml -- -D warnings
                   # Had to run in the esp32c3 directory to get rid of <https://github.com/taiki-e/portable-atomic/issues/148>
             
