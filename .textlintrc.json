@@ -1,5 +1,6 @@
 {
-  "plugins": {},
-  "filters": {},
-  "rules": {}
+  "rules": {
+    "common-misspellings": true,
+    "en-capitalization": true
+  }
 }
