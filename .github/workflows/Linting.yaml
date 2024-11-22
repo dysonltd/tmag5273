@@ -5,7 +5,7 @@
       # push: null
       pull_request: null
     
-    permissions: {}
+    permissions: {issues: write, pull-requests: write}
     
     jobs:
       super_linter_check:
