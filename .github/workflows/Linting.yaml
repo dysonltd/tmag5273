@@ -50,7 +50,8 @@
           - name: Clippy check on utils
             run: cargo clippy --manifest-path utils/Cargo.toml -- -D warnings
           - name: Clippy check on esp32 example
-            run: cargo clippy --manifest-path examples/esp32-c3/Cargo.toml -- -D warnings
+            run:  cd examples/esp32c3
+                  cargo clippy --manifest-path ./Cargo.toml -- -D warnings
             
       Formatter:
         name: Cargo Formatter
