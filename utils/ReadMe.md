@@ -4,7 +4,7 @@
 
 This internal crate is a utilities package designed for connecting the Embedded Targets to the Library as such it is not to be used as part of the library.
 
-The main thing this crate offers is a generic way of setting up the I2C Bus on different Linux/MacOS targets. This is done through the ```setup_i2c()``` method outlined in [lib.rs](./src/lib.rs).
+The main thing this crate offers is a generic way of setting up the I2C Bus on different Linux/MacOS targets. This is done through the `setup_i2c()` method outlined in [lib.rs](./src/lib.rs).
 
 ### Features
 

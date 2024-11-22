@@ -46,7 +46,7 @@ brew unlink libftdi && brew link libftdi
 
 ## Optional Dependencies
 
-When listing usb devices you might find ```lsusb``` useful to which you will
+When listing usb devices you might find `lsusb` useful to which you will
 need to do the following:
 
 ### Linux
