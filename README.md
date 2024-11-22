@@ -54,7 +54,7 @@ and component placement during system calibration.
 
 ## Examples
 
-Examples on how to use the driver across multiple platforms can be found [here](./examples/ReadMe.md)
+Examples on how to use the driver across multiple platforms can be found [here](./examples/README.md)
 
 ## Architecture Diagrams
 
@@ -70,6 +70,11 @@ outlined in [config.rs](./src/config.rs). However for fine grained control
 of the device you can set and configure the raw registers outlined in the
 folder [registers](./src/registers/). More information around the code can
 be found using `cargo doc`.
+
+## Helper Utilities
+
+In this repository we also have an internal crate called [utils](./utils/) which contains some simple rust code for using the library on either Raspberry Pi or a Desktop Linux/Mac Machine.
+For more information, please look at the following [README](./utils/README.md).
 
 ## Useful Links
 
