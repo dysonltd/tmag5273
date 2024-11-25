@@ -12,11 +12,15 @@ APPLY_FIXES: all
 
 # If you use ENABLE_LINTERS variable, all other linters will be disabled by
 # default
-# ENABLE_LINTERS:
-
+ENABLE_LINTERS:
+- ACTION_ACTIONLINT
+- RUST_CLIPPY
+- MARKDOWN_MARKDOWNLINT
+- YAML_YAMLLINT
+- SPELL_CSPELL
 # DISABLE:
-  # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
-  # - SPELL # Uncomment to disable checks of spelling mistakes
+# - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
+# - SPELL # Uncomment to disable checks of spelling mistakes
 
 SHOW_ELAPSED_TIME: true
 
@@ -24,3 +28,5 @@ FILEIO_REPORTER: false
 
 # Uncomment if you want MegaLinter to detect errors but not block CI to pass
 # DISABLE_ERRORS: true
+
+MARKDOWN_SUMMARY_REPORTER: true
