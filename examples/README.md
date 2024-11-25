@@ -91,7 +91,7 @@ Arduino/C++ Library written by Sparkfun linked [here](https://github.com/sparkfu
 
 ### F232H on MAC
 
-When working with the [FT32H](https://www.adafruit.com/product/2264), you must
+When working with [FT32H](https://www.adafruit.com/product/2264), you must
 find the right device id, this can be done by using `lsusb`:
 
 ```bash
