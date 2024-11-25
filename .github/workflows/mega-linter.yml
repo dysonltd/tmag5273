@@ -141,7 +141,7 @@
         - name: Create Pull Request with applied fixes
           uses: peter-evans/create-pull-request@v6
           id: cpr
-          if: env.APPLY_FIXES_IF_PR == 'true'
+          if: ${{ env.APPLY_FIXES_IF_PR == 'true' }}
           with:
             token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
             commit-message: "[MegaLinter] Apply linters automatic fixes"
