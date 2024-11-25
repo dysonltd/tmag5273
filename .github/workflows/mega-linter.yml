@@ -29,7 +29,7 @@
   
     # If APPLY_FIXES is used, defines if the fixes are directly committed (commit)
     # or posted in a PR (pull_request)
-    APPLY_FIXES_MODE: commit
+    APPLY_FIXES_MODE: pull_request
   
   concurrency:
     group: ${{ github.ref }}-${{ github.workflow }}
@@ -126,16 +126,15 @@
         # Set APPLY_FIXES_IF_* vars for use in future steps
         - name: Set APPLY_FIXES_IF_* vars
           run: |
-            # printf 'APPLY_FIXES_IF_PR=%s\n' "${{
-            #   env.APPLY_FIXES_IF == 'true' &&
-            #   env.APPLY_FIXES_MODE == 'pull_request'
-            # }}" >> "${GITHUB_ENV}"
-            # printf 'APPLY_FIXES_IF_COMMIT=%s\n' "${{
-            #   env.APPLY_FIXES_IF == 'true' &&
-            #   env.APPLY_FIXES_MODE == 'commit' &&
-            #   (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref))
-            # }}" >> "${GITHUB_ENV}"
-            APPLY_FIXES_IF: true >> "${GITHUB_ENV}"
+            printf 'APPLY_FIXES_IF_PR=%s\n' "${{
+              env.APPLY_FIXES_IF == 'true' &&
+              env.APPLY_FIXES_MODE == 'pull_request'
+            }}" >> "${GITHUB_ENV}"
+            printf 'APPLY_FIXES_IF_COMMIT=%s\n' "${{
+              env.APPLY_FIXES_IF == 'true' &&
+              env.APPLY_FIXES_MODE == 'commit' &&
+              (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref))
+            }}" >> "${GITHUB_ENV}"
   
         # Create pull request if applicable
         # (for now works only on PR from same repository, not from forks)
