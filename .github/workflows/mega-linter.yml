@@ -35,7 +35,11 @@
     group: ${{ github.ref }}-${{ github.workflow }}
     cancel-in-progress: true
   
-  permissions: {}
+  permissions: {
+    contents: write,
+    issues: write,
+    pull-requests: write
+  }
   
   jobs:
     megalinter:
