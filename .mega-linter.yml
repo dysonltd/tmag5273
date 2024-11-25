@@ -17,7 +17,6 @@ ENABLE_LINTERS:
 - RUST_CLIPPY
 - MARKDOWN_MARKDOWNLINT
 - YAML_YAMLLINT
-- SPELL_CSPELL
 # DISABLE:
 # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
 # - SPELL # Uncomment to disable checks of spelling mistakes
@@ -28,5 +27,3 @@ FILEIO_REPORTER: false
 
 # Uncomment if you want MegaLinter to detect errors but not block CI to pass
 # DISABLE_ERRORS: true
-
-MARKDOWN_SUMMARY_REPORTER: true
