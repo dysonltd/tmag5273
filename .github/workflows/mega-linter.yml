@@ -9,7 +9,7 @@
     # Comment this line to trigger action only on pull-requests
     # (not recommended if you don't pay for GH Actions)
     push:
-  
+      
     pull_request:
       branches:
         - main
@@ -25,7 +25,7 @@
   
     # Decide which event triggers application of fixes in a commit or a PR
     # (pull_request, push, all)
-    APPLY_FIXES_EVENT: pull_request
+    APPLY_FIXES_EVENT: push
   
     # If APPLY_FIXES is used, defines if the fixes are directly committed (commit)
     # or posted in a PR (pull_request)
