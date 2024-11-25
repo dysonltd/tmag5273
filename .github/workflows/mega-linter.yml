@@ -29,7 +29,7 @@
   
     # If APPLY_FIXES is used, defines if the fixes are directly committed (commit)
     # or posted in a PR (pull_request)
-    APPLY_FIXES_MODE: pull_request
+    APPLY_FIXES_MODE: commit
   
   concurrency:
     group: ${{ github.ref }}-${{ github.workflow }}
@@ -126,20 +126,22 @@
         # Set APPLY_FIXES_IF_* vars for use in future steps
         - name: Set APPLY_FIXES_IF_* vars
           run: |
-            if [[ "$APPLY_FIXES_IF" == 'true' && "$APPLY_FIXES_MODE" == 'pull_request' ]]; then
-              echo "APPLY_FIXES_IF_PR=true" >> "${GITHUB_ENV}"
-            else
-              echo "APPLY_FIXES_IF_PR=false" >> "${GITHUB_ENV}"
-            fi
-            APPLY_FIXES_IF_COMMIT=$([ "$APPLY_FIXES_IF" == 'true' ] && [ "$APPLY_FIXES_MODE" == 'commit' ] && ! contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref))
-            printf 'APPLY_FIXES_IF_COMMIT=%s\n' "$APPLY_FIXES_IF_COMMIT" >> "${GITHUB_ENV}"
+            printf 'APPLY_FIXES_IF_PR=%s\n' "${{
+              env.APPLY_FIXES_IF == 'true' &&
+              env.APPLY_FIXES_MODE == 'pull_request'
+            }}" >> "${GITHUB_ENV}"
+            printf 'APPLY_FIXES_IF_COMMIT=%s\n' "${{
+              env.APPLY_FIXES_IF == 'true' &&
+              env.APPLY_FIXES_MODE == 'commit' &&
+              (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref))
+            }}" >> "${GITHUB_ENV}"
   
         # Create pull request if applicable
         # (for now works only on PR from same repository, not from forks)
         - name: Create Pull Request with applied fixes
           uses: peter-evans/create-pull-request@v6
           id: cpr
-          if: ${{ env.APPLY_FIXES_IF_PR == 'true' }}
+          if: env.APPLY_FIXES_IF_PR == 'true'
           with:
             token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
             commit-message: "[MegaLinter] Apply linters automatic fixes"
