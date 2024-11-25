@@ -29,5 +29,6 @@ SHOW_ELAPSED_TIME: true
 FILEIO_REPORTER: false
 
 # Uncomment if you want MegaLinter to detect errors but not block CI to pass
-DISABLE_ERRORS: true
+DISABLE_ERRORS: false
 GITHUB_COMMENT_REPORTER: true
+GITHUB_STATUS_REPORTER: true
