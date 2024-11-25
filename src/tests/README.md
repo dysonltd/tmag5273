@@ -18,8 +18,6 @@ cargo test -p tmag5273 --lib cold_start_tests  -- --test-threads=1 # Run tests w
 
 Currently there are two sets of tests:
 
-- [connection_tests](./connection_tests.rs) Tests if the device is on the bus and
-that it is the correct device. Ideally this should run first.
 - [cold_start_tests](./cold_start_tests.rs) Tests the sensor from a 'cold' start,
 this requires the sensor to be power cycled.
 - [setting_register_tests](./setting_registers_tests.rs) Tests the setting and
