@@ -10,9 +10,7 @@ Hall effect Sensor by Texas Instruments. The driver is based on the
 For more information it is recommended to look at the docs using `cargo doc`
 
 ## The Device
-
 An extract taken from the [Texas Instruments Datasheet](./docs/tmag5273.pdf):
-
 >The TMAG5273 is a low-power linear 3D Hall-effect
 sensor designed for a wide range of industrial
 and personal electronics applications. This device
@@ -60,7 +58,6 @@ Examples on how to use the driver across multiple platforms can be found [here](
 
 The rough architecture of the files and directories of the project can be seen in
 the following plantUML diagram.
-
 ![System Architecture](./docs/architecture.png)
 
 As an application developer, you will spend most of your time working with the
@@ -76,8 +73,8 @@ be found using `cargo doc`.
 In this repository we also have an internal crate called [utils](./utils/) which contains some simple rust code for using the library on either Raspberry Pi or a Desktop Linux/Mac Machine.
 For more information, please look at the following [README](./utils/README.md).
 
+## Running your Linter Locally
 ## Useful Links
-
 - [Embedded Hal](https://docs.rs/embedded-hal/latest/embedded_hal/)
 - [TMAG5273 Breakout Board](https://www.sparkfun.com/products/23880)
 - [FT232H Breakout Board](https://www.adafruit.com/product/2264)

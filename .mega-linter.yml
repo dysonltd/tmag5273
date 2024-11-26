@@ -12,24 +12,18 @@ APPLY_FIXES: all
 
 # If you use ENABLE_LINTERS variable, all other linters will be disabled by
 # default
-ENABLE_LINTERS:
-- ACTION_ACTIONLINT
-- RUST_CLIPPY
-- MARKDOWN_MARKDOWNLINT
-- MARKDOWN_MARKDOWN_LINK_CHECK
-- MARKDOWN_MARKDOWN_TABLE_FORMATTER
-- YAML_YAMLLINT
-- COPYPASTE_JSCPD
-# DISABLE:
+# ENABLE_LINTERS:
+
+DISABLE:
 # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
-# - SPELL # Uncomment to disable checks of spelling mistakes
+- SPELL # Comment to enable checks of spelling mistakes
 
 SHOW_ELAPSED_TIME: true
 
 FILEIO_REPORTER: false
 
 # Uncomment if you want MegaLinter to detect errors but not block CI to pass
-DISABLE_ERRORS: false
+# DISABLE_ERRORS: true
 GITHUB_COMMENT_REPORTER: true
 GITHUB_STATUS_REPORTER: true
 VALIDATE_ALL_CODEBASE: true
