@@ -36,7 +36,7 @@ where
     ///
     /// Generic function to set a register value on the device. The Register must implement the traits
     /// BitFieldDeviceConfiguration, in order to set it on the device.
-    pub fn set_config_register<Register>(&mut self, register: Register) -> Result<(), TMag5273Error>
+    pub fn set_config_register<Register>(&mut sel, register: Register) -> Result<(), TMag5273Error>
     where
         Register: BitFieldDeviceConfiguration,
     {

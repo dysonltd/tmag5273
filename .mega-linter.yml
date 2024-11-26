@@ -19,6 +19,9 @@ ENABLE_LINTERS:
 - MARKDOWN_MARKDOWN_LINK_CHECK
 - MARKDOWN_MARKDOWN_TABLE_FORMATTER
 - YAML_YAMLLINT
+- JSON_JSONLINT
+- JSON_PRETTIER
+
 DISABLE:
 # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
 - SPELL # Comment to enable checks of spelling mistakes
@@ -33,3 +36,5 @@ GITHUB_COMMENT_REPORTER: true
 GITHUB_STATUS_REPORTER: true
 VALIDATE_ALL_CODEBASE: true
 OUTPUT_DETAIL: detailed
+
+MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .markdownlint.json
