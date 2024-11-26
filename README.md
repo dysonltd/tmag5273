@@ -59,10 +59,11 @@ Examples on how to use the driver across multiple platforms can be found [here](
 
 The rough architecture of the files and directories of the project can be seen in
 the following plantUML diagram.
-![System Architecture](./docs/architecture1.png)
+
+![System Architecture](./docs/architecture.png)
 
 As an application developer, you will spend most of your time working with the
-TMAG5273 struct outlined in [lib.rs](./src/lib1.rs). The device can initialised
+TMAG5273 struct outlined in [lib.rs](./src/lib.rs). The device can initialised
 by the `init_default` method and configuration can be done using the methods
 outlined in [config.rs](./src/config.rs). However for fine grained control
 of the device you can set and configure the raw registers outlined in the
