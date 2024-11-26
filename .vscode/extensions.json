@@ -1,8 +1,8 @@
 {
-    "recommendations": [
-        "DavidAnson.vscode-markdownlint",
-        "redhat.vscode-yaml",
-        "esbenp.prettier-vscode",
-        "darkriszty.markdown-table-prettify"
-    ]
+  "recommendations": [
+    "DavidAnson.vscode-markdownlint",
+    "redhat.vscode-yaml",
+    "esbenp.prettier-vscode",
+    "darkriszty.markdown-table-prettify"
+  ]
 }
