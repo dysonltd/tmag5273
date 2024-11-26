@@ -10,6 +10,7 @@ use esp_hal::{
 };
 use tmag5273::types::{DeviceVersion, TMag5273Error};
 use tmag5273::TMag5273;
+use crate::traits::{BitFieldDeviceConfiguration, ByteFieldDeviceConfiguration};
 
 /// Simple Main Function to run the example
 /// This will set up the I2C bus, create a TMag5273 Sensor, print out some device stats, set up the device and then loop round getting some data

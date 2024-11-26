@@ -12,6 +12,8 @@ mod sensor_config_1;
 mod sensor_config_2;
 mod temperature_config;
 
+use crate::traits::{BitFieldDeviceConfiguration, ByteFieldDeviceConfiguration};
+
 pub use configs::*;
 pub use conversion_status::*;
 pub use device_config_1::*;
