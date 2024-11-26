@@ -72,10 +72,17 @@ be found using `cargo doc`.
 
 ## Helper Utilities
 
-In this repository we also have an internal crate called [utils](./utils/) which contains some simple rust code for using the library on either Raspberry Pi or a Desktop Linux/Mac Machine.
-For more information, please look at the following [README](./utils/README.md).
+In this repository we also have an internal crate called [utils](./utils/) which contains some simple rust code for using the library on either Raspberry Pi or a Desktop Linux/Mac Machine. For more information, please look at the following [README](./utils/README.md).
 
 ## Running your Linter Locally
+
+This project uses [MegaLinter](https://github.com/oxsecurity/megalinter) which provides linters for various different file formats and languages. When a Pull request to main is done, the linters will run and ensure the codebase is in good standing. It is recommended that you run the linter locally beforehand as it can sometimes autofix common mistakes.
+
+```bash
+npx mega-linter-runner 
+```
+
+You will need to have docker and Node installed to use this, more information can be found on their [repo](https://github.com/oxsecurity/megalinter)
 
 ## Useful Links
 
