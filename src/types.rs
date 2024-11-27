@@ -26,7 +26,7 @@ impl DeviceVersion {
             Self::TMAG5273D1 | Self::TMAG5273D2 => 0x44,
         }
     }
-    
+
     /// Gets the device id associated with the hardware version
     pub fn get_device_id(self) -> DeviceId {
         match self {
