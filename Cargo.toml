@@ -42,6 +42,7 @@ rpi = ["utils/rpi"]
 
 [workspace]
 members = [
-    "examples/esp32-c3",
+    # "examples/esp32-c3",
     "utils",
+    "./"
 ]
