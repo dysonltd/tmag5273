@@ -2,7 +2,6 @@ use ftdi::Device;
 use ftdi_embedded_hal::I2c as FtdiI2c;
 use ftdi_embedded_hal::{self as hal};
 use std::error::Error;
-use crate::traits::{BitFieldDeviceConfiguration, ByteFieldDeviceConfiguration};
 
 #[cfg(feature = "rpi")]
 use rppal::i2c as PiI2c;
