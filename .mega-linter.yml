@@ -43,4 +43,6 @@ YAML_YAMLLINT_CONFIG_FILE: .yamllint.yml
 RUST_CLIPPY_ARGUMENTS:
   - "--workspace"
   - "--all-targets"
-  - "-- -D warnings"
+  - "--"
+  - "-D"
+  - "warnings"
