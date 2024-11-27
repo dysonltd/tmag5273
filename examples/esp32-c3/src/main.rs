@@ -19,7 +19,7 @@ use tmag5273::TMag5273;
 fn main() -> ! {
     esp_println::logger::init_logger(log::LevelFilter::Info);
     let peripherals = Peripherals::take();
-    let system = SystemControl::new(peripherals.SYSTEM)
+    let system = SystemControl::new(peripherals.SYSTEM);
     let io = Io::new(peripherals.GPIO, peripherals.IO_MUX);
 
     let clocks = ClockControl::max(system.clock_control).freeze();

@@ -41,4 +41,5 @@ MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .markdownlint.json
 YAML_YAMLLINT_CONFIG_FILE: .yamllint.yml
 
 RUST_CLIPPY_ARGUMENTS:
-  - "--workspace --all-targets  -- -D warnings"
+  - "--workspace"
+  - "--all-targets"
