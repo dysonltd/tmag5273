@@ -15,12 +15,6 @@ on:
       - main
       - master
 
-# Permission can be added at job level or workflow level
-permissions:
-  contents: write
-  issues: write
-  pull-requests: write
-
 # Comment env block if you do not want to apply fixes
 env:
   # Apply linter fixes configuration
@@ -52,6 +46,7 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
+      statuses: write
 
     steps:
       # Git Checkout
