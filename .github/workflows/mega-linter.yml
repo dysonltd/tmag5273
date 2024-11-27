@@ -18,8 +18,8 @@ on:
 # Permission can be added at job level or workflow level
 permissions:
   contents: write
-  pull-requests	: write
-  statuses: write
+  issues: write
+  pull-requests: write
 
 # Comment env block if you do not want to apply fixes
 env:
