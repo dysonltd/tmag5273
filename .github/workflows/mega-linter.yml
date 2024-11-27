@@ -192,3 +192,16 @@ jobs:
           commit_message: "[MegaLinter] Apply linters fixes"
           commit_user_name: megalinter-bot
           commit_user_email: nicolas.vuillamy@ox.security
+
+  cargo_fmt:
+    name: Cargo Formatter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Rustfmt check on src
+        run: cargo fmt --manifest-path Cargo.toml -- --check
+      - name: Rustfmt check on utils
+        run: cargo fmt --manifest-path utils/Cargo.toml -- --check
+      - name: Rustfmt check on esp32 example
+        run: cargo fmt --manifest-path examples/esp32-c3/Cargo.toml -- --check
