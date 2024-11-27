@@ -8,7 +8,7 @@ use esp_hal::{
     clock::ClockControl, gpio::Io, i2c::I2C, peripherals::Peripherals, prelude::*,
     system::SystemControl,
 };
-use tmag5273::types::{DeviceVersion, TMag5273Error}
+use tmag5273::types::{DeviceVersion, TMag5273Error};
 use tmag5273::TMag5273;
 
 /// Simple Main Function to run the example
