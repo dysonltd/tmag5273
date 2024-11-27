@@ -46,3 +46,5 @@ RUST_CLIPPY_ARGUMENTS:
   - "--"
   - "-D"
   - "warnings"
+
+DEFAULT_BRANCH: main
