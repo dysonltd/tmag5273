@@ -399,7 +399,7 @@ where
         // Set the Mag Channels to be enabled
         let sensor_config_1_register: SensorConfig1Register = self
             .get_config_register::<SensorConfig1Register>()?
-            .with_sleep_time(SleepTime::Ms10000)
+            .with_sleep_time(SleepTime::Ms20000)
             .with_mag_channel(MagneticChannel::XYZ);
         self.set_config_register(sensor_config_1_register)?;
 

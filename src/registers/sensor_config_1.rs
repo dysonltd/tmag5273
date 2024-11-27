@@ -31,8 +31,8 @@ pub enum SleepTime {
     Ms2000 = 0xA,
     // 5000 ms
     Ms5000 = 0xB,
-    // 10000 ms
-    Ms10000 = 0xC,
+    // 20000 ms
+    Ms20000 = 0xC,
 }
 /// Enables data acquisition of the magnetic axis channel(s)
 /// This maps to MAG_CH_EN in the datasheet.
