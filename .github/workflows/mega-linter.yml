@@ -136,7 +136,7 @@ jobs:
           body: |
             MegaLinter has automatically applied linters fixes on this PR.
             Please review the changes and merge if they are correct.
-          base: ${{ github.ref }}
+          base: ${{ github.base_ref }}
 
       - name: Create PR output
         if: >-
