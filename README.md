@@ -10,6 +10,7 @@ Hall effect Sensor by Texas Instruments. The driver is based on the
 For more information it is recommended to look at the docs using `cargo doc`
 
 ## The Device
+
 An extract taken from the [Texas Instruments Datasheet](./docs/tmag5273.pdf):
 >The TMAG5273 is a low-power linear 3D Hall-effect
 sensor designed for a wide range of industrial
