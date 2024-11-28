@@ -134,7 +134,7 @@ jobs:
           commit-message: "[MegaLinter] Apply linters automatic fixes"
           title: "[MegaLinter] Apply linters automatic fixes"
           labels: bot
-          branch: megalinter-fixes-${{ github.sha }}
+          branch: megalinter-fixes-${{ github.head_ref }}
           body: |
             MegaLinter has automatically applied linters fixes on this PR.
             Please review the changes and merge if they are correct.
