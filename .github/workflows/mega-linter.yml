@@ -138,7 +138,7 @@ jobs:
             Please review the changes and merge if they are correct.
           base: ${{ github.head_ref }}
 
-      - name:  Post PR Comment
+      - name: Post PR Comment
         if: >-
           steps.ml.outputs.has_updated_sources == 1 &&
           (
@@ -158,10 +158,9 @@ jobs:
             Please review the changes and merge if they are correct.
             PR: ${{ steps.cpr.outputs.pull-request-url }}
           hide_and_recreate: true
-          
 
       # Create PR Comment
-      
+
       # - name: Create PR output
       #   if: >-
       #     steps.ml.outputs.has_updated_sources == 1 &&
