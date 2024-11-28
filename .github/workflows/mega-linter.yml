@@ -161,6 +161,13 @@ jobs:
             PR: ${{ steps.cpr.outputs.pull-request-url }}
           hide_and_recreate: true
 
+      - name: Fail if PR Created
+        run: |
+          if [ "${{ steps.cpr.outputs.pull-request-url }}" != "" ]; then
+            echo "A PR with formatting fixes has been created. Please merge it before proceeding."
+            exit 1
+          fi
+
       # Create PR Comment
 
       # - name: Create PR output
