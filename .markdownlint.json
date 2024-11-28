@@ -1,7 +1,1 @@
-{
-    "line-length": {
-        "line_length": 800,
-        "code_blocks": false,
-        "tables": true
-    }
-}
+{ "default": true, "line-length": { "line_length": 1000 } }
