@@ -36,6 +36,7 @@ GITHUB_STATUS_REPORTER: true
 VALIDATE_ALL_CODEBASE: true
 OUTPUT_DETAIL: detailed
 
+# Disable Markdown Line Length rule
 MARKDOWN_MARKDOWNLINT_ARGUMENTS:
   - "--disable"
   - "MD013"
