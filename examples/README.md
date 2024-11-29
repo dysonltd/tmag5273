@@ -1,7 +1,6 @@
 # Examples
 
 ## Summary
-
 Within this directory are a set of examples for different platforms the goal being to show the developer how to use the driver on each platform. The driver should be platform agnostic and the API should be the same regardless of whether you are on MCU or Linux/Mac. However what will change is the setup of the I2C bus.
 
 When working on a desktop environment the sensor will be attached via [FT232H Breakout Board](https://www.adafruit.com/product/2264)

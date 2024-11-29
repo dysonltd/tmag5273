@@ -37,7 +37,9 @@ VALIDATE_ALL_CODEBASE: true
 OUTPUT_DETAIL: detailed
 
 # Disable Markdown Line Length rule
+MARKDOWN_MARKDOWNLINT_CLI_LINT_MODE: "project"
 MARKDOWN_MARKDOWNLINT_ARGUMENTS:
+  - "**/*.md"
   - "--disable"
   - "MD013"
 
