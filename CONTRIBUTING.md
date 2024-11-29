@@ -1,4 +1,4 @@
-# Contributing to  tmag5273
+# Contributing to tmag5273
 
 Thank you for considering contributing to the tmag5273 project! We welcome contributions from everyone. Below are some guidelines to help you get started.
 
@@ -30,7 +30,7 @@ Thank you for considering contributing to the tmag5273 project! We welcome contr
 6. **Push to your fork**:
 
     ```sh
-    git push origin your-feature-branch
+    git push --set-upstream origin your-feature-branch
     ```
 
 7. **Create a Pull Request**: Go to the original repository and click the "New Pull Request" button.
