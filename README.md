@@ -40,6 +40,14 @@ npx mega-linter-runner
 
 You will need to have docker and Node installed to use this, more information can be found on their [repo](https://github.com/oxsecurity/megalinter)
 
+### Issues with rust fmt
+
+Currently at the time of this commit `rust fmt` is not supported as part of MegaLinter, thus to ensure it is correctly formatted we have added an extra build stage which can be seen [here](./.github/workflows/mega-linter.yaml). You can run this locally using
+
+```bash
+cargo fmt --all
+```
+
 ## Useful Links
 
 - [Embedded Hal](https://docs.rs/embedded-hal/latest/embedded_hal/)
