@@ -12,6 +12,7 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
+
 1. Installed vX.X.X
 2. Called Method Y
 3. See error / wrong value
@@ -23,10 +24,11 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Hardware (please complete the following information):**
- - Device: [e.g. ESP32, STM32, Raspberry Pi]
- - OS: [e.g. Linux, MacOS] (if applicable)
- - OS Version: [e.g. Ubuntu 24.04.1, Sequioa 15.0.1]
- - Rust Version: [e.g. 1.83.0]
+
+- Device: [e.g. ESP32, STM32, Raspberry Pi]
+- OS: [e.g. Linux, MacOS] (if applicable)
+- OS Version: [e.g. Ubuntu 24.04.1, Sequioa 15.0.1]
+- Rust Version: [e.g. 1.83.0]
 
 **Additional context**
 Add any other context about the problem here.
