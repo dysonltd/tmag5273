@@ -17,8 +17,8 @@ The different set ups are shown below in the architectural diagram:
 
 ### How to Install (Desktop Linux)
 
-When working with the Desktop Linux you may find you need to install the following
-in order to work with the [FT232H](https://www.adafruit.com/product/2264)
+When working with Desktop Linux you may find you need to install the following
+in order to work with the [FT232H](https://www.adafruit.com/product/2264) breakout board.
 
 ```bash
 sudo apt update
