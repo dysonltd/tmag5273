@@ -16,3 +16,4 @@ Cargo.toml.bkp
 .idea/
 .DS_Store
 .obsidian/
+./continuous_integration/.env

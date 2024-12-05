@@ -1,0 +1,3 @@
+[submodule "continous integration/github-runner-dockerfile"]
+	path = continous integration/github-runner-dockerfile
+	url = https://github.com/beikeni/github-runner-dockerfile.git
