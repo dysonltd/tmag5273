@@ -48,15 +48,28 @@ Examples on how to use the driver across multiple platforms can be found [here](
 
 ## Architecture Diagrams
 
-The rough architecture of the files and directories of the project can be seen in the following plantUML diagram.
+The rough architecture of the files and directories of the project can be seen in the following [PlantUML](https://plantuml.com/) diagram.
 
 ![System Architecture](./docs/architecture.png)
 
 As an application developer, you will spend most of your time working with the TMAG5273 struct outlined in [lib.rs](./src/lib.rs). The device can initialised by the `init_default` method and configuration can be done using the methods outlined in [config.rs](./src/config.rs). However for fine grained control of the device you can set and configure
 the raw registers outlined in the folder [registers](./src/registers/). More information around the code can be found using `cargo doc`.
 
+## Continuous Integration
+
+As for continous integration testing, we run our own self hosted runner with the following system design:
+
+![Test Suite](./docs/continuous%20integration/Continuous%20Testing%20Pipeline.png)
+
+More information on this can be found in the following [README](./continous%20integration/README.md).
+
+## Editing or Adding Diagrams
+
+This repo uses the [Obsidian](https://obsidian.md/) note taking app for creating diagrams. Its highly recommended that if you want to add more diagrams you open this repo using obsidian and create a diagram using the canvas feature. This allows us to version control the diagrams.
+
 ## Useful Links
 
 - [Embedded Hal](https://docs.rs/embedded-hal/latest/embedded_hal/)
 - [TMAG5273 Breakout Board](https://www.sparkfun.com/products/23880)
 - [FT232H Breakout Board](https://www.adafruit.com/product/2264)
+- [Obsidian](https://obsidian.md/)
