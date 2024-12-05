@@ -162,22 +162,22 @@ jobs:
     name: Cargo Formatter
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Rustfmt check on src
-        run: cargo fmt --manifest-path Cargo.toml -- --check
-      - name: Rustfmt check on utils
-        run: cargo fmt --manifest-path utils/Cargo.toml -- --check
-      - name: Rustfmt check on esp32 example
-        run: cargo fmt --manifest-path examples/esp32-c3/Cargo.toml -- --check
+              - name: Checkout code
+                uses: actions/checkout@v4
+              - name: Rustfmt check on src
+                run: cargo fmt --manifest-path Cargo.toml -- --check
+              - name: Rustfmt check on utils
+                run: cargo fmt --manifest-path utils/Cargo.toml -- --check
+              - name: Rustfmt check on esp32 example
+                run: cargo fmt --manifest-path examples/esp32-c3/Cargo.toml -- --check
 
   cargo_clippy:
     name: Cargo Clippy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Clippy check on esp32 example
-        run: |
-          cd examples/esp32-c3
-          cargo clippy -- -D warnings
+          - name: Checkout code
+            uses: actions/checkout@v4
+          - name: Clippy check on esp32 example
+            run: |
+              cd examples/esp32-c3
+              cargo clippy -- -D warnings
