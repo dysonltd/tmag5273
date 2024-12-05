@@ -8,7 +8,8 @@ platform agnostic and the API should be the same regardless of whether you are o
 When working on a desktop environment the sensor will be attached via [FT232H Breakout Board](https://www.adafruit.com/product/2264)
 
 The different set ups are shown below in the architectural diagram:
-![alt text](../docs/examples/Example%20Setup.png)
+
+![alt text](../docs/examples/Multi%20Platform%20Driver.png)
 
 ## Installation
 
