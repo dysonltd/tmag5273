@@ -1,0 +1,16 @@
+---
+name: Continuous Integration
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  Test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: |
+          echo "Running tests"
+          exit 0
