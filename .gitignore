@@ -14,3 +14,5 @@ Cargo.toml.bkp
 
 # Editor-specific files
 .idea/
+# Mac OS
+.DS_Store
