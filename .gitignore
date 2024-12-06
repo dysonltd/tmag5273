@@ -1,5 +1,6 @@
 # Compiled files
 /target/
+utils/target/
 
 # Dependency directories
 Cargo.lock
@@ -17,3 +18,7 @@ Cargo.toml.bkp
 .DS_Store
 .obsidian/
 ./continuous_integration/.env
+# Mac OS
+.DS_Store
+
+megalinter-reports/
