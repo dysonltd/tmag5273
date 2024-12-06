@@ -7,10 +7,11 @@ Thank you for considering contributing to the tmag5273 project! We welcome contr
 1. **Fork the repository**: Click the "Fork" button at the top right of the repository page.
 
 2. **Clone your fork**:
-
+    <!-- markdown-link-check-disable -->
     ```sh
     git clone https://github.com/your-username/tmag5273.git
     ```
+    <!-- markdown-link-check-enable -->
 
 3. **Create a branch**:
 
