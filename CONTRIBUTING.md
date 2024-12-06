@@ -44,7 +44,7 @@ Thank you for considering contributing to the tmag5273 project! We welcome contr
 
 ## Reporting Issues
 
-If you find a bug or have a feature request, please create an issue on the [Issues](https://github.com/dyson/tmag5273/issues) page.
+If you find a bug or have a feature request, please create an issue on the [Issues](https://github.com/dysonltd/tmag5273/issues) page.
 
 ## Code of Conduct
 
