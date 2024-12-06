@@ -21,3 +21,6 @@ services:
       - portainer_data:/data
     networks:
       - default
+
+volumes:
+  portainer_data:
