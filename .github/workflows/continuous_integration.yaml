@@ -6,11 +6,40 @@ on:
       - master
 
 jobs:
-  Test:
-    name: Test
-    runs-on: ubuntu-latest
+  FTDI_Tests:
+    name: FTDI Tests
+    runs-on: self-hosted
     steps:
-      - name: Test
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cold Start Tests
         run: |
-          echo "Running tests"
-          exit 0
+          echo "Running Cold Start Tests"
+          cargo test cold_start_tests --features=std -- --test-threads=1
+      - name: Setting Register Tests
+        run: |
+          echo "Running Setting Register Tests"
+          cargo test setting_register_tests --features=std -- --test-threads=1
+      - name: Power Cycle Harwdare
+        run: |
+          echo "Power cycling hardware"
+          # TODO: Power cycle hardware
+
+  Raspberry_Pi_Tests:
+    name: Raspberry Pi Tests
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cold Start Tests
+        run: |
+          echo "Running Cold Start Tests"
+          cargo test cold_start_tests --features=rpi -- --test-threads=1
+      - name: Setting Register Tests
+        run: |
+          echo "Running Setting Register Tests"
+          cargo test setting_register_tests --features=rpi -- --test-threads=1
+      - name: Power Cycle Harwdare
+        run: |
+          echo "Power cycling hardware"
+          # TODO: Power cycle hardware
