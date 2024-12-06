@@ -55,7 +55,8 @@ where
     {
         let mut data: [u8; 1] = [0x00];
         let register_address = Register::get_address().into();
-        self.i2c.write_read(self.address, &[register_address], &mut data)?;
+        self.i2c
+            .write_read(self.address, &[register_address], &mut data)?;
         Ok(Register::new_with_raw_value(data[0]))
     }
 
@@ -63,13 +64,14 @@ where
     ///
     /// Generic function to get a register value from the device. The Register must implement the traits
     /// ByteFieldDeviceConfiguration in order to get it from the device.
-    pub (crate) fn get_dual_config_register<Register>(&mut self) -> Result<Register, TMag5273Error>
+    pub(crate) fn get_dual_config_register<Register>(&mut self) -> Result<Register, TMag5273Error>
     where
         Register: ByteFieldDeviceConfiguration,
     {
         let mut data: [u8; 2] = [0x00, 2];
         let register_address = Register::get_address().into();
-        self.i2c.write_read(self.address, &[register_address], &mut data)?;
+        self.i2c
+            .write_read(self.address, &[register_address], &mut data)?;
         Ok(Register::new_with_raw_value(u16::from_le_bytes(data)))
     }
 }

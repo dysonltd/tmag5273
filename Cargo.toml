@@ -39,3 +39,10 @@ defmt = ["dep:defmt"]
 log = ["dep:log"]
 std = ["utils/std"]
 rpi = ["utils/rpi"]
+
+[workspace]
+members = [
+    "examples/esp32-c3",
+    "utils",
+    "./",
+]
