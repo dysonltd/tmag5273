@@ -15,6 +15,9 @@ Cargo.toml.bkp
 
 # Editor-specific files
 .idea/
+.DS_Store
+.obsidian/
+./continuous_integration/.env
 # Mac OS
 .DS_Store
 
