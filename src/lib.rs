@@ -110,7 +110,8 @@ where
     pub fn get_manufacturer_id(&mut self) -> Result<u16, TMag5273Error> {
         let mut data: [u8; 2] = [0x00, 0x00];
         let register_address = TMAG5273Register::ManufacturerIdLsb.into();
-        self.i2c.write_read(self.address, &[register_address], &mut data)?;
+        self.i2c
+            .write_read(self.address, &[register_address], &mut data)?;
 
         let manufacturer_id = u16::from_le_bytes(data);
         match manufacturer_id != MANUFACTURER_ID_VALUE {
@@ -174,7 +175,8 @@ where
         let threshold_normalized = {
             let mut buf: [u8; 1] = [0x00];
             let register_address = register.into();
-            self.i2c.write_read(self.address, &[register_address], &mut buf)?;
+            self.i2c
+                .write_read(self.address, &[register_address], &mut buf)?;
             let threshold_raw = i8::from_le_bytes(buf); // always one byte (-128 to 127)
             threshold_raw as f32 / 128.0 // convert to -1.0 to 1.0
         };
@@ -203,7 +205,8 @@ where
     pub fn get_magnetic_gain(&mut self) -> Result<u8, TMag5273Error> {
         let mut data: [u8; 1] = [0x00];
         let register_address = TMAG5273Register::MagGainConfig.into();
-        self.i2c.write_read(self.address, &[register_address], &mut data)?;
+        self.i2c
+            .write_read(self.address, &[register_address], &mut data)?;
         Ok(data[0])
     }
 
@@ -253,7 +256,8 @@ where
         let _data = {
             let mut buf: [u8; 1] = [0x00];
             let register_address = register_address.into();
-            self.i2c.write_read(self.address, &[register_address], &mut buf)?;
+            self.i2c
+                .write_read(self.address, &[register_address], &mut buf)?;
             buf[0] // always one byte
         };
         unimplemented!("Offset doesn't work yet");
@@ -273,7 +277,8 @@ where
         self.check_temp_channel()?;
         let mut data: [u8; 2] = [0x00; 2];
         let register_address = TMAG5273Register::TMsbResult.into();
-        self.i2c.write_read(self.address, &[register_address], &mut data)?;
+        self.i2c
+            .write_read(self.address, &[register_address], &mut data)?;
         Ok(Self::convert_temp(data))
     }
 
@@ -321,7 +326,8 @@ where
         let range = range.get_range(self.device_version);
         let mut data: [u8; 2] = [0x00; 2];
         let register_address = register.into();
-        self.i2c.write_read(self.address, &[register_address], &mut data)?;
+        self.i2c
+            .write_read(self.address, &[register_address], &mut data)?;
         Ok(Self::convert_magnetism(axis, data, range))
     }
 
@@ -341,7 +347,8 @@ where
         // Full Data Read
         let mut data: [u8; 8] = [0x00; 8];
         let register_address = TMAG5273Register::TMsbResult.into();
-        self.i2c.write_read(self.address, &[register_address], &mut data)?;
+        self.i2c
+            .write_read(self.address, &[register_address], &mut data)?;
 
         let xy_range = config2.xy_range().get_range(self.device_version);
         let z_range = config2.z_range().get_range(self.device_version);
@@ -363,7 +370,8 @@ where
         }
         let mut data = [0x00; 2];
         let register_address = TMAG5273Register::AngleResultMSB.into();
-        self.i2c.write_read(self.address, &[register_address], &mut data)?;
+        self.i2c
+            .write_read(self.address, &[register_address], &mut data)?;
 
         // The angle is calculated as follows:
         //  x x x x x x x x   x x x x x x x x
@@ -381,7 +389,8 @@ where
     pub fn get_magnitude(&mut self) -> Result<u8, TMag5273Error> {
         let mut data: [u8; 1] = [0x00];
         let register_address = TMAG5273Register::MagnitudeResult.into();
-        self.i2c.write_read(self.address, &[register_address], &mut data)?;
+        self.i2c
+            .write_read(self.address, &[register_address], &mut data)?;
         Ok(data[0])
     }
 
@@ -444,7 +453,8 @@ where
     fn check_temp_channel(&mut self) -> Result<(), TMag5273Error> {
         let register_address = TMAG5273Register::TConfig.into();
         let mut data: [u8; 1] = [0x00];
-        self.i2c.write_read(self.address, &[register_address], &mut data)?;
+        self.i2c
+            .write_read(self.address, &[register_address], &mut data)?;
         let tch_en = TConfigRegister::new_with_raw_value(data[0]).temperature_channel_enabled();
 
         if tch_en {

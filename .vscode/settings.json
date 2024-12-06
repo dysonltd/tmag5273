@@ -1,0 +1,6 @@
+{
+  "rust-analyzer.linkedProjects": [
+    "utils/Cargo.toml",
+    "examples/esp32-c3/Cargo.toml"
+  ]
+}

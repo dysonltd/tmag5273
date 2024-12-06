@@ -1,5 +1,6 @@
 # Compiled files
 /target/
+utils/target/
 
 # Dependency directories
 Cargo.lock
@@ -14,3 +15,7 @@ Cargo.toml.bkp
 
 # Editor-specific files
 .idea/
+# Mac OS
+.DS_Store
+
+megalinter-reports/
