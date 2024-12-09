@@ -8,7 +8,6 @@ interacting with the hardware. As such we must run our tests with one thread:
 
 ```bash
 cargo test -- --test-threads=1
-cargo test --test connection_tests -- --test-threads=1
 cargo test --test cold_start_tests -- --test-threads=1
 cargo test --test setting_registers_tests --  --test-threads=1
 cargo test -p tmag5273 --lib cold_start_tests  -- --test-threads=1 # Run tests within the crate

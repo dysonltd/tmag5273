@@ -1,6 +1,7 @@
 # TMAG5273 Rust Driver
 
 [![MegaLinter](https://github.com/dysonltd/tmag5273/actions/workflows/mega-linter.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/mega-linter.yaml)
+[![Continuous Integration](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_integration.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_integration.yaml)
 
 ## Summary
 
@@ -29,6 +30,12 @@ folder [registers](./src/registers/). More information around the code can be fo
 ## Helper Utilities
 
 In this repository we also have an internal crate called [utils](./utils/) which contains some simple rust code for using the library on either Raspberry Pi or a Desktop Linux/Mac Machine. For more information, please look at the following [README](./utils/README.md).
+
+## Continuous Integration Testing
+
+Within this repo we also run a Continuous Integration hardware in the loop test bench. The architecture of this is shown below and more information can be found [here](./.github/test_bench/README.md).
+
+![CI Architecture](./docs/CI%20Pipeline.png)
 
 ## Running your Linter Locally
 
