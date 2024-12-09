@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  Linting:
+  linting:
     uses: ./.github/workflows/mega-linter.yaml
     permissions:
       contents: write
@@ -22,6 +22,7 @@ jobs:
   release:
     name: Publish to crates.io
     runs-on: ubuntu-latest
+    needs: [tests, linting]
     timeout-minutes: 10
     if: github.ref == 'refs/heads/main'
     steps:
