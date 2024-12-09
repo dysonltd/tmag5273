@@ -9,6 +9,9 @@ permissions:
   contents: write
 
 jobs:
+  tests:
+    uses: ./.github/workflows/continuous_integration.yaml
+    
   release:
     name: Publish to crates.io
     runs-on: ubuntu-latest
