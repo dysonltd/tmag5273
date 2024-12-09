@@ -16,9 +16,11 @@ Cargo.toml.bkp
 # Editor-specific files
 .idea/
 .DS_Store
-.obsidian/
 .github/test_bench/.env
 # Mac OS
 .DS_Store
 
 megalinter-reports/
+
+# Draw.io files
+*.bkp

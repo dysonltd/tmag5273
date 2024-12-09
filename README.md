@@ -34,7 +34,7 @@ In this repository we also have an internal crate called [utils](./utils/) which
 
 Within this repo we also run a Continuous Integration hardware in the loop test bench. The architecture of this is shown below and more information can be found [here](./.github/test_bench/README.md).
 
-![CI Architecture](./docs/continuous%20integration/Continuous%20Testing%20Pipeline.png)
+![CI Architecture](./docs/CI%20Pipeline.png)
 
 ## Running your Linter Locally
 
