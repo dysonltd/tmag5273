@@ -1,3 +1,6 @@
+# This Docker Compose File is for setting up the Hardware in the Loop Test Bench
+---
+
 services:
   portainer:
     image: portainer/portainer-ce
@@ -18,7 +21,7 @@ services:
       - REPO_URL=https://github.com/dysonltd/tmag5273
       - RUNNER_TOKEN=${GHA_TOKEN}
       - RUN_AS_ROOT=true
-      - LABELS=self-hosted
+      - LABELS=self-hosted, RPI5
     restart: always
 volumes:
   portainer_data:
