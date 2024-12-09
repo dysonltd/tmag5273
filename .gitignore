@@ -17,7 +17,7 @@ Cargo.toml.bkp
 .idea/
 .DS_Store
 .obsidian/
-continuous integration/.env
+.github/test_bench/.env
 # Mac OS
 .DS_Store
 
