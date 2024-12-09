@@ -26,9 +26,11 @@ jobs:
     timeout-minutes: 10
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: Check if on main Branch
+        if: github.ref != 'refs/heads/main'
+        run: exit 1
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Verify Version
         run: |
           TAG_VERSION=${GITHUB_REF#refs/tags/v}
@@ -38,15 +40,12 @@ jobs:
             exit 1  # Exits with a non-zero status to fail the workflow
           fi
         shell: bash
-
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
-
       - name: Build project
         run: cargo build --release
-
       - name: Create GitHub release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -56,7 +55,6 @@ jobs:
               --repo="$GITHUB_REPOSITORY" \
               --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
               --generate-notes
-
       - name: Publish to crates.io
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
