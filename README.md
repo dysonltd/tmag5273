@@ -1,6 +1,6 @@
 # TMAG5273 Rust Driver
 
-[![Linting](https://github.com/dysonltd/tmag5273/actions/workflows/Linting.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/Linting.yaml)
+[![MegaLinter](https://github.com/dysonltd/tmag5273/actions/workflows/mega-linter.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/mega-linter.yaml)
 
 ## Summary
 
