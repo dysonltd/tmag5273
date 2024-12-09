@@ -1,6 +1,5 @@
 # This Docker Compose File is for setting up the Hardware in the Loop Test Bench
 ---
-
 services:
   portainer:
     image: portainer/portainer-ce
