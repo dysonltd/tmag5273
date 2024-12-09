@@ -10,9 +10,11 @@ This part of the repo contains all the setup for the TMAG5273 CI Testing Platfor
 
 1. Follow the instructions outlined by Docker [here](https://docs.docker.com/engine/install/raspberry-pi-os/). If your using 64-bit Raspberry Pi OS Follow [these](https://docs.docker.com/engine/install/debian/) instead.
 2. Setup your github actions runner token
-3. run `docker-compose up -d`
-4. Access portainer at `<ip-address>:9000`
-5. Monitor your runner :)
+3. Add the Token to your`.env` file
+4. Enable I2C using `raspi-config`
+5. run `docker-compose up -d`
+6. Access portainer at `<ip-address>:9000`
+7. Monitor your runner :)
 
 ## Useful Links
 
