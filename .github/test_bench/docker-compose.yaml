@@ -26,9 +26,9 @@ services:
     restart: always
     privileged: true
     volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
-      - '/runner/data:/runner/data' # required for persistence
-      - '/tmp/runner:/tmp/runner'
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/runner/data:/runner/data" # required for persistence
+      - "/tmp/runner:/tmp/runner"
 
 volumes:
   portainer_data:
