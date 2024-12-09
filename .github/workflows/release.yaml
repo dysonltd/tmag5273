@@ -27,7 +27,9 @@ jobs:
     steps:
       - name: Check if on main Branch
         if: github.ref != 'refs/heads/main'
-        run: exit 1
+        run: |
+          echo "This Tag is not on the main Branch!"
+          exit 1
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Verify Version
