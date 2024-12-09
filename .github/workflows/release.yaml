@@ -11,6 +11,11 @@ permissions:
 jobs:
   Linting:
     uses: ./.github/workflows/mega-linter.yaml
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      statuses: write
   tests:
     uses: ./.github/workflows/continuous_integration.yaml
 

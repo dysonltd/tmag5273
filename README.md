@@ -2,6 +2,7 @@
 
 [![MegaLinter](https://github.com/dysonltd/tmag5273/actions/workflows/mega-linter.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/mega-linter.yaml)
 [![Continuous Integration](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_integration.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_integration.yaml)
+[![Release](https://github.com/dysonltd/tmag5273/actions/workflows/release.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/release.yaml)
 
 ## Summary
 
