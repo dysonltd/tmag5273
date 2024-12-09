@@ -16,7 +16,7 @@ jobs:
       - name: Install Rust and FTDI
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          apt-get install libftdi1 libftdi1-dev
+          apt-get install libftdi1 libftdi1-dev -y
       - name: Cold Start Tests
         run: |
           echo "Running Cold Start Tests"
@@ -41,7 +41,7 @@ jobs:
       - name: Install Rust
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          apt-get install libftdi1 libftdi1-dev
+          apt-get install libftdi1 libftdi1-dev -y
       - name: Cold Start Tests
         run: |
           echo "Running Cold Start Tests"
