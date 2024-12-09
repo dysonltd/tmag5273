@@ -8,7 +8,7 @@ When working on a desktop environment the sensor will be attached via [FT232H Br
 
 The different set ups are shown below in the architectural diagram:
 
-![alt text](Multi%20Platform%20Driver.png)
+![alt text](../docs/examples/Multi%20Platform%20Driver.png)
 
 ## Installation
 
