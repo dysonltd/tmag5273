@@ -30,6 +30,12 @@ folder [registers](./src/registers/). More information around the code can be fo
 
 In this repository we also have an internal crate called [utils](./utils/) which contains some simple rust code for using the library on either Raspberry Pi or a Desktop Linux/Mac Machine. For more information, please look at the following [README](./utils/README.md).
 
+## Continuous Integration Testing
+
+Within this repo we also run a Continuous Integration hardware in the loop test bench. The architecture of this is shown below and more information can be found [here](./.github/test_bench/README.md).
+
+![CI Architecture](./docs/continuous%20integration/Continuous%20Testing%20Pipeline.png)
+
 ## Running your Linter Locally
 
 This project uses [MegaLinter](https://github.com/oxsecurity/megalinter) which provides linters for various different file formats and languages. When a Pull request to main is done, the linters will run and ensure the codebase is in good standing. It is recommended that you run the linter locally beforehand as it can sometimes autofix common mistakes.

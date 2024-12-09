@@ -27,10 +27,6 @@ jobs:
           echo "Running Setting Register Tests"
           source "$HOME"/.cargo/env
           cargo test setting_register_tests --features=std -- --test-threads=1
-      - name: Power Cycle Harwdare
-        run: |
-          echo "Power cycling hardware"
-          # TODO: Power cycle hardware
 
   Raspberry_Pi_Tests:
     name: Raspberry Pi Tests
@@ -52,7 +48,3 @@ jobs:
           echo "Running Setting Register Tests"
           source "$HOME"/.cargo/env
           cargo test setting_register_tests --features=rpi -- --test-threads=1
-      - name: Power Cycle Harwdare
-        run: |
-          echo "Power cycling hardware"
-          # TODO: Power cycle hardware

@@ -16,7 +16,23 @@ This part of the repo contains all the setup for the TMAG5273 CI Testing Platfor
 6. Access portainer at `<ip-address>:9000`
 7. Monitor your runner :)
 
+## Pinouts and Wiring
+
+For the Above CI Test Bench to work you must connect the following pins:
+
+### Raspberry Pi
+
+| Pin Number (BOARD) | TMAG5273 Pin Name |
+|--------------------|-------------------|
+| 4                  | INT               |
+
+### FT232H Breakout Board
+
+| Pin Number (BOARD) | TMAG5273 Pin Name |
+|--------------------|-------------------|
+| C0                 | INT               |
+
 ## Useful Links
 
-- [GitHub Actions Docker Runner](https://github.com/beikeni/github-runner-dockerfile/tree/main)
-- [Dockerising GitHub Actions Article](https://baccini-al.medium.com/how-to-containerize-a-github-actions-self-hosted-runner-5994cc08b9fb)
+- [GitHub Runner DockerHub](https://hub.docker.com/r/myoung34/github-runner)
+- [GitHub Runner GitHub repo](https://github.com/myoung34/docker-github-actions-runner)
