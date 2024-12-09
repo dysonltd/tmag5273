@@ -16,14 +16,15 @@ jobs:
       - name: Install Rust
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          source $HOME/.cargo/env
       - name: Cold Start Tests
         run: |
           echo "Running Cold Start Tests"
+          source $HOME/.cargo/env
           cargo test cold_start_tests --features=std -- --test-threads=1
       - name: Setting Register Tests
         run: |
           echo "Running Setting Register Tests"
+          source $HOME/.cargo/env
           cargo test setting_register_tests --features=std -- --test-threads=1
       - name: Power Cycle Harwdare
         run: |
@@ -39,14 +40,15 @@ jobs:
       - name: Install Rust
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          source $HOME/.cargo/env
       - name: Cold Start Tests
         run: |
           echo "Running Cold Start Tests"
+          source $HOME/.cargo/env
           cargo test cold_start_tests --features=rpi -- --test-threads=1
       - name: Setting Register Tests
         run: |
           echo "Running Setting Register Tests"
+          source $HOME/.cargo/env
           cargo test setting_register_tests --features=rpi -- --test-threads=1
       - name: Power Cycle Harwdare
         run: |
