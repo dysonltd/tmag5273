@@ -7,7 +7,8 @@ Within this directory are a set of examples for different platforms the goal bei
 When working on a desktop environment the sensor will be attached via [FT232H Breakout Board](https://www.adafruit.com/product/2264)
 
 The different set ups are shown below in the architectural diagram:
-![alt text](../docs/Example%20Setup.png)
+
+![alt text](../docs/Multi%20Platform%20Driver.png)
 
 ## Installation
 
