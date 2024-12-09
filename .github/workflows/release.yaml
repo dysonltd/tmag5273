@@ -25,10 +25,10 @@ jobs:
     needs: [tests, linting]
     timeout-minutes: 10
     steps:
-      - name: Check if on main Branch
+      - name: Check if on main branch
         if: github.ref != 'refs/heads/main'
         run: |
-          echo "This Tag is not on the main Branch!"
+          echo "This Tag is not on the main branch!"
           exit 1
       - name: Checkout code
         uses: actions/checkout@v4
