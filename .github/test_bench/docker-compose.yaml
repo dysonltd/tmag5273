@@ -20,8 +20,9 @@ services:
     environment:
       - REPO_URL=https://github.com/dysonltd/tmag5273
       - RUNNER_TOKEN=${GHA_TOKEN}
+      - RUNNER_NAME=Hardware-in-the-Loop-Test-Bench
       - RUN_AS_ROOT=true
-      - LABELS=self-hosted, RPI5
+      - LABELS=self-hosted,RPI5
     restart: always
 volumes:
   portainer_data:
