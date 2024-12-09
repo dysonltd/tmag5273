@@ -24,7 +24,7 @@ services:
       - RUN_AS_ROOT=true
       - LABELS=self-hosted,RPI5
     restart: always
-    priveleged: true
+    privileged: true
 
 volumes:
   portainer_data:
