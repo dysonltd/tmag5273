@@ -22,8 +22,13 @@ services:
       - RUNNER_NAME=Hardware-in-the-Loop-Test-Bench
       - RUN_AS_ROOT=true
       - LABELS=self-hosted,RPI5
+      - CONFIGURED_ACTIONS_RUNNER_FILES_DIR=/runner/data # Required for persistence
     restart: always
     privileged: true
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/runner/data:/runner/data' # required for persistence
+      - '/tmp/runner:/tmp/runner'
 
 volumes:
   portainer_data:
