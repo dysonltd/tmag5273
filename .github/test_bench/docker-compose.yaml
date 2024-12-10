@@ -1,0 +1,34 @@
+# This Docker Compose File is for setting up the Hardware in the Loop Test Bench
+---
+services:
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - default
+
+  github_runner:
+    image: myoung34/github-runner
+    container_name: github_runner
+    environment:
+      - REPO_URL=https://github.com/dysonltd/tmag5273
+      - RUNNER_TOKEN=${GHA_TOKEN}
+      - RUNNER_NAME=Hardware-in-the-Loop-Test-Bench
+      - RUN_AS_ROOT=true
+      - LABELS=self-hosted,RPI5
+      - CONFIGURED_ACTIONS_RUNNER_FILES_DIR=/runner/data # Required for persistence
+    restart: always
+    privileged: true
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/runner/data:/runner/data" # required for persistence
+      - "/tmp/runner:/tmp/runner"
+
+volumes:
+  portainer_data:
