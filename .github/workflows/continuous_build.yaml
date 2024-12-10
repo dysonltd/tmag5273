@@ -1,0 +1,156 @@
+---
+name: Continuous Build
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Core_Library_std:
+    name: TMAG5273 Library
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Building Core Library for std
+        run: |
+          echo "Building Core Library"
+          cargo build --lib --features=std
+
+  Core_Library_rpi:
+    name: TMAG5273 Library (self-hosted)
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - name: Building Core Library for Raspberry Pi
+        run: |
+          echo "Building Core Library"
+          source "$HOME"/.cargo/env
+          cargo build --lib --features=rpi
+
+  Utils_std:
+    name: TMAG5273 Utils
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Building Utils for std
+        run: |
+          echo "Building Utils for std"
+          cargo build -p utils --features=std
+
+  Utils_rpi:
+    name: TMAG5273 Utils (self-hosted)
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - name: Building Utils for Raspberry Pi
+        run: |
+          echo "Building Utils for Raspberry Pi"
+          source "$HOME"/.cargo/env
+          cargo build -p utils --features=rpi
+
+  # Due to issues around installing windows driver in CI, we are not compiling the FTDI examples on Windows
+  FTDI_Examples:
+    name: FTDI Examples
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install FTDI Dependencies (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install libftdi1 libftdi1-dev -y
+      - name: Install FTDI Dependencies (MacOS)
+        if: runner.os == 'MacOS'
+        run: |
+          brew install libftdi
+      - name: Running FTDI Example 1
+        run: |
+          echo "Building Example 1"
+          cargo build --example example_1_basic_readings --features=std
+      - name: Running FTDI Example 2
+        run: |
+          echo "Building Example 2"
+          cargo build --example example_2_interrupts --features=std
+      - name: Running FTDI Example 3
+        run: |
+          echo "Building Example 3"
+          cargo build --example example_3_angle_calculations --features=std
+      - name: Running FTDI Example 4
+        run: |
+          echo "Building Example 4"
+          cargo build --example example_4_i2c_settings --features=std
+
+  Raspberry_Pi_Examples:
+    name: Raspberry Pi Examples
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - name: Running Raspberry Pi Example 1
+        run: |
+          echo "Building Example 1"
+          source "$HOME"/.cargo/env
+          cargo build --example example_1_basic_readings --features=rpi
+      - name: Running Raspberry Pi Example 2
+        run: |
+          echo "Building Example 2"
+          source "$HOME"/.cargo/env
+          cargo build --example example_2_interrupts --features=rpi
+      - name: Running Raspberry Pi Example 3
+        run: |
+          echo "Building Example 3"
+          source "$HOME"/.cargo/env
+          cargo build --example example_3_angle_calculations --features=rpi
+      - name: Running Raspberry Pi Example 4
+        run: |
+          echo "Building Example 4"
+          source "$HOME"/.cargo/env
+          cargo build --example example_4_i2c_settings --features=rpi
+
+  ESP32_Example:
+    name: ESP32 Example
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest, self-hosted]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust
+        if: runner.os == 'Linux'
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - name: Running ESP32 Example (Linux/MacOS)
+        if: runner.os == 'Linux' || runner.os == 'macOS'
+        run: |
+          echo "Building ESP32 Example"
+          source "$HOME"/.cargo/env
+          cd examples/esp32-c3
+          cargo build
+      - name: Running ESP32 Example (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          echo "Building ESP32 Example"
+          cd examples/esp32-c3
+          cargo build
