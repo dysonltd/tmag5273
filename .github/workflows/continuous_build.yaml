@@ -6,9 +6,9 @@ on:
       - main
 
 jobs:
-  Core_Library:
+  Core_Library_std:
     name: TMAG5273 Library
-    runs-on: self-hosted
+    runs-on: ubuntu-latest, Windows, macOS
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,14 +20,20 @@ jobs:
           echo "Building Core Library"
           source "$HOME"/.cargo/env
           cargo build --lib --features=std
+
+  Core_Library_rpi:
+    name: TMAG5273 Library
+    runs-on: self-hosted
+    steps:
       - name: Building Core Library for Raspberry Pi
         run: |
             echo "Building Core Library"
             source "$HOME"/.cargo/env
             cargo build --lib --features=rpi
-  Utils:
+
+  Utils_std:
     name: TMAG5273 Utils
-    runs-on: self-hosted
+    runs-on:  ubuntu-latest, Windows, macOS
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,16 +44,21 @@ jobs:
         run: |
           echo "Building Utils for std"
           source "$HOME"/.cargo/env
-          cargo build --lib utils --features=std
+          cargo build -p utils --features=std
+
+  Utils_rpi:
+    name: TMAG5273 Utils
+    runs-on: self-hosted
+    steps:
       - name: Building Utils for Raspberry Pi
         run: |
             echo "Building Utils for Raspberry Pi"
             source "$HOME"/.cargo/env
-            cargo build --lib utils --features=rpi
-            
+            cargo build -p utils --features=rpi
+
   FTDI_Examples:
     name: FTDI Examples
-    runs-on: self-hosted
+    runs-on: self-hosted, ubuntu-latest, Windows, macOS
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -108,7 +119,7 @@ jobs:
     
   ESP32_Example:
     name: ESP32 Example
-    runs-on: self-hosted
+    runs-on: self-hosted, ubuntu-latest, Windows, macOS
     steps:
       - name: Checkout
         uses: actions/checkout@v4
