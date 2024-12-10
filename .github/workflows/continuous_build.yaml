@@ -72,6 +72,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install FTDI Dependencies (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          apt-get install libftdi1 libftdi1-dev -y
+      - name: Install FTDI Dependencies (MacOS)
+        if: runner.os == 'MacOS'
+        run: |
+          brew install libftdi
       - name: Running FTDI Example 1
         run: |
           echo "Building Example 1"
