@@ -152,4 +152,4 @@ jobs:
         run: |
           echo "Building ESP32 Example"
           cd examples/esp32-c3
-          cargo buid
+          cargo build
