@@ -46,3 +46,95 @@ jobs:
           echo "Running Setting Register Tests"
           source "$HOME"/.cargo/env
           cargo test setting_register_tests --features=rpi -- --test-threads=1
+
+  FTDI_Examples:
+    name: FTDI Examples
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust and FTDI
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          apt-get install libftdi1 libftdi1-dev -y
+      - name: Build Library
+        run: |
+          echo "Building Library"
+          source "$HOME"/.cargo/env
+          cargo build
+      - name: Run Example 1
+        run: |
+          echo "Running Example 1"
+          source "$HOME"/.cargo/env
+          cargo run --example example_1_basic_readings
+      - name: Run Example 2
+        run: |
+          echo "Running Example 2"
+          source "$HOME"/.cargo/env
+          cargo run --example example_2_interrupts
+      - name: Run Example 3
+        run: |
+          echo "Running Example 3"
+          source "$HOME"/.cargo/env
+          cargo run --example example_3_angle_calculations
+      - name: Run Example 4
+        run: |
+          echo "Running Example 4"
+          source "$HOME"/.cargo/env
+          cargo run --example example_4_i2c_settings
+
+  Raspberry_Pi_Examples:
+    name: Raspberry Pi Examples
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          apt-get install libftdi1 libftdi1-dev -y
+      - name: Build Library
+        run: |
+          echo "Building Library"
+          source "$HOME"/.cargo/env
+          cargo build --features=rpi
+      - name: Run Example 1
+        run: |
+          echo "Running Example 1"
+          source "$HOME"/.cargo/env
+          cargo run --example example_1_basic_readings --features=rpi
+      - name: Run Example 2
+        run: |
+          echo "Running Example 2"
+          source "$HOME"/.cargo/env
+          cargo run --example example_2_interrupts --features=rpi
+      - name: Run Example 3
+        run: |
+          echo "Running Example 3"
+          source "$HOME"/.cargo/env
+          cargo run --example example_3_angle_calculations --features=rpi
+      - name: Run Example 4
+        run: |
+          echo "Running Example 4"
+          source "$HOME"/.cargo/env
+          cargo run --example example_4_i2c_settings --features=rpi
+    
+  ESP32_Example:
+    name: ESP32 Example
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          apt-get install libftdi1 libftdi1-dev -y
+      - name: Build Library
+        run: |
+          echo "Building Library"
+          source "$HOME"/.cargo/env
+          cargo build
+      - name: Run Example
+        run: |
+          cd ./examples/esp32-c3
+          cargo run
