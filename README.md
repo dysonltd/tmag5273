@@ -38,6 +38,8 @@ Within this repo we also run a Continuous Integration hardware in the loop test 
 
 ![CI Architecture](./docs/CI%20Pipeline.png)
 
+On top of that we also compile our examples, core library and utils package on multiple platforms in both std and no-std variations. For more on this see [Continuous Build](./.github/workflows/continuous_build.yaml).
+
 ## Running your Linter Locally
 
 This project uses [MegaLinter](https://github.com/oxsecurity/megalinter) which provides linters for various different file formats and languages. When a Pull request to main is done, the linters will run and ensure the codebase is in good standing. It is recommended that you run the linter locally beforehand as it can sometimes autofix common mistakes.

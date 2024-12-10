@@ -63,6 +63,7 @@ jobs:
           source "$HOME"/.cargo/env
           cargo build -p utils --features=rpi
 
+# Due to issues around installing windows driver in CI, we are not compiling the FTDI examples on Windows
   FTDI_Examples:
     name: FTDI Examples
     runs-on: ${{ matrix.os }}
