@@ -20,7 +20,7 @@ jobs:
           cargo build --lib --features=std
 
   Core_Library_rpi:
-    name: TMAG5273 Library
+    name: TMAG5273 Library (self-hosted)
     runs-on: self-hosted
     steps:
       - name: Checkout
@@ -49,11 +49,14 @@ jobs:
           cargo build -p utils --features=std
 
   Utils_rpi:
-    name: TMAG5273 Utils
+    name: TMAG5273 Utils (self-hosted)
     runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install Rust
+        run: |
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
       - name: Building Utils for Raspberry Pi
         run: |
           echo "Building Utils for Raspberry Pi"
