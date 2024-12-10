@@ -8,7 +8,10 @@ on:
 jobs:
   Core_Library_std:
     name: TMAG5273 Library
-    runs-on: ubuntu-latest, Windows, macOS
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,7 +36,10 @@ jobs:
 
   Utils_std:
     name: TMAG5273 Utils
-    runs-on:  ubuntu-latest, Windows, macOS
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -58,7 +64,10 @@ jobs:
 
   FTDI_Examples:
     name: FTDI Examples
-    runs-on: self-hosted, ubuntu-latest, Windows, macOS
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -119,7 +128,10 @@ jobs:
     
   ESP32_Example:
     name: ESP32 Example
-    runs-on: self-hosted, ubuntu-latest, Windows, macOS
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest, self-hosted]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
