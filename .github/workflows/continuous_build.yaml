@@ -79,7 +79,7 @@ jobs:
       - name: Install FTDI Dependencies (MacOS)
         if: runner.os == 'MacOS'
         run: |
-          sudo brew install libftdi
+          brew install libftdi
       - name: Running FTDI Example 1
         run: |
           echo "Building Example 1"
@@ -146,7 +146,7 @@ jobs:
           echo "Building ESP32 Example"
           source "$HOME"/.cargo/env
           cd examples/esp32-c3
-          cargo buid
+          cargo build
       - name: Running ESP32 Example (Windows)
         if: runner.os == 'Windows'
         run: |
