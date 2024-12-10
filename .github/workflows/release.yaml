@@ -16,6 +16,10 @@ jobs:
       issues: write
       pull-requests: write
       statuses: write
+
+  build:
+    uses: ./.github/workflows/continuous_build.yaml
+
   tests:
     uses: ./.github/workflows/continuous_integration.yaml
 
