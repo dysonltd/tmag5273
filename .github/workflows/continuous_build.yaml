@@ -5,7 +5,7 @@ on:
     branches:
       - main
   workflow_call:
-    
+
 jobs:
   Core_Library_std:
     name: TMAG5273 Library

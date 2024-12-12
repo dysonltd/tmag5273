@@ -5,7 +5,7 @@ on:
     branches:
       - main
   workflow_call:
-    
+
 jobs:
   FTDI_Tests:
     name: FTDI Tests
