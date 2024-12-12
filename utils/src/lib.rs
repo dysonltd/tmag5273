@@ -1,3 +1,4 @@
+#[cfg(not(feature = "rpi"))]
 use ftdi::Device;
 use ftdi_embedded_hal::I2c as FtdiI2c;
 use ftdi_embedded_hal::{self as hal};
