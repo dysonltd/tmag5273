@@ -1,6 +1,8 @@
 # TMAG5273 Rust Driver
 
 [![MegaLinter](https://github.com/dysonltd/tmag5273/actions/workflows/mega-linter.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/mega-linter.yaml)
+[![Continuous Build](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_build.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_build.yaml)
+[![Continuous Integration](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_integration.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_integration.yaml)
 
 ## Summary
 
@@ -17,6 +19,8 @@ of a user-configurable I2C address register. Each orderable part can be configur
 
 Examples on how to use the driver across multiple platforms can be found [here](./examples/README.md)
 
+![Multi Platform](./docs/multi%20platform%20diagram.drawio.svg)
+
 ## Architecture Diagrams
 
 The rough architecture of the files and directories of the project can be seen in the following plantUML diagram.
@@ -29,6 +33,14 @@ folder [registers](./src/registers/). More information around the code can be fo
 ## Helper Utilities
 
 In this repository we also have an internal crate called [utils](./utils/) which contains some simple rust code for using the library on either Raspberry Pi or a Desktop Linux/Mac Machine. For more information, please look at the following [README](./utils/README.md).
+
+## Continuous Integration Testing
+
+Within this repo we also run a Continuous Integration hardware in the loop test bench. The architecture of this is shown below and more information can be found [here](./.github/test_bench/README.md).
+
+![CI Architecture](./docs/ci%20pipeline%20diagram.drawio.svg)
+
+On top of that we also compile our examples, core library and utils package on multiple platforms in both std and no-std variations. For more on this see [Continuous Build](./.github/workflows/continuous_build.yaml).
 
 ## Running your Linter Locally
 
