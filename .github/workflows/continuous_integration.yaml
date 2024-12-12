@@ -1,0 +1,47 @@
+---
+name: Continuous Integration
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  FTDI_Tests:
+    name: FTDI Tests
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust and FTDI
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          apt-get install libftdi1 libftdi1-dev -y
+      - name: Cold Start Tests
+        run: |
+          echo "Running Cold Start Tests"
+          source "$HOME"/.cargo/env
+          cargo test cold_start_tests --features=std -- --test-threads=1
+      - name: Setting Register Tests
+        run: |
+          echo "Running Setting Register Tests"
+          source "$HOME"/.cargo/env
+          cargo test setting_register_tests --features=std -- --test-threads=1
+
+  Raspberry_Pi_Tests:
+    name: Raspberry Pi Tests
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - name: Cold Start Tests
+        run: |
+          echo "Running Cold Start Tests"
+          source "$HOME"/.cargo/env
+          cargo test cold_start_tests --features=rpi -- --test-threads=1
+      - name: Setting Register Tests
+        run: |
+          echo "Running Setting Register Tests"
+          source "$HOME"/.cargo/env
+          cargo test setting_register_tests --features=rpi -- --test-threads=1
