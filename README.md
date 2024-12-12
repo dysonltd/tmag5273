@@ -26,7 +26,7 @@ Examples on how to use the driver across multiple platforms can be found [here](
 
 The rough architecture of the files and directories of the project can be seen in the following plantUML diagram.
 
-![System Architecture](./docs/architecture.png)
+![System Architecture](https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/dysonltd/tmag5273/main/docs/architecture.puml)
 
 As an application developer, you will spend most of your time working with the TMAG5273 struct outlined in [lib.rs](./src/lib.rs). The device can initialised by the `init_default` method and configuration can be done using the methods outlined in [config.rs](./src/config.rs). However for fine grained control of the device you can set and configure the raw registers outlined in the
 folder [registers](./src/registers/). More information around the code can be found using `cargo doc`.

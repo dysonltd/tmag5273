@@ -1,5 +1,10 @@
-# Pull Request Template
-
+---
+name: Default Pull Request Template
+about: Default template for all pull requests
+title: ''
+labels: ''
+assignees: ''
+---
 ## Description
 
 Please include a summary of the changes and the related issue. Please also include relevant motivation and context. List any dependencies that are required for this change.
