@@ -16,6 +16,7 @@ on:
     branches:
       - main
       - master
+  workflow_call:
 
 # Comment env block if you do not want to apply fixes
 env:

@@ -5,6 +5,8 @@ on:
     branches:
       - main
 jobs:
+  linting:
+    uses: ./.github/workflows/mega-linter.yaml
   build:
     uses: ./.github/workflows/continuous_build.yaml
 
