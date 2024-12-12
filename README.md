@@ -1,5 +1,9 @@
 # TMAG5273 Rust Driver
 
+[![Crates.io](https://img.shields.io/crates/d/tmag5273.svg)](https://crates.io/crates/tmag5273)
+[![Crates.io](https://img.shields.io/crates/v/tmag5273.svg)](https://crates.io/crates/tmag5273)
+[![Released API docs](https://docs.rs/tmag5273/badge.svg)](https://docs.rs/tmag5273)
+
 [![MegaLinter](https://github.com/dysonltd/tmag5273/actions/workflows/mega-linter.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/mega-linter.yaml)
 [![Continuous Build](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_build.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_build.yaml)
 [![Continuous Integration](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_integration.yaml/badge.svg)](https://github.com/dysonltd/tmag5273/actions/workflows/continuous_integration.yaml)
