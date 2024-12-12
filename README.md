@@ -19,6 +19,8 @@ of a user-configurable I2C address register. Each orderable part can be configur
 
 Examples on how to use the driver across multiple platforms can be found [here](./examples/README.md)
 
+![Multi Platform](./docs/multi%20platform%20diagram.drawio.svg)
+
 ## Architecture Diagrams
 
 The rough architecture of the files and directories of the project can be seen in the following plantUML diagram.
@@ -36,7 +38,7 @@ In this repository we also have an internal crate called [utils](./utils/) which
 
 Within this repo we also run a Continuous Integration hardware in the loop test bench. The architecture of this is shown below and more information can be found [here](./.github/test_bench/README.md).
 
-![CI Architecture](./docs/CI%20Pipeline.png)
+![CI Architecture](./docs/ci%20pipeline%20diagram.drawio.svg)
 
 On top of that we also compile our examples, core library and utils package on multiple platforms in both std and no-std variations. For more on this see [Continuous Build](./.github/workflows/continuous_build.yaml).
 

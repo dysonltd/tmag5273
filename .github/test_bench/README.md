@@ -4,7 +4,7 @@
 
 This part of the repo contains all the setup for the TMAG5273 CI Testing Platform. The rough architecture of the platform can be seen below:
 
-![Diagram](../../docs/CI%20Pipeline.png)
+![Diagram](../../docs/ci%20pipeline%20diagram.drawio.svg)
 
 ## How to Run (Raspberry Pi OS)
 
