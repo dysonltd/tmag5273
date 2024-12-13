@@ -15,6 +15,8 @@ use embedded_hal::i2c::I2c as I2C_HAL;
 /// This will set up the I2C bus, create a TMag5273 Sensor, print out some device stats, set up the device and then loop round getting some data
 /// The data will be the X, Y and Z axis readings and the temperature
 /// The loop will sleep for 100 milliseconds between each reading
+/// This example is designed to run the Adafruit QT Py ESP32-C3 Board
+/// https://learn.adafruit.com/adafruit-qt-py-esp32-c3-wifi-dev-board/pinouts
 #[entry]
 fn main() -> ! {
     esp_println::logger::init_logger(log::LevelFilter::Info);
@@ -31,8 +33,8 @@ fn main() -> ! {
         peripherals.I2C0,
         esp_hal::i2c::master::Config::default(),
     )
-    .with_sda(peripherals.GPIO10)
-    .with_scl(peripherals.GPIO8);
+    .with_sda(peripherals.GPIO5)
+    .with_scl(peripherals.GPIO6);
 
     let mut mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1)
         .unwrap()
