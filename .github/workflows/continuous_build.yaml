@@ -82,19 +82,19 @@ jobs:
         if: runner.os == 'MacOS'
         run: |
           brew install libftdi
-      - name: Running FTDI Example 1
+      - name: Building FTDI Example 1
         run: |
           echo "Building Example 1"
           cargo build --example example_1_basic_readings --features=std
-      - name: Running FTDI Example 2
+      - name: Building FTDI Example 2
         run: |
           echo "Building Example 2"
           cargo build --example example_2_interrupts --features=std
-      - name: Running FTDI Example 3
+      - name: Building FTDI Example 3
         run: |
           echo "Building Example 3"
           cargo build --example example_3_angle_calculations --features=std
-      - name: Running FTDI Example 4
+      - name: Building FTDI Example 4
         run: |
           echo "Building Example 4"
           cargo build --example example_4_i2c_settings --features=std
@@ -108,22 +108,22 @@ jobs:
       - name: Install Rust
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-      - name: Running Raspberry Pi Example 1
+      - name: Building Raspberry Pi Example 1
         run: |
           echo "Building Example 1"
           source "$HOME"/.cargo/env
           cargo build --example example_1_basic_readings --features=rpi
-      - name: Running Raspberry Pi Example 2
+      - name: Building Raspberry Pi Example 2
         run: |
           echo "Building Example 2"
           source "$HOME"/.cargo/env
           cargo build --example example_2_interrupts --features=rpi
-      - name: Running Raspberry Pi Example 3
+      - name: Building Raspberry Pi Example 3
         run: |
           echo "Building Example 3"
           source "$HOME"/.cargo/env
           cargo build --example example_3_angle_calculations --features=rpi
-      - name: Running Raspberry Pi Example 4
+      - name: Building Raspberry Pi Example 4
         run: |
           echo "Building Example 4"
           source "$HOME"/.cargo/env
@@ -142,14 +142,14 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-      - name: Running ESP32 Example (Linux/MacOS)
+      - name: Building ESP32 Example (Linux/MacOS)
         if: runner.os == 'Linux' || runner.os == 'macOS'
         run: |
           echo "Building ESP32 Example"
           source "$HOME"/.cargo/env
           cd examples/esp32-c3
           cargo build
-      - name: Running ESP32 Example (Windows)
+      - name: Building ESP32 Example (Windows)
         if: runner.os == 'Windows'
         run: |
           echo "Building ESP32 Example"
