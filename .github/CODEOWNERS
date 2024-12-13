@@ -5,4 +5,4 @@
 Cargo.toml
 
 # Override the default owners and remove ownership for the .github/workflows directory
-.github/workflows/*
+.github/workflows/
