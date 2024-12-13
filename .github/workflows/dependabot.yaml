@@ -13,4 +13,3 @@
           with:
             target: minor
             github-token: ${{ secrets.dependabot }}
-  
