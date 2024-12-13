@@ -1,40 +1,16 @@
 ---
-name: Dependabot Auto Merge
-on:
-  pull_request:
-    branches:
-      - main
-
-permissions:
-  contents: write
-  issues: write
-  pull-requests: write
-  statuses: write
-
-jobs:
-  linting:
-    uses: ./.github/workflows/mega-linter.yaml
-
-  build:
-    uses: ./.github/workflows/continuous_build.yaml
-
-  tests:
-    uses: ./.github/workflows/continuous_integration.yaml
-
-  dependabot:
-    name: "Dependabot"
-    runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'}} # Detect that the PR author is dependabot
-    needs: [build, tests, linting]
-    steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1.1.1
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Enable auto-merge for Dependabot PRs
-        if: ${{contains(steps.metadata.outputs.dependency-names, 'my-dependency') && steps.metadata.outputs.update-type == 'version-update:semver-patch'}}
-        run: gh pr merge --auto --merge "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  name: Dependabot Auto Merge
+  on:
+    pull_request:
+      branches:
+        - main
+  jobs:
+    auto-merge:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: ahmadnassri/action-dependabot-auto-merge@v2
+          with:
+            target: minor
+            github-token: ${{ secrets.dependabot }}
+  
