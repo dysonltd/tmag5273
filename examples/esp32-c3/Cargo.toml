@@ -1,7 +1,11 @@
 [package]
 name = "esp32-c3"
 version = "0.1.0"
-authors = ["Scott Gibb <scott.gibb@dyson.com>"]
+authors = [
+    "Scott Gibb <scott.gibb@dyson.com",
+    "Pete Kubiak <peter.kubiak@dyson.com>",
+    "James Sizeland <james.sizeland@dyson.com>",
+]
 edition = "2021"
 
 [dependencies]
