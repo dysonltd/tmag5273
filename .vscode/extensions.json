@@ -10,6 +10,6 @@
     "jebbs.plantuml",
     "qhoekman.language-plantuml",
     "dustypomerleau.rust-syntax",
-    "rust-lang.rust-analyzer",
+    "rust-lang.rust-analyzer"
   ]
 }
