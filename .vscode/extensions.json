@@ -4,17 +4,12 @@
     "redhat.vscode-yaml",
     "esbenp.prettier-vscode",
     "darkriszty.markdown-table-prettify",
-    "usernamehw.errorlens",
     "tamasfe.even-better-toml",
     "hediet.vscode-drawio",
-    "mhutchie.git-graph",
     "github.vscode-github-actions",
-    "oderwat.indent-rainbow",
-    "ybaumes.highlight-trailing-white-spaces",
     "jebbs.plantuml",
     "qhoekman.language-plantuml",
     "dustypomerleau.rust-syntax",
     "rust-lang.rust-analyzer",
-    "tomoki1207.pdf"
   ]
 }
