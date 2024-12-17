@@ -2,5 +2,16 @@
   "rust-analyzer.linkedProjects": [
     "utils/Cargo.toml",
     "examples/esp32-c3/Cargo.toml"
-  ]
+  ],
+  "[rust]": {
+    "editor.formatOnSave": true
+  },
+  "[yaml]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
