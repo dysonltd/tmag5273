@@ -42,9 +42,6 @@
 #![no_std]
 mod config;
 
-#[cfg(test)]
-mod tests;
-
 pub mod registers;
 pub mod types;
 pub use config::*;

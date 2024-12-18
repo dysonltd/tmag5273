@@ -1,4 +1,4 @@
-use crate::tests::generic_setting_registers_tests::*;
+use crate::generic_setting_registers_tests::*;
 use utils::setup_i2c;
 
 #[test]

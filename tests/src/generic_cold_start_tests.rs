@@ -1,7 +1,10 @@
 //! This test suite is for the SparkFun breakout board for the TMAG5273 sensor on Mac OS.
 //! It tests from a cold boot in which the configuration registers should be at their defaults
 
-use crate::*;
+use registers::*;
+use tmag5273::*;
+use types::*;
+
 const SENSOR_PART: DeviceVersion = DeviceVersion::TMAG5273B1;
 
 macro_rules! test_default_register {
