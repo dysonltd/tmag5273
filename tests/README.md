@@ -16,13 +16,13 @@ cargo test --test linux --features=rpi -- --test-threads=1 #Run Linux Tests usin
 
 Currently there are two sets of generic tests:
 
-- [cold_start_tests](./generic_cold_start_tests.rs) Tests the sensor from a 'cold' start,
+- [cold_start_tests](./common/generic_cold_start_tests.rs) Tests the sensor from a 'cold' start,
 this requires the sensor to be power cycled.
-- [setting_register_tests](./generic_setting_registers_tests.rs) Tests the setting and
+- [setting_register_tests](./common/generic_setting_registers_tests.rs) Tests the setting and
 resetting of registers on the sensor and the API for gathering.
 
 ## Test Environments
 
 Currently we support testing on the following environments:
 
-- [Linux](./linux/) This can be with both a Raspberry Pi and a Desktop Linux environment through the use of an FT232H breakout Board.
+- [Linux](./linux/linux.rs) This can be with both a Raspberry Pi and a Desktop Linux environment through the use of an FT232H breakout Board.
