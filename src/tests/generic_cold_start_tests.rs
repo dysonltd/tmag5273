@@ -15,7 +15,7 @@ macro_rules! test_default_register {
 
 pub fn generic_test_device_id<I2C>(i2c: I2C)
 where
-    I2C: embedded_hal::i2c::I2c, // Adjust the trait bounds according to your context
+    I2C: embedded_hal::i2c::I2c,
 {
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let device_id = mag_sensor.get_device_id().expect("Failed to get device id");
@@ -24,7 +24,7 @@ where
 
 pub fn generic_test_manufacturer_id<I2C>(i2c: I2C)
 where
-    I2C: embedded_hal::i2c::I2c, // Adjust the trait bounds according to your context
+    I2C: embedded_hal::i2c::I2c,
 {
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let manufacturer_id = mag_sensor
@@ -36,7 +36,7 @@ where
 
 pub fn generic_test_registers<I2C>(i2c: I2C)
 where
-    I2C: embedded_hal::i2c::I2c, // Adjust the trait bounds according to your context
+    I2C: embedded_hal::i2c::I2c,
 {
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     test_default_register!(ConversionStatusRegister, mag_sensor);
