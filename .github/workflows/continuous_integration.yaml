@@ -7,8 +7,8 @@ on:
   workflow_call:
 
 jobs:
-  FTDI_Tests:
-    name: FTDI Tests
+  Linux_Tests:
+    name: Linux Tests
     runs-on: self-hosted
     steps:
       - name: Checkout
@@ -17,33 +17,13 @@ jobs:
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           apt-get install libftdi1 libftdi1-dev -y
-      - name: Cold Start Tests
+      - name: FT232H Tests
         run: |
-          echo "Running Cold Start Tests"
+          echo "Running FT232H Tests"
           source "$HOME"/.cargo/env
-          cargo test cold_start_tests --features=std -- --test-threads=1
-      - name: Setting Register Tests
+          cargo test -p tmag5273 --lib linux -- --test-threads=1 # Run Linux Tests using FTD232
+      - name: Raspberry Pi Tests
         run: |
-          echo "Running Setting Register Tests"
+          echo "Running Raspberry Pi Tests"
           source "$HOME"/.cargo/env
-          cargo test setting_register_tests --features=std -- --test-threads=1
-
-  Raspberry_Pi_Tests:
-    name: Raspberry Pi Tests
-    runs-on: self-hosted
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install Rust
-        run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-      - name: Cold Start Tests
-        run: |
-          echo "Running Cold Start Tests"
-          source "$HOME"/.cargo/env
-          cargo test cold_start_tests --features=rpi -- --test-threads=1
-      - name: Setting Register Tests
-        run: |
-          echo "Running Setting Register Tests"
-          source "$HOME"/.cargo/env
-          cargo test setting_register_tests --features=rpi -- --test-threads=1
+          cargo test -p tmag5273 --features=rpi  --lib linux -- --test-threads=1
