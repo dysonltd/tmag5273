@@ -31,6 +31,7 @@ defmt = { version = "0.3.8", optional = true }
 
 [dev-dependencies]
 utils = { path = "./utils", default-features = false }
+shared-bus = { version = "0.3.1"  }
 
 [features]
 default = ["std"]

@@ -1,3 +1,4 @@
+use embedded_hal::i2c;
 use registers::*;
 use tmag5273::*;
 use types::*;
@@ -96,55 +97,59 @@ where
     reset_register!(DeviceConfig2Register, mag_sensor);
 }
 
-// pub fn generic_test_set_reset_i2c_address_register<I2C>(i2c: I2C)
-// where
-//     I2C: embedded_hal::i2c::I2c,
-// {
-//     let new_address = 0x55;
+pub fn generic_test_set_reset_i2c_address_register<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
+    //created a shared bus of i2c and split the bus into two variables
+    let bus_manager = shared_bus::BusManagerSimple::new(i2c);
+    let i2c1 = bus_manager.acquire_i2c();
+    let i2c2 = bus_manager.acquire_i2c();
 
-//     // Set the new I2C Address Register
+    let new_address = 0x55;
 
-//     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
+    // Set the new I2C Address Register
 
-//     let new_i2c_address_register = I2cAddressRegister::builder()
-//         .with_i2c_address_update_enabled(true)
-//         .with_i2c_address(arbitrary_int::u7::new(new_address))
-//         .build();
+    let mut mag_sensor = TMag5273::new(i2c1, SENSOR_PART).unwrap();
 
-//     mag_sensor
-//         .set_config_register(new_i2c_address_register)
-//         .expect("Failed to set I2C Address Register");
+    let new_i2c_address_register = I2cAddressRegister::builder()
+        .with_i2c_address_update_enabled(true)
+        .with_i2c_address(arbitrary_int::u7::new(new_address))
+        .build();
 
-//     // Drop the TMag5273 instance
-//     drop(mag_sensor);
+    mag_sensor
+        .set_config_register(new_i2c_address_register)
+        .expect("Failed to set I2C Address Register");
 
-//     // Connect to the sensor on the new address
+    // Drop the TMag5273 instance
+    drop(mag_sensor);
 
-//     let mut mag_sensor =
-//         TMag5273::new_with_address(i2c, new_address, SENSOR_PART).unwrap();
+    // Connect to the sensor on the new address
 
-//     // Check that the Sensor is connected with the new address
-//     assert!(mag_sensor.is_connected());
+    let mut mag_sensor = TMag5273::new_with_address(i2c, new_address, SENSOR_PART).unwrap();
 
-//     // Reset the I2C Address Register
-//     let reset_i2c_register = I2cAddressRegister::builder()
-//         .with_i2c_address_update_enabled(false)
-//         .with_i2c_address(arbitrary_int::u7::new(new_address))
-//         .build();
-//     mag_sensor
-//         .set_config_register(reset_i2c_register)
-//         .expect("Failed to reset I2C Address Register");
+    // Check that the Sensor is connected with the new address
+    assert!(mag_sensor.is_connected());
 
-//     assert!(!mag_sensor.is_connected());
+    // Reset the I2C Address Register
+    let reset_i2c_register = I2cAddressRegister::builder()
+        .with_i2c_address_update_enabled(false)
+        .with_i2c_address(arbitrary_int::u7::new(new_address))
+        .build();
+    mag_sensor
+        .set_config_register(reset_i2c_register)
+        .expect("Failed to reset I2C Address Register");
 
-//     // Drop the TMag752 instance
-//     drop(mag_sensor);
+    assert!(!mag_sensor.is_connected());
 
-//     // Check if the device is back to normal address now
+    // Drop the TMag752 instance
+    drop(mag_sensor);
 
-//     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
-//     assert!(mag_sensor.is_connected());
-// }
+    // Check if the device is back to normal address now
+
+    let mut mag_sensor = TMag5273::new(i2c2, SENSOR_PART).unwrap();
+    assert!(mag_sensor.is_connected());
+}
 
 pub fn generic_test_set_reset_int_config_1_register<I2C>(i2c: I2C)
 where

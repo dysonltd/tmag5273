@@ -31,11 +31,11 @@ fn test_set_reset_device_config_2_register() {
     generic_test_reset_device_config_2_register(i2c); // Pass the i2c variable to the inner test function
 }
 
-// #[test]
-// fn test_set_reset_i2c_address_register() {
-//     let i2c = setup_i2c().unwrap();
-//     generic_test_set_reset_i2c_address_register(i2c); // Pass the i2c variable to the inner test function
-// }
+#[test]
+fn test_set_reset_i2c_address_register() {
+    let i2c = setup_i2c().unwrap();
+    generic_test_set_reset_i2c_address_register(i2c); // Pass the i2c variable to the inner test function
+}
 
 #[test]
 fn test_set_reset_int_config_1_register() {
