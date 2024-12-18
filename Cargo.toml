@@ -31,7 +31,7 @@ defmt = { version = "0.3.8", optional = true }
 
 [dev-dependencies]
 utils = { path = "./utils", default-features = false }
-shared-bus = { version = "0.3.1"  }
+embedded-hal-bus = { version = "0.2.0"  }
 
 [features]
 default = ["std"]
@@ -45,5 +45,5 @@ rpi = ["utils/rpi"]
 members = [
     "examples/esp32-c3",
     "utils",
-    "./"
+    "./",
     ]

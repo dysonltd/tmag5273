@@ -1,4 +1,5 @@
-use embedded_hal::i2c;
+use core::cell::RefCell;
+use embedded_hal_bus::i2c::RefCellDevice;
 use registers::*;
 use tmag5273::*;
 use types::*;
@@ -101,16 +102,12 @@ pub fn generic_test_set_reset_i2c_address_register<I2C>(i2c: I2C)
 where
     I2C: embedded_hal::i2c::I2c,
 {
-    //created a shared bus of i2c and split the bus into two variables
-    let bus_manager = shared_bus::BusManagerSimple::new(i2c);
-    let i2c1 = bus_manager.acquire_i2c();
-    let i2c2 = bus_manager.acquire_i2c();
-
+    let i2c_ref_cell = RefCell::new(i2c);
     let new_address = 0x55;
 
     // Set the new I2C Address Register
 
-    let mut mag_sensor = TMag5273::new(i2c1, SENSOR_PART).unwrap();
+    let mut mag_sensor = TMag5273::new(RefCellDevice::new(&i2c_ref_cell), SENSOR_PART).unwrap();
 
     let new_i2c_address_register = I2cAddressRegister::builder()
         .with_i2c_address_update_enabled(true)
@@ -126,7 +123,9 @@ where
 
     // Connect to the sensor on the new address
 
-    let mut mag_sensor = TMag5273::new_with_address(i2c, new_address, SENSOR_PART).unwrap();
+    let mut mag_sensor =
+        TMag5273::new_with_address(RefCellDevice::new(&i2c_ref_cell), new_address, SENSOR_PART)
+            .unwrap();
 
     // Check that the Sensor is connected with the new address
     assert!(mag_sensor.is_connected());
@@ -147,7 +146,7 @@ where
 
     // Check if the device is back to normal address now
 
-    let mut mag_sensor = TMag5273::new(i2c2, SENSOR_PART).unwrap();
+    let mut mag_sensor = TMag5273::new(RefCellDevice::new(&i2c_ref_cell), SENSOR_PART).unwrap();
     assert!(mag_sensor.is_connected());
 }
 
