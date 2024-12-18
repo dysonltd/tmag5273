@@ -1,8 +1,7 @@
-use crate::generic_cold_start_tests::*;
+use crate::common::generic_cold_start_tests::*;
 use utils::setup_i2c;
-
 #[test]
-fn test_device_id() {
+pub fn test_device_id() {
     let i2c = setup_i2c().unwrap();
     generic_test_device_id(i2c); // Pass the i2c variable to the inner test function
 }

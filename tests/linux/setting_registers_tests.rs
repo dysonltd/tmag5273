@@ -1,8 +1,8 @@
-use crate::generic_setting_registers_tests::*;
+use crate::common::generic_setting_registers_tests::*;
 use utils::setup_i2c;
 
 #[test]
-fn test_i2c_setup_success() {
+pub fn test_i2c_setup_success() {
     let i2c = setup_i2c();
     assert!(i2c.is_ok());
 }

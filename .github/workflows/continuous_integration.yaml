@@ -22,10 +22,11 @@ jobs:
           echo "Running FT232H Tests"
           source "$HOME"/.cargo/env
           cd tests
-          cargo test -p tmag5273 --features=std --lib linux -- --test-threads=1 # Run Linux Tests using FTD232
+          cargo test --test linux --features=std -- --test-threads=1 # Run Linux Tests using FTD232
       - name: Raspberry Pi Tests
         run: |
           echo "Running Raspberry Pi Tests"
           source "$HOME"/.cargo/env
           cd tests
-          cargo test -p tmag5273 --features=rpi  --lib linux -- --test-threads=1
+          cargo test --test linux --features=rpi -- --test-threads=1 # Run Linux Tests using FTD232
+
