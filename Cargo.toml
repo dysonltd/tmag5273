@@ -46,4 +46,5 @@ members = [
     "examples/esp32-c3",
     "utils",
     "./",
+    "tests/esp32-c3",
     ]
