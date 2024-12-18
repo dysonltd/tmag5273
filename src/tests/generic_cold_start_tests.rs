@@ -2,8 +2,6 @@
 //! It tests from a cold boot in which the configuration registers should be at their defaults
 
 use crate::*;
-use utils::setup_i2c;
-
 const SENSOR_PART: DeviceVersion = DeviceVersion::TMAG5273B1;
 
 macro_rules! test_default_register {
@@ -15,17 +13,19 @@ macro_rules! test_default_register {
     };
 }
 
-#[test]
-fn test_device_id() {
-    let i2c = setup_i2c().unwrap();
+pub fn generic_test_device_id<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c, // Adjust the trait bounds according to your context
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let device_id = mag_sensor.get_device_id().expect("Failed to get device id");
     assert_eq!(device_id, DeviceId::TMAG5273X1); // Ensure DeviceId derives PartialEq
 }
 
-#[test]
-fn test_manufacturer_id() {
-    let i2c = setup_i2c().unwrap();
+pub fn generic_test_manufacturer_id<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c, // Adjust the trait bounds according to your context
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let manufacturer_id = mag_sensor
         .get_manufacturer_id()
@@ -34,9 +34,10 @@ fn test_manufacturer_id() {
     assert_eq!(manufacturer_id, MANUFACTURER_ID_VALUE);
 }
 
-#[test]
-fn test_registers() {
-    let i2c = setup_i2c().unwrap();
+pub fn generic_test_registers<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c, // Adjust the trait bounds according to your context
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     test_default_register!(ConversionStatusRegister, mag_sensor);
     test_default_register!(DeviceConfig1Register, mag_sensor);
@@ -48,9 +49,10 @@ fn test_registers() {
     test_default_register!(TConfigRegister, mag_sensor);
 }
 
-#[test]
-fn test_default_i2c_address() {
-    let i2c = setup_i2c().unwrap();
+pub fn generic_test_default_i2c_address<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let i2c_register: I2cAddressRegister = mag_sensor
         .get_config_register()
@@ -63,18 +65,20 @@ fn test_default_i2c_address() {
     assert_eq!(i2c_address >> 1, SENSOR_PART.get_default_address());
 }
 
-#[test]
-fn test_get_magnitude_first_boot() {
-    let i2c = setup_i2c().unwrap();
+pub fn generic_test_get_magnitude_first_boot<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let magnitude = mag_sensor.get_magnitude().expect("Failed to get magnitude");
 
     assert_eq!(magnitude, 0); // This will be 0.0 on first boot! Checked on bus itself
 }
 
-#[test]
-fn test_get_xyz_thresholds_first_boot() {
-    let i2c = setup_i2c().unwrap();
+pub fn generic_test_get_xyz_thresholds_first_boot<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let x_threshold = mag_sensor
         .get_mag_threshold(Axis::X)
@@ -93,9 +97,10 @@ fn test_get_xyz_thresholds_first_boot() {
     assert_eq!(z_threshold, 0.0); // This will be 0 on first boot! Checked on bus itself
 }
 
-#[test]
-fn test_magnetic_gain() {
-    let i2c = setup_i2c().unwrap();
+pub fn generic_test_magnetic_gain<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let gain = mag_sensor
         .get_magnetic_gain()
@@ -103,9 +108,10 @@ fn test_magnetic_gain() {
     assert_eq!(gain, 0);
 }
 
-#[test]
-fn test_magnetic_offset_invalid_at_boot() {
-    let i2c = setup_i2c().unwrap();
+pub fn generic_test_magnetic_offset_invalid_at_boot<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     assert_eq!(
         Err(TMag5273Error::WrongMode),
@@ -119,9 +125,10 @@ fn test_magnetic_offset_invalid_at_boot() {
     );
 }
 
-#[test]
-fn test_temperature_invalid_at_boot() {
-    let i2c = setup_i2c().unwrap();
+pub fn generic_test_temperature_invalid_at_boot<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     assert_eq!(
         Err(TMag5273Error::ChannelDisabled),
@@ -131,8 +138,10 @@ fn test_temperature_invalid_at_boot() {
 }
 
 /// Helper function to test the get_axis_data method
-fn get_axis_data(axis: Axis) {
-    let i2c = setup_i2c().unwrap();
+fn generic_get_axis_data<I2C>(i2c: &mut I2C, axis: Axis)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     assert_eq!(
         Err(TMag5273Error::WrongMode),
@@ -141,16 +150,19 @@ fn get_axis_data(axis: Axis) {
     );
 }
 
-#[test]
-fn test_get_data_methods() {
-    get_axis_data(Axis::X);
-    get_axis_data(Axis::Y);
-    get_axis_data(Axis::Z);
+pub fn generic_test_get_data_methods<I2C>(mut i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
+    generic_get_axis_data(&mut i2c, Axis::X);
+    generic_get_axis_data(&mut i2c, Axis::Y);
+    generic_get_axis_data(&mut i2c, Axis::Z);
 }
 
-#[test]
-fn test_get_angle() {
-    let i2c = setup_i2c().unwrap();
+pub fn generic_test_get_angle<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     assert_eq!(
         Err(TMag5273Error::ChannelDisabled),
