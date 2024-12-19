@@ -1,5 +1,10 @@
-use crate::*;
-use utils::setup_i2c;
+use core::cell::RefCell;
+use embedded_hal_bus::i2c::RefCellDevice;
+use registers::*;
+use tmag5273::*;
+use types::*;
+
+const SENSOR_PART: DeviceVersion = DeviceVersion::TMAG5273B1;
 
 /// Helper macro to clear a register to its default value
 macro_rules! reset_register {
@@ -16,30 +21,29 @@ macro_rules! reset_register {
     };
 }
 
-#[test]
-fn test_i2c_setup_success() {
-    let i2c = setup_i2c();
-    assert!(i2c.is_ok());
-}
-#[test]
-fn test_is_connected() {
-    let i2c = setup_i2c().unwrap();
-    let mut mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1).unwrap();
+pub fn generic_test_is_connected<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
+    let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let is_connected = mag_sensor.is_connected();
     assert!(is_connected);
 }
-#[test]
-fn test_create_tmag2573() {
-    let i2c = setup_i2c().unwrap();
-    let mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1);
+
+pub fn generic_test_create_tmag5273<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
+    let mag_sensor = TMag5273::new(i2c, SENSOR_PART);
     assert!(mag_sensor.is_ok());
 }
 
-#[test]
-fn test_set_reset_device_config_1_register() {
-    let i2c = setup_i2c().unwrap();
-    let mut mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1)
-        .expect("Failed to create mag sensor instance");
+pub fn generic_test_set_reset_device_config_1_register<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
+    let mut mag_sensor =
+        TMag5273::new(i2c, SENSOR_PART).expect("Failed to create mag sensor instance");
     reset_register!(DeviceConfig1Register, mag_sensor);
 
     let new_device_config_1 = DeviceConfig1Register::builder()
@@ -63,11 +67,12 @@ fn test_set_reset_device_config_1_register() {
     reset_register!(DeviceConfig1Register, mag_sensor);
 }
 
-#[test]
-fn test_reset_device_config_2_register() {
-    let i2c = setup_i2c().unwrap();
-    let mut mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1)
-        .expect("Failed to create mag sensor instance");
+pub fn generic_test_reset_device_config_2_register<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
+    let mut mag_sensor =
+        TMag5273::new(i2c, SENSOR_PART).expect("Failed to create mag sensor instance");
     reset_register!(DeviceConfig2Register, mag_sensor);
 
     let new_device_config_2 = DeviceConfig2Register::builder()
@@ -93,13 +98,16 @@ fn test_reset_device_config_2_register() {
     reset_register!(DeviceConfig2Register, mag_sensor);
 }
 
-#[test]
-fn test_set_reset_i2c_address_register() {
+pub fn generic_test_set_reset_i2c_address_register<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
+    let i2c_ref_cell = RefCell::new(i2c);
     let new_address = 0x55;
 
     // Set the new I2C Address Register
-    let i2c = setup_i2c().unwrap();
-    let mut mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1).unwrap();
+
+    let mut mag_sensor = TMag5273::new(RefCellDevice::new(&i2c_ref_cell), SENSOR_PART).unwrap();
 
     let new_i2c_address_register = I2cAddressRegister::builder()
         .with_i2c_address_update_enabled(true)
@@ -114,9 +122,10 @@ fn test_set_reset_i2c_address_register() {
     drop(mag_sensor);
 
     // Connect to the sensor on the new address
-    let i2c = setup_i2c().unwrap();
+
     let mut mag_sensor =
-        TMag5273::new_with_address(i2c, new_address, DeviceVersion::TMAG5273B1).unwrap();
+        TMag5273::new_with_address(RefCellDevice::new(&i2c_ref_cell), new_address, SENSOR_PART)
+            .unwrap();
 
     // Check that the Sensor is connected with the new address
     assert!(mag_sensor.is_connected());
@@ -136,15 +145,16 @@ fn test_set_reset_i2c_address_register() {
     drop(mag_sensor);
 
     // Check if the device is back to normal address now
-    let i2c = setup_i2c().unwrap();
-    let mut mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1).unwrap();
+
+    let mut mag_sensor = TMag5273::new(RefCellDevice::new(&i2c_ref_cell), SENSOR_PART).unwrap();
     assert!(mag_sensor.is_connected());
 }
 
-#[test]
-fn test_set_reset_int_config_1_register() {
-    let i2c = setup_i2c().unwrap();
-    let mut mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1).unwrap();
+pub fn generic_test_set_reset_int_config_1_register<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
+    let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     reset_register!(InterruptConfigRegister, mag_sensor);
 
     let new_int_config_1 = InterruptConfigRegister::builder()
@@ -170,11 +180,12 @@ fn test_set_reset_int_config_1_register() {
     reset_register!(InterruptConfigRegister, mag_sensor);
 }
 
-#[test]
-fn test_set_reset_sensor_config_1_register() {
-    let i2c = setup_i2c().unwrap();
-    let mut mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1)
-        .expect("Failed to create mag sensor instance");
+pub fn generic_test_set_reset_sensor_config_1_register<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
+    let mut mag_sensor =
+        TMag5273::new(i2c, SENSOR_PART).expect("Failed to create mag sensor instance");
     reset_register!(SensorConfig1Register, mag_sensor);
 
     // Set the new Sensor Config 1 Register
@@ -201,11 +212,12 @@ fn test_set_reset_sensor_config_1_register() {
     reset_register!(SensorConfig1Register, mag_sensor);
 }
 
-#[test]
-fn test_set_reset_sensor_config_2_register() {
-    let i2c = setup_i2c().unwrap();
-    let mut mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1)
-        .expect("Failed to create mag sensor instance");
+pub fn generic_test_set_reset_sensor_config_2_register<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
+    let mut mag_sensor =
+        TMag5273::new(i2c, SENSOR_PART).expect("Failed to create mag sensor instance");
     reset_register!(SensorConfig2Register, mag_sensor);
 
     let new_sensor_config_2 = SensorConfig2Register::builder()
@@ -229,12 +241,14 @@ fn test_set_reset_sensor_config_2_register() {
     reset_register!(SensorConfig2Register, mag_sensor);
 }
 
-#[test]
-fn test_set_reset_t_config_register() {
+pub fn generic_test_set_reset_t_config_register<I2C>(i2c: I2C)
+where
+    I2C: embedded_hal::i2c::I2c,
+{
     // Put the device in a known state
-    let i2c = setup_i2c().unwrap();
-    let mut mag_sensor = TMag5273::new(i2c, DeviceVersion::TMAG5273B1)
-        .expect("Failed to create mag sensor instance");
+
+    let mut mag_sensor =
+        TMag5273::new(i2c, SENSOR_PART).expect("Failed to create mag sensor instance");
     reset_register!(TConfigRegister, mag_sensor);
 
     let temp_threshold = 54;
