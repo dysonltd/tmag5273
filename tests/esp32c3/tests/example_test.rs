@@ -26,29 +26,20 @@ mod tests {
         assert!(true)
     }
 
-    // // Example for a test which is conditionally enabled
-    // #[test]
-    // #[cfg(feature = "log")]
-    // fn log() {
-    //     log::info!("Hello, log!"); // Prints via esp-println to rtt
-    //     assert!(true)
-    // }
-
     // Another example for a conditionally enabled test
     #[test]
-    #[cfg(feature = "defmt")]
     fn defmt() {
         use defmt_rtt as _;
         defmt::info!("Hello, defmt!"); // Prints via defmt-rtt to rtt
         assert!(true)
     }
 
-    // // A test which is cfg'ed out
-    // #[test]
-    // #[cfg(abc)]
-    // fn it_works_disabled() {
-    //     assert!(false)
-    // }
+    // A test which is cfg'ed out
+    #[test]
+    #[cfg(abc)]
+    fn it_works_disabled() {
+        assert!(false)
+    }
 
     // Tests can be ignored with the #[ignore] attribute
     #[test]

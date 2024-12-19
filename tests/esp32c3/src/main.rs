@@ -1,9 +1,9 @@
 #![no_std]
 #![no_main]
 
+use defmt_rtt as _;
 use esp_backtrace as _;
 use esp_hal::{delay::Delay, prelude::*};
-use log::info;
 #[entry]
 fn main() -> ! {
     let _peripherals = esp_hal::init({
@@ -13,10 +13,9 @@ fn main() -> ! {
     });
 
     let delay = Delay::new();
-    esp_println::logger::init_logger_from_env(); // # prints to jtag/uart0 !
 
     loop {
-        info!("Hello world!");
+        defmt::info!("Hello World!");
         delay.delay(500.millis());
     }
 }
