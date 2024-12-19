@@ -5,9 +5,13 @@
 #[embedded_test::tests]
 mod tests {
     use super::*;
-    use embedded_hal::i2c::I2c as I2C_HAL;
+    use esp_hal::peripheral::Peripheral;
+    use esp_hal::peripherals::Peripherals;
+    use esp_hal::prelude::*;
+    use esp_hal::delay::Delay;
+    use esp_hal::i2c::master::I2c;
     #[init]
-    fn init() -> I2C_HAL {
+    fn init() ->Peripherals {
         esp_println::logger::init_logger(log::LevelFilter::Info);
         let peripherals = esp_hal::init({
             let mut config = esp_hal::Config::default();
@@ -16,18 +20,11 @@ mod tests {
             config
         });
         let delay = Delay::new();
-        esp_println::println!("Running 1 Basic Readings!");
-        // Set up your I2C
-        let i2c = I2c::new(peripherals.I2C0, esp_hal::i2c::master::Config::default())
-            .with_sda(peripherals.GPIO5)
-            .with_scl(peripherals.GPIO6);
-
-        // The init function can return some state, which can be consumed by the testcases
-        i2c
+        peripherals 
     }
 
     #[test]
-    fn always_passes(_state: I2C_HAL) {
+    fn always_passes(_state: Peripherals) {
         assert!(true);
     }
 }
