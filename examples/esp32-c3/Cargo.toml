@@ -9,6 +9,7 @@ authors = [
 edition = "2021"
 
 [dependencies]
+tmag5273 = { path = "../../" }
 embedded-hal = { version = "1.0.0" }
 esp-backtrace = { version = "0.14.0", features = [
     "esp32c3",
@@ -20,7 +21,6 @@ esp-backtrace = { version = "0.14.0", features = [
 esp-hal = { version = "0.22.0", features = ["esp32c3"] }
 esp-println = { version = "0.12.0", features = ["esp32c3", "log"] }
 log = { version = "0.4.21" }
-tmag5273 = { path = "../../" }
 
 # [profile.dev]
 # # Rust debug is too slow.
