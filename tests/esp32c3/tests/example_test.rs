@@ -34,13 +34,6 @@ mod tests {
         assert!(true)
     }
 
-    // A test which is cfg'ed out
-    #[test]
-    #[cfg(abc)]
-    fn it_works_disabled() {
-        assert!(false)
-    }
-
     // Tests can be ignored with the #[ignore] attribute
     #[test]
     #[ignore]

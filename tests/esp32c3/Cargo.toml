@@ -6,8 +6,7 @@ edition = "2021"
 
 [dependencies]
 
-# # dependencies when using the demft feature
-# # Note: You must adapt .cargo/config when enabling the defmt feature
+# # dependencies for defmt
 defmt = { version = "0.3.8", optional = true }
 defmt-rtt = { version = "0.4.1", optional = true }
 
@@ -38,11 +37,9 @@ bench = false # To make `cargo check --all-targets` work.
 test = false # Same as above, to make plain `cargo test` work instead of `cargo test --tests`
 bench = false
 
+# Test Files
 [[test]]
 name = "example_test"
 harness = false
 
-[workspace]
-
-[lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(abc)'] }
+[workspace] # Required so that its not attached to main workspace

@@ -1,6 +1,10 @@
 #![no_std]
 #![no_main]
 
+/*
+This file is a placeholder for the embedded-test framework to run tests on the ESP32C3. All tests can be found
+in the tests/esp32c3/tests directory.
+*/
 use defmt_rtt as _;
 use esp_backtrace as _;
 use esp_hal::{delay::Delay, prelude::*};
