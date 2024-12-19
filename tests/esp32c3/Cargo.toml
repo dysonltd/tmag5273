@@ -1,0 +1,52 @@
+[package]
+name = "esp32c3"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+# dependencies when using the log feature
+log = { version = "0.4.20", optional = true}
+
+# # dependencies when using the demft feature
+# # Note: You must adapt .cargo/config when enabling the defmt feature
+defmt = { version = "0.3.8", optional = true }
+defmt-rtt = { version = "0.4.1", optional = true }
+
+# Esp32 related dependencies for main.rs. Note: embedded-test comes with its own panic handler and logging sink.
+esp-hal = { version = "0.22.0", features = ["esp32c3"] }
+esp-backtrace = { version = "0.14.0", features = [
+    "esp32c3",
+    "exception-handler",
+    "panic-handler",
+    "println",
+] }
+esp-println = { version = "0.12.0", default-features = false, features = ["esp32c3", "log", "jtag-serial", "colors"] }
+
+
+[dev-dependencies]
+embedded-test = { version = "0.5.0" }
+
+[features]
+default = ["defmt"]
+log = ["dep:log", "embedded-test/init-log"]
+defmt = ["dep:defmt", "dep:defmt-rtt"]
+
+[[bin]]
+name = "esp32c3"
+test = false  # To make plain `cargo test` work: Disable tests for the bin, because we are only using the intergration tests
+bench = false # To make `cargo check --all-targets` work.
+required-features = ["log"]
+
+[lib]
+test = false # Same as above, to make plain `cargo test` work instead of `cargo test --tests`
+bench = false
+
+[[test]]
+name = "example_test"
+harness = false
+
+[workspace]
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(abc)'] }
