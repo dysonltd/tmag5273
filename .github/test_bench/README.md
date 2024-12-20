@@ -24,13 +24,23 @@ For the Above CI Test Bench to work you must connect the following pins:
 
 | Pin Number (BOARD) | TMAG5273 Pin Name |
 |--------------------|-------------------|
+| 2   (SDA)          |      STEMA        |
+| 3   (SCL)          |      STEMA        |
 | 4                  | INT               |
 
-### FT232H Breakout Board
+### FT232H Breakout Board (Connected to Pi5 over USB)
 
 | Pin Number (BOARD) | TMAG5273 Pin Name |
 |--------------------|-------------------|
+| STEMA              |  STEMA            |
 | C0                 | INT               |
+
+### ESP32C3 QTPY Board (Connected to Pi5 over USB)
+
+| Pin Number (BOARD) | TMAG5273 Pin Name |
+|--------------------|-------------------|
+| STEMA              |  STEMA            |
+| A0                 | INT               |
 
 ## Useful Links
 
