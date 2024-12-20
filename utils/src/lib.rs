@@ -2,14 +2,14 @@ use std::error::Error;
 
 #[cfg(not(feature = "rpi"))]
 mod util_imports {
-    use ftdi::Device;
-    use ftdi_embedded_hal::I2c as FtdiI2c;
-    use ftdi_embedded_hal::{self as hal};
+    pub use ftdi::Device;
+    pub use ftdi_embedded_hal::I2c as FtdiI2c;
+    pub use ftdi_embedded_hal::{self as hal};
 }
 
 #[cfg(feature = "rpi")]
 mod util_imports {
-    use rppal::i2c as PiI2c;
+    pub use rppal::i2c as PiI2c;
 }
 
 use util_imports::*;
