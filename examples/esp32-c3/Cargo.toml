@@ -1,7 +1,11 @@
 [package]
 name = "esp32-c3"
 version = "0.1.0"
-authors = ["Scott Gibb <scott.gibb@dyson.com>"]
+authors = [
+    "Scott Gibb <scott.gibb@dyson.com",
+    "Pete Kubiak <peter.kubiak@dyson.com>",
+    "James Sizeland <james.sizeland@dyson.com>",
+]
 edition = "2021"
 
 [dependencies]
@@ -12,8 +16,9 @@ esp-backtrace = { version = "0.14.0", features = [
     "panic-handler",
     "println",
 ] }
-esp-hal = { version = "0.20.1", features = ["esp32c3"] }
-esp-println = { version = "0.11.0", features = ["esp32c3", "log"] }
+
+esp-hal = { version = "0.22.0", features = ["esp32c3"] }
+esp-println = { version = "0.12.0", features = ["esp32c3", "log"] }
 log = { version = "0.4.21" }
 tmag5273 = { path = "../../", features = ["log"] }
 
