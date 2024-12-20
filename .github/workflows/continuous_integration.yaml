@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install Rust and ESP32C3
+      - name: Install Rust, probe-rs and ESP32C3 toolchain
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           source "$HOME"/.cargo/env
@@ -48,6 +48,5 @@ jobs:
         run: |
           echo "Running ESP32C3 Tests"
           source "$HOME"/.cargo/env
-          # cd tests/esp32c3
-          # cargo test
-          probe-rs
+          cd tests/esp32c3
+          cargo test
