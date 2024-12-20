@@ -43,7 +43,6 @@ jobs:
           apt install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
           rustup toolchain install nightly --component rust-src
           cargo install espflash ldproxy
-          cargo binstall probe-rs-tools
       - name: ESP32C3 Tests
         run: |
           echo "Running ESP32C3 Tests"
