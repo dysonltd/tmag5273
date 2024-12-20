@@ -42,9 +42,7 @@ rpi = ["utils/rpi"]
 
 [workspace]
 members = [
-    "examples/esp32-c3",
     "utils",
     "tests-common",
     "./",
-    # "tests/esp32c3", # ESP32c3 tests has some form of cargo error
     ]
