@@ -1,0 +1,19 @@
+# Compiled output
+/target/
+
+# Cargo lock file
+Cargo.lock
+
+# Build artifacts
+*.o
+*.a
+
+# Generated files
+*.rs.bk
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Dependency directories
+/vendor/
