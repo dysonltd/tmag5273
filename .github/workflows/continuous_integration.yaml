@@ -30,3 +30,18 @@ jobs:
           cd tests
           cargo test --test linux --features=rpi -- --test-threads=1 # Run Linux Tests using FTD232
 
+  ESP32C3_Tests:
+    name: ESP32C3 Tests
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust and ESP32C3
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - name: ESP32C3 Tests
+        run: |
+          echo "Running ESP32C3 Tests"
+          source "$HOME"/.cargo/env
+          cd tests/esp32c3
+          cargo test
