@@ -147,11 +147,11 @@ jobs:
         run: |
           echo "Building ESP32 Example"
           source "$HOME"/.cargo/env
-          cd examples/esp32-c3
+          cd examples/esp32c3
           cargo build
       - name: Building ESP32 Example (Windows)
         if: runner.os == 'Windows'
         run: |
           echo "Building ESP32 Example"
-          cd examples/esp32-c3
+          cd examples/esp32c3
           cargo build

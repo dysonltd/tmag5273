@@ -186,5 +186,5 @@ jobs:
           cargo clippy -- -D warnings
       - name: Clippy check on esp32 tests
         run: |
-          cd tests/esp32-c3/
+          cd tests/esp32c3/
           cargo clippy -- -D warnings
