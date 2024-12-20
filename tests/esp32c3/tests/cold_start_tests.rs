@@ -5,12 +5,12 @@
 #[embedded_test::tests]
 mod cold_start_tests {
     use defmt_rtt as _;
-    // use esp_backtrace as _;
     use esp_hal::{
         i2c::master::{AnyI2c, I2c},
         prelude::*,
         Blocking,
     };
+    use tests_common::generic_cold_start_tests::*;
     // Optional: A init function which is called before every test
     #[init]
     fn init() -> I2c<'static, Blocking, AnyI2c> {
@@ -26,54 +26,57 @@ mod cold_start_tests {
     }
 
     #[test]
-    fn test_create_tmag5273(i2c: I2c<'static, Blocking, AnyI2c>) {
-        let _mag_sensor = tmag5273::TMag5273::new(i2c, tmag5273::types::DeviceVersion::TMAG5273B1)
-            .expect("TMag5273::new failed");
+    fn test_device_id(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_device_id(i2c); // Pass the i2c variable to the inner test function
     }
 
-    //     // Another example for a conditionally enabled test
-    //     #[test]
-    //     fn defmt() {
-    //         use defmt_rtt as _;
-    //         defmt::info!("Hello, defmt!"); // Prints via defmt-rtt to rtt
-    //         assert!(true)
-    //     }
+    #[test]
+    fn test_manufacturer_id(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_manufacturer_id(i2c); // Pass the i2c variable to the inner test function
+    }
 
-    //     // Tests can be ignored with the #[ignore] attribute
-    //     #[test]
-    //     #[ignore]
-    //     fn it_works_ignored() {
-    //         assert!(false)
-    //     }
+    #[test]
+    fn test_registers(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_registers(i2c); // Pass the i2c variable to the inner test function
+    }
 
-    //     // A test that fails with a panic
-    //     #[test]
-    //     fn it_fails1() {
-    //         assert!(false)
-    //     }
+    #[test]
+    fn test_default_i2c_address(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_default_i2c_address(i2c); // Pass the i2c variable to the inner test function
+    }
 
-    //     // A test that fails with a returned Err(&str)
-    //     #[test]
-    //     fn it_fails2() -> Result<(), &'static str> {
-    //         Err("It failed because ...")
-    //     }
+    #[test]
+    fn test_get_magnitude_first_boot(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_get_magnitude_first_boot(i2c); // Pass the i2c variable to the inner test function
+    }
 
-    //     // Tests can be annotated with #[should_panic] if they are expected to panic
-    //     #[test]
-    //     #[should_panic]
-    //     fn it_passes() {
-    //         assert!(false)
-    //     }
+    #[test]
+    fn test_get_xyz_thresholds_first_boot(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_get_xyz_thresholds_first_boot(i2c); // Pass the i2c variable to the inner test function
+    }
 
-    //     // This test should panic, but doesn't => it fails
-    //     #[test]
-    //     #[should_panic]
-    //     fn it_fails3() {}
+    #[test]
+    fn test_magnetic_gain(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_magnetic_gain(i2c); // Pass the i2c variable to the inner test function
+    }
 
-    //     // Tests can be annotated with #[timeout(<secs>)] to change the default timeout of 60s
-    //     #[test]
-    //     #[timeout(10)]
-    //     fn it_timeouts() {
-    //         loop {} // should run into the 10s timeout
-    //     }
+    #[test]
+    fn test_magnetic_offset_invalid_at_boot(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_magnetic_offset_invalid_at_boot(i2c); // Pass the i2c variable to the inner test function
+    }
+
+    #[test]
+    fn test_temperature_invalid_at_boot(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_temperature_invalid_at_boot(i2c); // Pass the i2c variable to the inner test function
+    }
+
+    #[test]
+    fn test_get_data_methods(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_get_data_methods(i2c); // Pass the i2c variable to the inner test function
+    }
+
+    #[test]
+    fn test_get_angle(i2c: I2c<'static, Blocking, AnyI2c>) {
+        generic_test_get_angle(i2c); // Pass the i2c variable to the inner test function
+    }
 }

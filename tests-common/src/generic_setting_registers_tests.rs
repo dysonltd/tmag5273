@@ -1,3 +1,4 @@
+use core::assert_eq;
 use core::cell::RefCell;
 use embedded_hal_bus::i2c::RefCellDevice;
 use registers::*;

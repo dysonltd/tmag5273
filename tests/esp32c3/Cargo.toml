@@ -1,5 +1,5 @@
 [package]
-name = "esp32c3"
+name = "esp32c3-tests"
 version = "0.1.0"
 edition = "2021"
 
@@ -24,7 +24,7 @@ tmag5273 = { path = "../../" }
 
 [dev-dependencies]
 embedded-test = { version = "0.5.0", features =["defmt"] }
-
+tests-common = { path = "../../tests-common" }
 # Test Files
 [[test]]
 name = "cold_start_tests"
