@@ -1,7 +1,7 @@
 {
   "rust-analyzer.linkedProjects": [
     "utils/Cargo.toml",
-    "examples/esp32-c3/Cargo.toml",
+    "examples/esp32c3/Cargo.toml",
     "tests/esp32c3/Cargo.toml"
   ],
   "[rust]": {
