@@ -1,4 +1,4 @@
-mod common;
+use tests_common as common;
 
 #[cfg(test)]
 pub mod linux {

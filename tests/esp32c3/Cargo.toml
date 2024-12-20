@@ -7,8 +7,8 @@ edition = "2021"
 [dependencies]
 
 # # dependencies for defmt
-defmt = { version = "0.3.8", optional = true }
-defmt-rtt = { version = "0.4.1", optional = true }
+defmt = { version = "0.3.8"}
+defmt-rtt = { version = "0.4.1"}
 
 # Esp32 related dependencies for main.rs. Note: embedded-test comes with its own panic handler and logging sink.
 esp-hal = { version = "0.22.0", features = ["esp32c3"] }
@@ -23,20 +23,7 @@ esp-println = { version = "0.12.0", default-features = false, features = ["esp32
 tmag5273 = { path = "../../" }
 
 [dev-dependencies]
-embedded-test = { version = "0.5.0" }
-
-[features]
-default = ["defmt"]
-defmt = ["dep:defmt", "dep:defmt-rtt"]
-
-[[bin]]
-name = "esp32c3"
-test = false  # To make plain `cargo test` work: Disable tests for the bin, because we are only using the intergration tests
-bench = false # To make `cargo check --all-targets` work.
-
-[lib]
-test = false # Same as above, to make plain `cargo test` work instead of `cargo test --tests`
-bench = false
+embedded-test = { version = "0.5.0", features =["defmt"] }
 
 # Test Files
 [[test]]

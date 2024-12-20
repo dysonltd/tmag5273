@@ -1,0 +1,11 @@
+[package]
+name = "tests-common"
+description = "Common tests for the TMAG5273 Driver that are platform agnostic"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tmag5273 = { path = "../" }
+embedded-hal-bus = { version = "0.2.0"  }
+embedded-hal = { version = "1.0.0" }
+arbitrary-int = "1.2.7"

@@ -5,6 +5,7 @@
 #[embedded_test::tests]
 mod cold_start_tests {
     use defmt_rtt as _;
+    // use esp_backtrace as _;
     use esp_hal::{
         i2c::master::{AnyI2c, I2c},
         prelude::*,
@@ -26,7 +27,7 @@ mod cold_start_tests {
 
     #[test]
     fn test_create_tmag5273(i2c: I2c<'static, Blocking, AnyI2c>) {
-        let mag_sensor = tmag5273::TMag5273::new(i2c, tmag5273::types::DeviceVersion::TMAG5273B1)
+        let _mag_sensor = tmag5273::TMag5273::new(i2c, tmag5273::types::DeviceVersion::TMAG5273B1)
             .expect("TMag5273::new failed");
     }
 
