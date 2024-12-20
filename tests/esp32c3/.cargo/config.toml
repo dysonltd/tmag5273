@@ -2,7 +2,6 @@
 runner = "probe-rs run --chip=esp32c3"
 
 [env]
-ESP_LOG = "debug"
 DEFMT_LOG = "debug"
 
 [build]
@@ -14,5 +13,3 @@ rustflags = [
 
 target = "riscv32imc-unknown-none-elf"
 
-# [unstable]
-# build-std = ["core"]
