@@ -68,7 +68,7 @@ cargo run --example example_1_basic_readings --no-default-features --features rp
 
 ### Running a BareMetal Example
 
-As the library adheres to the [embedded-hal](https://docs.rs/embedded-hal/latest/embedded_hal/), the library should be able to run in `no-std` environment. A [esp32c3](https://github.com/esp-rs/esp-rust-board) example is shown [here](./esp32-c3/src/main.rs). Due to it using a baremetal environment its recommended to go to that directory and call `cargo run` from within it and flash the code on to the device.
+As the library adheres to the [embedded-hal](https://docs.rs/embedded-hal/latest/embedded_hal/), the library should be able to run in `no-std` environment. A [esp32c3](https://github.com/esp-rs/esp-rust-board) example is shown [here](./esp32c3/src/main.rs). Due to it using a baremetal environment its recommended to go to that directory and call `cargo run` from within it and flash the code on to the device.
 
 ### SparkFun Examples
 
