@@ -46,8 +46,7 @@ pub mod registers;
 pub mod types;
 pub use config::*;
 
-use embedded_hal::i2c::I2c;
-use embedded_hal::i2c::SevenBitAddress;
+use embedded_hal::i2c::{I2c, SevenBitAddress};
 
 use registers::*;
 use types::{Axis, DeviceVersion, MagneticChannelOffset, TMag5273ChannelData, TMag5273Error};

@@ -40,7 +40,7 @@ jobs:
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           source "$HOME"/.cargo/env
-          apt install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
+          apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
           rustup toolchain install nightly --component rust-src
           cargo install espflash ldproxy
           cargo install probe-rs-tools --locked
