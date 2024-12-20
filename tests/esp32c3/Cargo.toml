@@ -30,4 +30,4 @@ embedded-test = { version = "0.5.0", features =["defmt"] }
 name = "cold_start_tests"
 harness = false
 
-[workspace] # Required so that its not attached to main workspace
+[workspace] # Required so that its not attached to main workspace (Causes issues with dependencies around esp-println)
