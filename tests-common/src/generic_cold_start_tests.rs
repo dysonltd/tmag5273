@@ -42,7 +42,7 @@ where
     I2C: embedded_hal::i2c::I2c,
 {
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
-    test_default_register!(ConversionStatusRegister, mag_sensor);
+    // test_default_register!(ConversionStatusRegister, mag_sensor); // This Register will change dependent on previous operating mode, there is no way to set it either. Its disabled for the purpose of CI Testing
     test_default_register!(DeviceConfig1Register, mag_sensor);
     test_default_register!(DeviceConfig2Register, mag_sensor);
     test_default_register!(DeviceStatusRegister, mag_sensor);
