@@ -40,7 +40,9 @@ jobs:
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
-          source "$HOME"/.cargo/env
+          apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
+          rustup toolchain install nightly --component rust-src
+          cargo install espflash ldproxy
       - name: ESP32C3 Tests
         run: |
           echo "Running ESP32C3 Tests"
