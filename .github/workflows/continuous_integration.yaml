@@ -39,7 +39,7 @@ jobs:
       - name: Install Rust, probe-rs and ESP32C3 toolchain
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh -- -y
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
           source "$HOME"/.cargo/env
       - name: ESP32C3 Tests
         run: |
