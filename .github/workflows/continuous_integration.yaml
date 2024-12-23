@@ -38,7 +38,7 @@ jobs:
           echo "Running Raspberry Pi Tests"
           source "$HOME"/.cargo/env
           cd tests
-          cargo test --test linux --features=rpi -- --test-threads=1 # Run Linux Tests using FTD232
+          cargo test --test linux --features=rpi -- --test-threads=1 # Run Linux Tests using Raspberry Pi I2C Hardware
 
   ESP32C3_Tests:
     name: ESP32C3 Tests
