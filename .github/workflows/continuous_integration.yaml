@@ -48,11 +48,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Rust, probe-rs and ESP32C3 toolchain
         run: |
+          apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
-          apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
-          rustup toolchain install nightly --component rust-src
           source "$HOME"/.cargo/env
+          rustup toolchain install nightly --component rust-src
           cargo install espflash ldproxy
       - name: ESP32C3 Tests
         run: |
