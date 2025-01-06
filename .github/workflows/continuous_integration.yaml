@@ -8,6 +8,7 @@ on:
 
 env:
   ESP32C3_UUID: 303a:1001:A0:76:4E:17:0B:90
+
 jobs:
   Linux_Tests:
     name: Linux Tests
