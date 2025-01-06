@@ -6,6 +6,8 @@ on:
       - main
   workflow_call:
 
+env:
+  ESP32C3_UUID: 303a:1001:A0:76:4E:17:0B:90
 jobs:
   Linux_Tests:
     name: Linux Tests
@@ -59,5 +61,5 @@ jobs:
           echo "Running ESP32C3 Tests"
           source "$HOME"/.cargo/env
           cd tests/esp32c3
-          probe-rs reset --probe=303a:1001:A0:76:4E:17:0B:90 # Reset the ESP32C3
-          cargo test
+          probe-rs reset --probe=$ESP32C3_UUID
+          cargo test # Probe UUID defined in .cargo/config.toml
