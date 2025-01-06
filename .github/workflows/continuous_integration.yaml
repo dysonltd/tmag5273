@@ -61,5 +61,5 @@ jobs:
           echo "Running ESP32C3 Tests"
           source "$HOME"/.cargo/env
           cd tests/esp32c3
-          probe-rs reset --probe=$ESP32C3_UUID
+          probe-rs reset --probe="$ESP32C3_UUID"
           cargo test # Probe UUID defined in .cargo/config.toml
