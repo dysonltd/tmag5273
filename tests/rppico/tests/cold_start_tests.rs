@@ -3,8 +3,7 @@
 
 #[cfg(test)]
 #[embedded_test::tests]
-
-mod setting_register_tests {
+mod cold_start_tests {
     use defmt_rtt as _;
     use fugit::RateExtU32;
     use rp_pico::{
@@ -16,7 +15,7 @@ mod setting_register_tests {
         },
         pac::{self, I2C1},
     };
-    use tests_common::generic_setting_registers_tests::*;
+    use tests_common::generic_cold_start_tests::*;
     //TODO: Find a way to generify
     type MY_I2C = I2C<
         I2C1,
@@ -69,39 +68,57 @@ mod setting_register_tests {
     }
 
     #[test]
-    fn test_is_connected(i2c: MY_I2C) {
-        generic_test_is_connected(i2c); // Pass the i2c variable to the inner test function
+    fn test_device_id(i2c: MY_I2C) {
+        generic_test_device_id(i2c); // Pass the i2c variable to the inner test function
     }
+
     #[test]
-    fn test_create_tmag5273(i2c: MY_I2C) {
-        generic_test_create_tmag5273(i2c); // Pass the i2c variable to the inner test function
+    fn test_manufacturer_id(i2c: MY_I2C) {
+        generic_test_manufacturer_id(i2c); // Pass the i2c variable to the inner test function
     }
+
     #[test]
-    fn test_set_reset_device_config_1_register(i2c: MY_I2C) {
-        generic_test_set_reset_device_config_1_register(i2c); // Pass the i2c variable to the inner test function
+    fn test_registers(i2c: MY_I2C) {
+        generic_test_registers(i2c); // Pass the i2c variable to the inner test function
     }
+
     #[test]
-    fn test_set_reset_device_config_2_register(i2c: MY_I2C) {
-        generic_test_reset_device_config_2_register(i2c); // Pass the i2c variable to the inner test function
+    fn test_default_i2c_address(i2c: MY_I2C) {
+        generic_test_default_i2c_address(i2c); // Pass the i2c variable to the inner test function
     }
+
     #[test]
-    fn test_set_reset_i2c_address_register(i2c: MY_I2C) {
-        generic_test_set_reset_i2c_address_register(i2c); // Pass the i2c variable to the inner test function
+    fn test_get_magnitude_first_boot(i2c: MY_I2C) {
+        generic_test_get_magnitude_first_boot(i2c); // Pass the i2c variable to the inner test function
     }
+
     #[test]
-    fn test_set_reset_int_config_1_register(i2c: MY_I2C) {
-        generic_test_set_reset_int_config_1_register(i2c); // Pass the i2c variable to the inner test function
+    fn test_get_xyz_thresholds_first_boot(i2c: MY_I2C) {
+        generic_test_get_xyz_thresholds_first_boot(i2c); // Pass the i2c variable to the inner test function
     }
+
     #[test]
-    fn test_set_reset_sensor_config_1_register(i2c: MY_I2C) {
-        generic_test_set_reset_sensor_config_1_register(i2c); // Pass the i2c variable to the inner test function
+    fn test_magnetic_gain(i2c: MY_I2C) {
+        generic_test_magnetic_gain(i2c); // Pass the i2c variable to the inner test function
     }
+
     #[test]
-    fn test_set_reset_sensor_config_2_register(i2c: MY_I2C) {
-        generic_test_set_reset_sensor_config_2_register(i2c); // Pass the i2c variable to the inner test function
+    fn test_magnetic_offset_invalid_at_boot(i2c: MY_I2C) {
+        generic_test_magnetic_offset_invalid_at_boot(i2c); // Pass the i2c variable to the inner test function
     }
+
     #[test]
-    fn test_set_reset_t_config_register(i2c: MY_I2C) {
-        generic_test_set_reset_t_config_register(i2c); // Pass the i2c variable to the inner test function
+    fn test_temperature_invalid_at_boot(i2c: MY_I2C) {
+        generic_test_temperature_invalid_at_boot(i2c); // Pass the i2c variable to the inner test function
+    }
+
+    #[test]
+    fn test_get_data_methods(i2c: MY_I2C) {
+        generic_test_get_data_methods(i2c); // Pass the i2c variable to the inner test function
+    }
+
+    #[test]
+    fn test_get_angle(i2c: MY_I2C) {
+        generic_test_get_angle(i2c); // Pass the i2c variable to the inner test function
     }
 }

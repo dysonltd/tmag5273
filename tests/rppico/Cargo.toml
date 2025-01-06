@@ -15,8 +15,11 @@ fugit = "0.3.7"
 embedded-test = { version = "0.5.0", features =["defmt"] }
 tests-common = { path = "../../tests-common" }
 
-
 # Test Files
+[[test]]
+name = "cold_start_tests"
+harness = false
+
 [[test]]
 name = "setting_register_tests"
 harness = false
