@@ -7,6 +7,7 @@ mod cold_start_tests {
     use defmt_rtt as _;
     use fugit::RateExtU32;
     use rp2040_hal::{
+        clocks::ClockSource,
         gpio::{FunctionI2C, Pin},
         i2c::I2C,
         pac::{self, I2C1},
@@ -55,36 +56,19 @@ mod cold_start_tests {
             &mut pac.RESETS,
         );
 
-        // Configure two pins as being I²C, not GPIO
-        let sda_pin: Pin<_, FunctionI2C, _> = pins.gpio18.reconfigure();
-        let scl_pin: Pin<_, FunctionI2C, _> = pins.gpio19.reconfigure();
-
         // Create the I²C drive, using the two pre-configured pins. This will fail
         // at compile time if the pins are in the wrong mode, or if this I²C
         // peripheral isn't available on these pins!
-        let mut i2c: I2C<
-            I2C1,
-            (
-                Pin<
-                    rp2040_hal::gpio::bank0::Gpio18,
-                    rp2040_hal::gpio::FunctionI2c,
-                    rp2040_hal::gpio::PullUp,
-                >,
-                Pin<
-                    rp2040_hal::gpio::bank0::Gpio19,
-                    rp2040_hal::gpio::FunctionI2c,
-                    rp2040_hal::gpio::PullUp,
-                >,
-            ),
-        > = rp2040_hal::I2C::i2c1(
+
+        let mut i2c_controller = rp2040_hal::I2C::new_controller(
             pac.I2C1,
-            sda_pin,
-            scl_pin,
+            pins.gpio18.reconfigure(),
+            pins.gpio19.reconfigure(),
             400.kHz(),
             &mut pac.RESETS,
-            &clocks.system_clock,
+            clocks.system_clock.get_freq(),
         );
-        i2c
+        i2c_controller
     }
 
     // #[test]
