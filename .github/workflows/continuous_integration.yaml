@@ -8,7 +8,7 @@ on:
 
 env:
   ESP32C3_UUID: 303a:1001:A0:76:4E:17:0B:90
-
+  RP_PICO_UUID: 2e8a:000c:E6633861A323542C
 jobs:
   Linux_Tests:
     name: Linux Tests
@@ -63,4 +63,25 @@ jobs:
           source "$HOME"/.cargo/env
           cd tests/esp32c3
           probe-rs reset --probe="$ESP32C3_UUID"
+          cargo test # Probe UUID defined in .cargo/config.toml
+
+  PiPico_Tests:
+    name: RP2040 Pico Tests
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust and probe-rs
+        run: |
+          apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
+          source "$HOME"/.cargo/env
+          rustup toolchain install nightly --component rust-src
+      - name: RP2040 RP Pico Tests
+        run: |
+          echo "Running RP2040 RP Pico Tests"
+          source "$HOME"/.cargo/env
+          cd tests/rppico
+          probe-rs reset --probe="$RP_PICO_UUID"
           cargo test # Probe UUID defined in .cargo/config.toml

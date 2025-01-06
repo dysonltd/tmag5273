@@ -37,4 +37,4 @@ rustflags = [
 
 # This runner will find a supported SWD debug probe and flash your RP2040 over
 # SWD:
-runner = "probe-rs run --chip RP2040"
+runner = "probe-rs run --chip RP2040 --probe=2e8a:000c:E6633861A323542C"
