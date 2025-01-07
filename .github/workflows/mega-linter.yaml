@@ -173,6 +173,8 @@ jobs:
         run: cargo fmt --manifest-path examples/esp32c3/Cargo.toml -- --check
       - name: Rustfmt check on esp32 tests
         run: cargo fmt --manifest-path tests/esp32c3/Cargo.toml -- --check
+      - name: Rustfmt check on pipico tests
+        run: cargo fmt --manifest-path tests/pipico/Cargo.toml -- --check
 
   cargo_clippy:
     name: Cargo Clippy
@@ -187,4 +189,8 @@ jobs:
       - name: Clippy check on esp32 tests
         run: |
           cd tests/esp32c3/
+          cargo clippy -- -D warnings
+      - name: Clippy on Pi Pico Tests
+        run: |
+          cd tests/pipico
           cargo clippy -- -D warnings

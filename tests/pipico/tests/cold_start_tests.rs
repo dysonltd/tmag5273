@@ -17,7 +17,7 @@ mod cold_start_tests {
     };
     use tests_common::generic_cold_start_tests::*;
     //TODO: Find a way to generify
-    type MY_I2C = I2C<
+    type PicoI2c = I2C<
         I2C1,
         (
             Pin<gpio::bank0::Gpio18, gpio::FunctionI2c, gpio::PullUp>,
@@ -25,7 +25,7 @@ mod cold_start_tests {
         ),
     >;
     #[init]
-    fn init() -> MY_I2C {
+    fn init() -> PicoI2c {
         let mut pac = pac::Peripherals::take().unwrap();
         let mut watchdog = hal::watchdog::Watchdog::new(pac.WATCHDOG);
 
@@ -68,57 +68,57 @@ mod cold_start_tests {
     }
 
     #[test]
-    fn test_device_id(i2c: MY_I2C) {
+    fn test_device_id(i2c: PicoI2c) {
         generic_test_device_id(i2c); // Pass the i2c variable to the inner test function
     }
 
     #[test]
-    fn test_manufacturer_id(i2c: MY_I2C) {
+    fn test_manufacturer_id(i2c: PicoI2c) {
         generic_test_manufacturer_id(i2c); // Pass the i2c variable to the inner test function
     }
 
     #[test]
-    fn test_registers(i2c: MY_I2C) {
+    fn test_registers(i2c: PicoI2c) {
         generic_test_registers(i2c); // Pass the i2c variable to the inner test function
     }
 
     #[test]
-    fn test_default_i2c_address(i2c: MY_I2C) {
+    fn test_default_i2c_address(i2c: PicoI2c) {
         generic_test_default_i2c_address(i2c); // Pass the i2c variable to the inner test function
     }
 
     #[test]
-    fn test_get_magnitude_first_boot(i2c: MY_I2C) {
+    fn test_get_magnitude_first_boot(i2c: PicoI2c) {
         generic_test_get_magnitude_first_boot(i2c); // Pass the i2c variable to the inner test function
     }
 
     #[test]
-    fn test_get_xyz_thresholds_first_boot(i2c: MY_I2C) {
+    fn test_get_xyz_thresholds_first_boot(i2c: PicoI2c) {
         generic_test_get_xyz_thresholds_first_boot(i2c); // Pass the i2c variable to the inner test function
     }
 
     #[test]
-    fn test_magnetic_gain(i2c: MY_I2C) {
+    fn test_magnetic_gain(i2c: PicoI2c) {
         generic_test_magnetic_gain(i2c); // Pass the i2c variable to the inner test function
     }
 
     #[test]
-    fn test_magnetic_offset_invalid_at_boot(i2c: MY_I2C) {
+    fn test_magnetic_offset_invalid_at_boot(i2c: PicoI2c) {
         generic_test_magnetic_offset_invalid_at_boot(i2c); // Pass the i2c variable to the inner test function
     }
 
     #[test]
-    fn test_temperature_invalid_at_boot(i2c: MY_I2C) {
+    fn test_temperature_invalid_at_boot(i2c: PicoI2c) {
         generic_test_temperature_invalid_at_boot(i2c); // Pass the i2c variable to the inner test function
     }
 
     #[test]
-    fn test_get_data_methods(i2c: MY_I2C) {
+    fn test_get_data_methods(i2c: PicoI2c) {
         generic_test_get_data_methods(i2c); // Pass the i2c variable to the inner test function
     }
 
     #[test]
-    fn test_get_angle(i2c: MY_I2C) {
+    fn test_get_angle(i2c: PicoI2c) {
         generic_test_get_angle(i2c); // Pass the i2c variable to the inner test function
     }
 }

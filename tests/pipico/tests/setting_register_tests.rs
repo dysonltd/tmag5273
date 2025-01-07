@@ -18,7 +18,7 @@ mod setting_register_tests {
     };
     use tests_common::generic_setting_registers_tests::*;
     //TODO: Find a way to generify
-    type MY_I2C = I2C<
+    type PicoI2c = I2C<
         I2C1,
         (
             Pin<gpio::bank0::Gpio18, gpio::FunctionI2c, gpio::PullUp>,
@@ -26,7 +26,7 @@ mod setting_register_tests {
         ),
     >;
     #[init]
-    fn init() -> MY_I2C {
+    fn init() -> PicoI2c {
         let mut pac = pac::Peripherals::take().unwrap();
         let mut watchdog = hal::watchdog::Watchdog::new(pac.WATCHDOG);
 
@@ -69,39 +69,39 @@ mod setting_register_tests {
     }
 
     #[test]
-    fn test_is_connected(i2c: MY_I2C) {
+    fn test_is_connected(i2c: PicoI2c) {
         generic_test_is_connected(i2c); // Pass the i2c variable to the inner test function
     }
     #[test]
-    fn test_create_tmag5273(i2c: MY_I2C) {
+    fn test_create_tmag5273(i2c: PicoI2c) {
         generic_test_create_tmag5273(i2c); // Pass the i2c variable to the inner test function
     }
     #[test]
-    fn test_set_reset_device_config_1_register(i2c: MY_I2C) {
+    fn test_set_reset_device_config_1_register(i2c: PicoI2c) {
         generic_test_set_reset_device_config_1_register(i2c); // Pass the i2c variable to the inner test function
     }
     #[test]
-    fn test_set_reset_device_config_2_register(i2c: MY_I2C) {
+    fn test_set_reset_device_config_2_register(i2c: PicoI2c) {
         generic_test_reset_device_config_2_register(i2c); // Pass the i2c variable to the inner test function
     }
     #[test]
-    fn test_set_reset_i2c_address_register(i2c: MY_I2C) {
+    fn test_set_reset_i2c_address_register(i2c: PicoI2c) {
         generic_test_set_reset_i2c_address_register(i2c); // Pass the i2c variable to the inner test function
     }
     #[test]
-    fn test_set_reset_int_config_1_register(i2c: MY_I2C) {
+    fn test_set_reset_int_config_1_register(i2c: PicoI2c) {
         generic_test_set_reset_int_config_1_register(i2c); // Pass the i2c variable to the inner test function
     }
     #[test]
-    fn test_set_reset_sensor_config_1_register(i2c: MY_I2C) {
+    fn test_set_reset_sensor_config_1_register(i2c: PicoI2c) {
         generic_test_set_reset_sensor_config_1_register(i2c); // Pass the i2c variable to the inner test function
     }
     #[test]
-    fn test_set_reset_sensor_config_2_register(i2c: MY_I2C) {
+    fn test_set_reset_sensor_config_2_register(i2c: PicoI2c) {
         generic_test_set_reset_sensor_config_2_register(i2c); // Pass the i2c variable to the inner test function
     }
     #[test]
-    fn test_set_reset_t_config_register(i2c: MY_I2C) {
+    fn test_set_reset_t_config_register(i2c: PicoI2c) {
         generic_test_set_reset_t_config_register(i2c); // Pass the i2c variable to the inner test function
     }
 }
