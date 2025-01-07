@@ -26,7 +26,7 @@ cargo test # Will run all tests one after the other
 
 ### Pi Pico
 
-The same setup as the ESP32C3 is also applied to the Pi Pico. You can run the tests using the [Pico Probe](https://thepihut.com/products/raspberry-pi-debug-probe) like so:
+The same setup as the ESP32C3 is also applied to the Pi Pico. More information on this can be found in the following [README](./pipico/README.md) You can run the tests using the [Pico Probe](https://thepihut.com/products/raspberry-pi-debug-probe) like so:
 
 ```bash
 cd tests/pipico
