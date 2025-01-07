@@ -83,6 +83,6 @@ jobs:
         run: |
           echo "Running RP2040 RP Pico Tests"
           source "$HOME"/.cargo/env
-          cd tests/rppico
+          cd tests/pipico
           probe-rs reset --probe="$RP_PICO_UUID"
           cargo test # Probe UUID defined in .cargo/config.toml
