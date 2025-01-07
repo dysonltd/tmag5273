@@ -78,6 +78,7 @@ jobs:
           curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
           source "$HOME"/.cargo/env
           rustup toolchain install nightly --component rust-src
+          rustup target add thumbv6m-none-eabi
       - name: RP2040 RP Pico Tests
         run: |
           echo "Running RP2040 RP Pico Tests"
