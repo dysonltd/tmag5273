@@ -6,10 +6,6 @@ on:
       - main
   workflow_call:
 
-env:
-  ESP32C3_UUID: 303a:1001:A0:76:4E:17:0B:90
-  RP_PICO_UUID: 2e8a:000c:E6633861A323542C
-
 jobs:
   Linux_Tests:
     name: Linux Tests
@@ -63,7 +59,6 @@ jobs:
           echo "Running ESP32C3 Tests"
           source "$HOME"/.cargo/env
           cd tests/esp32c3
-          probe-rs reset --probe="$ESP32C3_UUID"
           cargo test # Probe UUID defined in .cargo/config.toml
 
   PiPico_Tests:
@@ -85,6 +80,4 @@ jobs:
           echo "Running RP2040W Pi Pico Tests"
           source "$HOME"/.cargo/env
           cd tests/pipico
-          mkdir target # Required for docker runner to work properly TODO: Investigate this
-          probe-rs reset --probe="$RP_PICO_UUID"
           cargo test # Probe UUID defined in .cargo/config.toml
