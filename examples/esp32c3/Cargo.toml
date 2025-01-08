@@ -1,5 +1,5 @@
 [package]
-name = "esp32-c3-example"
+name = "esp32c3-example"
 version = "0.1.0"
 authors = [
     "Scott Gibb <scott.gibb@dyson.com",
@@ -23,7 +23,7 @@ esp-println = { version = "0.12.0", features = ["esp32c3", "log"] }
 log = { version = "0.4.21" }
 
 [[bin]]
-name = "esp32-c3-example"
+name = "esp32c3-example"
 path = "src/main.rs"
 test = false
 doctest = false
