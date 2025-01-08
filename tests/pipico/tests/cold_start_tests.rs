@@ -10,7 +10,11 @@ mod cold_start_tests {
         hal::{
             self,
             clocks::ClockSource,
-            gpio::{self, FunctionI2c, Pin, PullUp},
+            gpio::{
+                self,
+                bank0::{Gpio18, Gpio19},
+                FunctionI2c, Pin, PullUp,
+            },
             i2c::I2C,
         },
         pac::{self, I2C1},
@@ -20,8 +24,8 @@ mod cold_start_tests {
     type PicoI2c = I2C<
         I2C1,
         (
-            Pin<gpio::bank0::Gpio18, FunctionI2c, PullUp>,
-            Pin<gpio::bank0::Gpio19, FunctionI2c, PullUp>,
+            Pin<Gpio18, FunctionI2c, PullUp>,
+            Pin<Gpio19, FunctionI2c, PullUp>,
         ),
     >;
     #[init]
