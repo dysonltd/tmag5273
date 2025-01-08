@@ -1,0 +1,13 @@
+[package]
+name = "stm32f072"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m = "0.7"
+cortex-m-rt = "0.7"
+stm32f0xx-hal = { version = "0.18", features = ["stm32f072"]}
+panic-halt = "1.0.0"
+
+[dev-dependencies]
+[workspace]

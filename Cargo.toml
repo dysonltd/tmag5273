@@ -44,5 +44,5 @@ rpi = ["utils/rpi"]
 members = [
     "utils",
     "tests-common",
-    "./",
+    "./", "tests/stm32f072",
     ]
