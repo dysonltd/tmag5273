@@ -20,7 +20,6 @@ mod cold_start_tests {
         pac::{self, I2C1},
     };
     use tests_common::generic_cold_start_tests::*;
-    //TODO: Find a way to generify
     type PicoI2c = I2C<
         I2C1,
         (

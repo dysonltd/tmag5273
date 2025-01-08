@@ -21,7 +21,6 @@ mod setting_register_tests {
         pac::{self, I2C1},
     };
     use tests_common::generic_setting_registers_tests::*;
-    //TODO: Find a way to generify
     type PicoI2c = I2C<
         I2C1,
         (
