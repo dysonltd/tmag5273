@@ -63,5 +63,5 @@ cargo fmt --all
 ## Useful Links
 
 - [Embedded Hal](https://docs.rs/embedded-hal/latest/embedded_hal/)
-- [TMAG5273 Breakout Board](https://www.sparkfun.com/products/23880)
+- [TMAG5273 Breakout Board](https://www.sparkfun.com/catalog/product/view/id/8132/s/sparkfun-linear-3d-hall-effect-sensor-tmag5273-qwiic/category/2/)
 - [FT232H Breakout Board](https://www.adafruit.com/product/2264)
