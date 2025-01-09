@@ -55,7 +55,7 @@ mod cold_start_tests {
             &mut pac.RESETS,
         );
 
-        // Create the I²C drive, using the two pre-configured pins. This will fail
+        // Create the I²C driver, using the two pre-configured pins. This will fail
         // at compile time if the pins are in the wrong mode, or if this I²C
         // peripheral isn't available on these pins!
 

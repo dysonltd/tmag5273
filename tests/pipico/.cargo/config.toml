@@ -22,7 +22,7 @@ target = "thumbv6m-none-eabi"
 # * linker argument -Tlink.x tells the linker to use link.x as the linker
 #   script. This is usually provided by the cortex-m-rt crate, and by default
 #   the version in that crate will include a file called `memory.x` which
-#   describes the particular memory layout for your specific chip. 
+#   describes the particular memory layout for your specific chip.
 # * no-vectorize-loops turns off the loop vectorizer (seeing as the M0+ doesn't
 #   have SIMD)
 rustflags = [
