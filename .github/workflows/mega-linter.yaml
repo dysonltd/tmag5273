@@ -194,11 +194,11 @@ jobs:
           cargo clippy -- -D warnings
       - name: Clippy on Pi Pico Tests
         run: |
-          rustup add target thumbv6m-none-eabi
+          rustup target add thumbv6m-none-eabi
           cd tests/pipico
           cargo clippy -- -D warnings
       - name: Clippy on STM32 Tests
         run: |
-          rustup add target thumbv6m-none-eabi
+          rustup target add thumbv6m-none-eabi
           cd tests/stm32f072
           cargo clippy -- -D warnings
