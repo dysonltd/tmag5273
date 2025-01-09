@@ -11,7 +11,7 @@ interacting with the hardware. As such we must run our tests with one thread:
 
 ```bash
 cargo test -- --test-threads=1 # Run all tests (Will need to be on a Pi with MCUs and others plugged in)
-cargo test --test linux --features=std -- --test-threads=1 # Run Linux Tests using FTD232
+cargo test --test linux --features=std -- --test-threads=1 # Run Linux Tests using FTD232H 
 cargo test --test linux --features=rpi -- --test-threads=1 # Run Linux Tests using Raspberry Pi I2C
 ```
 
