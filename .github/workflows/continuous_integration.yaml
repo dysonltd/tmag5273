@@ -81,3 +81,24 @@ jobs:
           source "$HOME"/.cargo/env
           cd tests/pipico
           cargo test # Probe UUID defined in .cargo/config.toml
+
+  STM32_Tests:
+    name: STM32F072RB Tests
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust and probe-rs
+        run: |
+          apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
+          source "$HOME"/.cargo/env
+          rustup toolchain install nightly --component rust-src
+          rustup target add thumbv6m-none-eabi
+      - name: STM32F072RB Tests
+        run: |
+          echo "Running STM32F072RB Tests"
+          source "$HOME"/.cargo/env
+          cd tests/stm32f072
+          cargo test # Probe UUID defined in .cargo/config.toml
