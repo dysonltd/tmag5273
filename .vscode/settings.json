@@ -4,7 +4,7 @@
     "examples/esp32c3/Cargo.toml",
     "tests/esp32c3/Cargo.toml",
     "tests/pipico/Cargo.toml",
-    "tests/stm32f072/Cargo.toml§"
+    "tests/stm32f072/Cargo.toml"
   ],
   "[rust]": {
     "editor.formatOnSave": true
