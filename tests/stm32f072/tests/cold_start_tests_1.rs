@@ -32,14 +32,4 @@ mod cold_start_tests_1 {
     fn test_temperature_invalid_at_boot(i2c: Stm32I2c) {
         generic_test_temperature_invalid_at_boot(i2c); // Pass the i2c variable to the inner test function
     }
-
-    // #[test]
-    // fn test_get_data_methods(i2c: Stm32I2c) {
-    //     generic_test_get_data_methods(i2c); // Pass the i2c variable to the inner test function
-    // }
-
-    // #[test]
-    // fn test_get_angle(i2c: Stm32I2c) {
-    //     generic_test_get_angle(i2c); // Pass the i2c variable to the inner test function
-    // }
 }
