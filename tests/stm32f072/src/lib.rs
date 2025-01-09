@@ -1,5 +1,5 @@
 #![no_std]
-
+/// This module is a simple setup method and type declarations that can be shared across the tests, reducing boiler plate code.
 pub mod initialise {
     use embassy_stm32::{
         bind_interrupts,
