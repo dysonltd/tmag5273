@@ -54,13 +54,13 @@ pub mod initialise {
         // at compile time if the pins are in the wrong mode, or if this I²C
         // peripheral isn't available on these pins!
 
-        i2c_controller = hal::i2c::I2C::new_controller(
+        hal::i2c::I2C::new_controller(
             pac.I2C1,
             pins.gpio18.reconfigure(),
             pins.gpio19.reconfigure(),
             400.kHz(),
             &mut pac.RESETS,
             clocks.system_clock.get_freq(),
-        );
+        )
     }
 }
