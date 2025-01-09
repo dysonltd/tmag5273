@@ -17,7 +17,7 @@ cargo test --test linux --features=rpi -- --test-threads=1 # Run Linux Tests usi
 
 ### ESP32C3 Tests
 
-Since we are using an MCU target we require a seperate cargo workspace in order to set up the embedded test suite. More on this can be found in the following [README](./esp32c3/README.md). To run the tests on the ESP32C3 use the following code snippet:
+Since we are using an MCU target we require a separate cargo workspace in order to set up the embedded test suite. More on this can be found in the following [README](./esp32c3/README.md). To run the tests on the ESP32C3 use the following code snippet:
 
 ```bash
 cd tests/esp32c3
