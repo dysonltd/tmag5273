@@ -3,39 +3,14 @@
 
 #[cfg(test)]
 #[embedded_test::tests]
-
-mod setting_register_tests {
+pub mod setting_register_tests_0 {
     use defmt_rtt as _;
-    use embassy_stm32::{
-        bind_interrupts,
-        dma::NoDma,
-        i2c::{self, I2c},
-        peripherals,
-        time::Hertz,
-        Config,
-    };
+    use stm32f072::initialise::*;
     use tests_common::generic_setting_registers_tests::*;
-    bind_interrupts!(struct Irqs {
-        I2C1 => i2c::EventInterruptHandler<peripherals::I2C1>, i2c::ErrorInterruptHandler<peripherals::I2C1>;
-    });
-    type Stm32I2c =
-        embassy_stm32::i2c::I2c<'static, embassy_stm32::peripherals::I2C1, NoDma, NoDma>;
-    // use tests_common::generic_cold_start_tests::*;
+
     #[init]
     fn init() -> Stm32I2c {
-        let config = Config::default();
-        let p = embassy_stm32::init(config);
-        let i2c = I2c::new(
-            p.I2C1,
-            p.PB8,
-            p.PB9,
-            Irqs,
-            NoDma,
-            NoDma,
-            Hertz(400_000),
-            Default::default(),
-        );
-        i2c
+        initialise()
     }
     #[test]
     fn test_is_connected(i2c: Stm32I2c) {

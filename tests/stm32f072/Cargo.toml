@@ -25,8 +25,20 @@ tests-common = { path = "../../tests-common" }
 name = "cold_start_tests_0"
 harness = false
 
-# [[test]]
-# name = "setting_register_tests"
-# harness = false
+[[test]]
+name = "cold_start_tests_1"
+harness = false
+
+[[test]]
+name = "cold_start_tests_2"
+harness = false
+
+[[test]]
+name = "setting_register_tests_0"
+harness = false
+
+[lib]
+test = false # Same as above, to make plain `cargo test` work instead of `cargo test --tests`
+bench = false
 
 [workspace] # Required so that its not attached to main workspace
