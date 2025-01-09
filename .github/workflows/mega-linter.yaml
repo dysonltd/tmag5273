@@ -198,5 +198,5 @@ jobs:
           cargo clippy -- -D warnings
       - name: Clippy on STM32 Tests
         run: |
-            cd tests/stm32f072
-            cargo clippy -- -D warnings
+          cd tests/stm32f072
+          cargo clippy -- -D warnings
