@@ -64,9 +64,9 @@ jobs:
           source "$HOME"/.cargo/env
           cargo build -p utils --features=rpi
 
-  # Due to issues around installing windows driver in CI, we are not compiling the FTDI examples on Windows
-  FTDI_Examples:
-    name: FTDI Examples
+  # Due to issues around installing windows driver in CI, we are not compiling the FT232 examples on Windows
+  FT232_Examples:
+    name: FT232 Examples
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -82,19 +82,19 @@ jobs:
         if: runner.os == 'MacOS'
         run: |
           brew install libftdi
-      - name: Building FTDI Example 1
+      - name: Building FT232 Example 1
         run: |
           echo "Building Example 1"
           cargo build --example example_1_basic_readings --features=std
-      - name: Building FTDI Example 2
+      - name: Building FT232 Example 2
         run: |
           echo "Building Example 2"
           cargo build --example example_2_interrupts --features=std
-      - name: Building FTDI Example 3
+      - name: Building FT232 Example 3
         run: |
           echo "Building Example 3"
           cargo build --example example_3_angle_calculations --features=std
-      - name: Building FTDI Example 4
+      - name: Building FT232 Example 4
         run: |
           echo "Building Example 4"
           cargo build --example example_4_i2c_settings --features=std

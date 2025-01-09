@@ -25,4 +25,8 @@ harness = false
 name = "setting_register_tests"
 harness = false
 
+[lib]
+test = false
+bench = false
+
 [workspace] # Required so that its not attached to main workspace
