@@ -1,16 +1,23 @@
-#[cfg(not(feature = "rpi"))]
-use ftdi::Device;
-use ftdi_embedded_hal::I2c as FtdiI2c;
-use ftdi_embedded_hal::{self as hal};
 use std::error::Error;
 
+#[cfg(not(feature = "rpi"))]
+mod util_imports {
+    pub use ftdi::Device;
+    pub use ftdi_embedded_hal::I2c as FtdiI2c;
+    pub use ftdi_embedded_hal::{self as hal};
+}
+
 #[cfg(feature = "rpi")]
-use rppal::i2c as PiI2c;
+mod util_imports {
+    pub use rppal::i2c as PiI2c;
+}
+
+use util_imports::*;
 
 #[cfg(feature = "rpi")]
 /// Set up the I2C bus for the Raspberry Pi
 pub fn setup_i2c() -> Result<PiI2c::I2c, Box<dyn Error>> {
-    let mut i2c = PiI2c::I2c::new()?;
+    let i2c = PiI2c::I2c::new()?;
     Ok(i2c)
 }
 

@@ -1,6 +1,6 @@
 [package]
 name = "utils"
-version = "0.1.0" #TODO:: Figure out how to set this dynamically
+version = "0.1.0"
 edition = "2021"
 authors = [
     "Scott Gibb <scott.gibb@dyson.com",

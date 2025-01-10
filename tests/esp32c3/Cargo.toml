@@ -1,0 +1,41 @@
+[package]
+name = "esp32c3-tests"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+
+# # dependencies for defmt
+defmt = { version = "0.3.8"}
+defmt-rtt = { version = "0.4.1"}
+
+# Esp32 related dependencies for main.rs. Note: embedded-test comes with its own panic handler and logging sink.
+esp-hal = { version = "0.22.0", features = ["esp32c3"] }
+esp-backtrace = { version = "0.14.0", features = [
+    "esp32c3",
+    "exception-handler",
+    "panic-handler",
+    "println",
+] }
+esp-println = { version = "0.12.0", default-features = false, features = ["esp32c3", "jtag-serial", "colors"] }
+# Driver to be Tested
+tmag5273 = { path = "../../" }
+
+[dev-dependencies]
+embedded-test = { version = "0.5.0", features =["defmt"] }
+tests-common = { path = "../../tests-common" }
+# Test Files
+[[test]]
+name = "cold_start_tests"
+harness = false
+
+[[test]]
+name = "setting_register_tests"
+harness = false
+
+[lib]
+test = false
+bench = false
+
+[workspace] # Required so that its not attached to main workspace (Causes issues with dependencies around esp-println)

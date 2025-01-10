@@ -26,23 +26,23 @@ num_enum = { version = "0.7.3", default-features = false }
 arbitrary-int = "1.2.7"
 bitbybit = "1.3.2"
 embedded-hal = "1.0.0"
-log = { version = "0.4.22", optional = true }
 defmt = { version = "0.3.8", optional = true }
 
+# Dependencies needed for the Examples and Tests
 [dev-dependencies]
 utils = { path = "./utils", default-features = false }
+tests-common = { path = "./tests-common"}
 
 [features]
 default = ["std"]
 
 defmt = ["dep:defmt"]
-log = ["dep:log"]
 std = ["utils/std"]
 rpi = ["utils/rpi"]
 
 [workspace]
 members = [
-    "examples/esp32-c3",
     "utils",
+    "tests-common",
     "./",
-]
+    ]

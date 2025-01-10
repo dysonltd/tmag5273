@@ -6,9 +6,12 @@ on:
       - main
   workflow_call:
 
+env:
+  ESP32C3_UUID: 303a:1001:A0:76:4E:17:0B:90
+
 jobs:
-  FTDI_Tests:
-    name: FTDI Tests
+  Linux_Tests:
+    name: Linux Tests
     runs-on: self-hosted
     steps:
       - name: Checkout
@@ -17,16 +20,12 @@ jobs:
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           apt-get install libftdi1 libftdi1-dev -y
-      - name: Cold Start Tests
+      - name: FT232H Tests
         run: |
-          echo "Running Cold Start Tests"
+          echo "Running FT232H Tests"
           source "$HOME"/.cargo/env
-          cargo test cold_start_tests --features=std -- --test-threads=1
-      - name: Setting Register Tests
-        run: |
-          echo "Running Setting Register Tests"
-          source "$HOME"/.cargo/env
-          cargo test setting_register_tests --features=std -- --test-threads=1
+          cd tests
+          cargo test --test linux --features=std -- --test-threads=1 # Run Linux Tests using FTD232
 
   Raspberry_Pi_Tests:
     name: Raspberry Pi Tests
@@ -37,13 +36,31 @@ jobs:
       - name: Install Rust
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-      - name: Cold Start Tests
+      - name: Raspberry Pi Tests
         run: |
-          echo "Running Cold Start Tests"
+          echo "Running Raspberry Pi Tests"
           source "$HOME"/.cargo/env
-          cargo test cold_start_tests --features=rpi -- --test-threads=1
-      - name: Setting Register Tests
+          cd tests
+          cargo test --test linux --features=rpi -- --test-threads=1 # Run Linux Tests using Raspberry Pi I2C Hardware
+
+  ESP32C3_Tests:
+    name: ESP32C3 Tests
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust, probe-rs and ESP32C3 toolchain
         run: |
-          echo "Running Setting Register Tests"
+          apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
           source "$HOME"/.cargo/env
-          cargo test setting_register_tests --features=rpi -- --test-threads=1
+          rustup toolchain install nightly --component rust-src
+          cargo install espflash ldproxy
+      - name: ESP32C3 Tests
+        run: |
+          echo "Running ESP32C3 Tests"
+          source "$HOME"/.cargo/env
+          cd tests/esp32c3
+          probe-rs reset --probe="$ESP32C3_UUID"
+          cargo test # Probe UUID defined in .cargo/config.toml
