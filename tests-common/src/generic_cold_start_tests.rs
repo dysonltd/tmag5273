@@ -21,7 +21,7 @@ where
 {
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let device_id = mag_sensor.get_device_id().expect("Failed to get device id");
-    assert_eq!(device_id, DeviceId::TMAG5273X1); // Ensure DeviceId derives PartialEq
+    assert_eq!(device_id, DeviceId::TMAG5273X1);
 }
 
 pub fn generic_test_manufacturer_id<I2C>(i2c: I2C)
