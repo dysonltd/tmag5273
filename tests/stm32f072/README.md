@@ -1,12 +1,12 @@
 # STM32F072RB Test Suite
 
 ## Summary
-
-This folder contains a test suite project using the [embassy-stm32](https://crates.io/crates/embassy-stm32) HAL. The reason this HAL was chosen over the [stm3f0xx-hal](https://crates.io/crates/stm32f0xx-hal), was due to its continued support through the Embassy project and that it supported `embedded-hal=v1.0.0`. [probe-rs](https://github.com/probe-rs/probe-rs) is used as the toolchain debugger using the onboard st-link.
+<!-- markdown-link-check-disable -->
+This folder contains a test suite project using the [embassy-stm32](https://crates.io/crates/embassy-stm32) HAL. The reason this HAL was chosen over the [stm3f0xx-hal](https://crates.io/crates/stm32f0xx-hal)<!-- markdown-link-check-enable -->, was due to its continued support through the Embassy project and that it supported `embedded-hal=v1.0.0`. [probe-rs](https://github.com/probe-rs/probe-rs) is used as the toolchain debugger using the onboard st-link.
 
 ## Notes
 
-Due to the embedded-test framework and the size limitations of the [STM32F072RB](https://www.digikey.co.uk/en/products/detail/stmicroelectronics/NUCLEO-F072RB/5047984?gclsrc=aw.ds&&utm_adgroup=General&utm_source=google&utm_medium=cpc&utm_campaign=PMax%20Shopping_Product_Zombie%20SKUs&utm_term=&productid=5047984&utm_content=General&utm_id=go_cmp-17923835716_adg-_ad-__dev-c_ext-_prd-5047984_sig-CjwKCAiAhP67BhAVEiwA2E_9g_0YOhbNz6vGH5AFGYettjiugiMMnm4g4Ein_NavuaIqUj26ybKOCRoCxEcQAvD_BwE&gad_source=1&gclid=CjwKCAiAhP67BhAVEiwA2E_9g_0YOhbNz6vGH5AFGYettjiugiMMnm4g4Ein_NavuaIqUj26ybKOCRoCxEcQAvD_BwE&gclsrc=aw.ds), I found that It did not have enough flash storage to hold all of the cold_start_tests. Hence why in this suite they are split.
+Due to the embedded-test framework and the size limitations of the [STM32F072RB](https://www.st.com/en/evaluation-tools/nucleo-f072rb.html), I found that It did not have enough flash storage to hold all of the cold_start_tests. Hence why in this suite they are split.
 
 Running `cargo bloat --test cold_start_tests_0 --crates` revealed the following:
 
