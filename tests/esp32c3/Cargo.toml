@@ -6,7 +6,7 @@ edition = "2021"
 
 [dependencies]
 
-# # dependencies for defmt
+# Dependencies for defmt
 defmt = { version = "0.3.8"}
 defmt-rtt = { version = "0.4.1"}
 
