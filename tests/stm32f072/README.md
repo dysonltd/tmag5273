@@ -1,12 +1,14 @@
 # STM32F072RB Test Suite
-
+<!-- Markdown links disabled here due to the links working, but the linter reporting that they do not -->
 ## Summary
 <!-- markdown-link-check-disable -->
 This folder contains a test suite project using the [embassy-stm32](https://crates.io/crates/embassy-stm32) HAL. The reason this HAL was chosen over the [stm3f0xx-hal](https://crates.io/crates/stm32f0xx-hal)<!-- markdown-link-check-enable -->, was due to its continued support through the Embassy project and that it supported `embedded-hal=v1.0.0`. [probe-rs](https://github.com/probe-rs/probe-rs) is used as the toolchain debugger using the onboard st-link.
 
 ## Notes
 
+<!-- markdown-link-check-disable -->
 Due to the embedded-test framework and the size limitations of the [STM32F072RB](https://www.st.com/en/evaluation-tools/nucleo-f072rb.html), I found that It did not have enough flash storage to hold all of the cold_start_tests. Hence why in this suite they are split.
+<!-- markdown-link-check-enable -->,
 
 Running `cargo bloat --test cold_start_tests_0 --crates` revealed the following:
 
