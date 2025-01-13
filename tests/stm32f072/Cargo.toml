@@ -39,3 +39,7 @@ test = false # Same as above, to make plain `cargo test` work instead of `cargo 
 bench = false
 
 [workspace] # Required so that its not attached to main workspace
+
+# Required to reduce binary size so that the tests compile on to the hardware. Required(=> rustc 1.84.0)
+[profile.dev]
+opt-level = 1
