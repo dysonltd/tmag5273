@@ -1,5 +1,5 @@
 # STM32F072RB Test Suite
-<!-- Markdown links disabled here due to the links working, but the linter reporting that they do not -->
+<!-- Markdown link Checks disabled here due to the links working, but the linter reporting that they do not -->
 ## Summary
 <!-- markdown-link-check-disable -->
 This folder contains a test suite project using the [embassy-stm32](https://crates.io/crates/embassy-stm32) HAL. The reason this HAL was chosen over the [stm3f0xx-hal](https://crates.io/crates/stm32f0xx-hal)<!-- markdown-link-check-enable -->, was due to its continued support through the Embassy project and that it supported `embedded-hal=v1.0.0`. [probe-rs](https://github.com/probe-rs/probe-rs) is used as the toolchain debugger using the onboard st-link.
