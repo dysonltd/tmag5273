@@ -6,15 +6,12 @@ edition = "2021"
 [dependencies]
 embassy-stm32 = { version = "0.1.0", features = [ "defmt", "memory-x", "stm32f072rb", "time-driver-tim2", "exti", "unstable-pac"] }
 
-# stm32f0xx-hal = { version = "0.18", features = ["stm32f072"]}
-
 cortex-m ={version ="0.7", features = ["critical-section-single-core"]}
 cortex-m-rt = "0.7"
 # dependencies for defmt
 defmt = { version = "0.3.8"}
 defmt-rtt = { version = "0.4.1"}
 portable-atomic = {version = "1.7.0", features = ["critical-section"]}
-
 
 [dev-dependencies]
 embedded-test = { version = "0.6.0", features =["defmt"] }
