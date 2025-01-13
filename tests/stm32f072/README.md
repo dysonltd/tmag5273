@@ -7,13 +7,13 @@ This folder contains a test suite project using the [embassy-stm32](https://crat
 ## Notes
 
 <!-- markdown-link-check-disable -->
-Due to the embedded-test framework and the size limitations of the [STM32F072RB](https://www.st.com/en/evaluation-tools/nucleo-f072rb.html), I found that It did not have enough flash storage to hold all of the cold_start_tests. Hence why in this suite they are split.
+Due to the embedded-test framework and the size limitations of the [STM32F072RB](https://www.st.com/en/evaluation-tools/nucleo-f072rb.html), I found that it did not have enough flash storage to hold all of the cold_start_tests. Hence why in this suite they are split.
 <!-- markdown-link-check-enable -->,
 
 Running `cargo bloat --test cold_start_tests_0 --crates` revealed the following:
 
 ```bash
-argo bloat --test cold_start_tests_0 --crates
+cargo bloat --test cold_start_tests_0 --crates
    Compiling stm32f072 v0.1.0 (/Users/scott.gibb/Documents/Projects/rs-tmag5273-driver/tests/stm32f072)
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.21s
     Analyzing target/thumbv6m-none-eabi/debug/deps/cold_start_tests_0-7aa7073ea1a6a38f
@@ -50,7 +50,7 @@ I believe the embedded-test and defmt framework is pulling in some part of `std`
 Further inspection with the following:
 
 ```bash
-cargo bloat --test cold_start_tests_0         
+cargo bloat --test cold_start_tests_0
    Compiling stm32f072 v0.1.0 (/Users/scott.gibb/Documents/Projects/rs-tmag5273-driver/tests/stm32f072)
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.91s
     Analyzing target/thumbv6m-none-eabi/debug/deps/cold_start_tests_0-7aa7073ea1a6a38f
