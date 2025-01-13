@@ -11,16 +11,25 @@ interacting with the hardware. As such we must run our tests with one thread:
 
 ```bash
 cargo test -- --test-threads=1 # Run all tests (Will need to be on a Pi with MCUs and others plugged in)
-cargo test --test linux --features=std -- --test-threads=1 # Run Linux Tests using FTD232
-cargo test --test linux --features=rpi -- --test-threads=1 #Run Linux Tests using Raspberry Pi I2C
+cargo test --test linux --features=std -- --test-threads=1 # Run Linux Tests using FT232H
+cargo test --test linux --features=rpi -- --test-threads=1 # Run Linux Tests using Raspberry Pi I2C
 ```
 
 ### ESP32C3 Tests
 
-Since we are using an MCU target we require a seperate cargo workspace in order to set up the embedded test suite. More on this can be found in the following [README](./esp32c3/README.md). To run the tests on the ESP32C3 use the following code snippet:
+Since we are using an MCU target we require a separate cargo workspace in order to set up the embedded test suite. More on this can be found in the following [README](./esp32c3/README.md). To run the tests on the ESP32C3 use the following code snippet:
 
 ```bash
 cd tests/esp32c3
+cargo test # Will run all tests one after the other
+```
+
+### Pi Pico
+
+The same setup as the ESP32C3 is also applied to the Pi Pico. More information on this can be found in the following [README](./pipico/README.md) You can run the tests using the [Pico Probe](https://thepihut.com/products/raspberry-pi-debug-probe) like so:
+
+```bash
+cd tests/pipico
 cargo test # Will run all tests one after the other
 ```
 

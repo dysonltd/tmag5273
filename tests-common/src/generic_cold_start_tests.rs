@@ -1,6 +1,5 @@
 //! This test suite is for the SparkFun breakout board for the TMAG5273 sensor on Mac OS.
 //! It tests from a cold boot in which the configuration registers should be at their defaults
-use core::assert_eq;
 use registers::*;
 use tmag5273::*;
 use types::*;
@@ -22,7 +21,7 @@ where
 {
     let mut mag_sensor = TMag5273::new(i2c, SENSOR_PART).unwrap();
     let device_id = mag_sensor.get_device_id().expect("Failed to get device id");
-    assert_eq!(device_id, DeviceId::TMAG5273X1); // Ensure DeviceId derives PartialEq
+    assert_eq!(device_id, DeviceId::TMAG5273X1);
 }
 
 pub fn generic_test_manufacturer_id<I2C>(i2c: I2C)

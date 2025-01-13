@@ -6,9 +6,6 @@ on:
       - main
   workflow_call:
 
-env:
-  ESP32C3_UUID: 303a:1001:A0:76:4E:17:0B:90
-
 jobs:
   Linux_Tests:
     name: Linux Tests
@@ -25,7 +22,7 @@ jobs:
           echo "Running FT232H Tests"
           source "$HOME"/.cargo/env
           cd tests
-          cargo test --test linux --features=std -- --test-threads=1 # Run Linux Tests using FTD232
+          cargo test --test linux --features=std -- --test-threads=1 # Run Linux Tests using FT232H
 
   Raspberry_Pi_Tests:
     name: Raspberry Pi Tests
@@ -62,5 +59,25 @@ jobs:
           echo "Running ESP32C3 Tests"
           source "$HOME"/.cargo/env
           cd tests/esp32c3
-          probe-rs reset --probe="$ESP32C3_UUID"
+          cargo test # Probe UUID defined in .cargo/config.toml
+
+  PiPico_Tests:
+    name: RP2040W Pico Tests
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust and probe-rs
+        run: |
+          apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
+          source "$HOME"/.cargo/env
+          rustup toolchain install nightly --component rust-src
+          rustup target add thumbv6m-none-eabi
+      - name: RP2040W Pi Pico Tests
+        run: |
+          echo "Running RP2040W Pi Pico Tests"
+          source "$HOME"/.cargo/env
+          cd tests/pipico
           cargo test # Probe UUID defined in .cargo/config.toml
