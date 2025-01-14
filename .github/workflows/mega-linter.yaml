@@ -175,6 +175,8 @@ jobs:
         run: cargo fmt --manifest-path tests/esp32c3/Cargo.toml -- --check
       - name: Rustfmt check on pipico tests
         run: cargo fmt --manifest-path tests/pipico/Cargo.toml -- --check
+      - name: Rustfmt check on stm32 tests
+        run: cargo fmt --manifest-path tests/stm32f072/Cargo.toml -- --check
 
   cargo_clippy:
     name: Cargo Clippy
@@ -194,4 +196,9 @@ jobs:
         run: |
           rustup target add thumbv6m-none-eabi
           cd tests/pipico
+          cargo clippy -- -D warnings
+      - name: Clippy on STM32 Tests
+        run: |
+          rustup target add thumbv6m-none-eabi
+          cd tests/stm32f072
           cargo clippy -- -D warnings

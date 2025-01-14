@@ -33,10 +33,11 @@ cd tests/pipico
 cargo test # Will run all tests one after the other
 ```
 
-## Test Environments
+### STM32F072RB Tests
 
-Currently we support testing on the following environments:
+The same setup as the ESP32C3 is also applied to an STM32 Nucleo Board. More information on this can be found in the following [README](./stm32f072/README.md) You can run the tests like so:
 
-- [Linux](./linux.rs) This can be with both a Raspberry Pi and a Desktop Linux environment through the use of an FT232H breakout Board.
-
-- [ESP32C3](./esp32c3/tests/) This requires an esp32c3, the one we are using in the CI is the [ESP32C3 QTPY](https://thepihut.com/products/adafruit-qt-py-esp32-pico-wifi-dev-board-with-stemma-qt-8mb-flash-2mb-psram?variant=43725054902467&country=GB&currency=GBP&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gclid=CjwKCAiAyJS7BhBiEiwAyS9uNYpjqy39hvD1gq5iRmWylSS3AsA8kcc3a7bK7BSWQwjkghoY49X0nxoCMi4QAvD_BwE).
+```bash
+cd tests/stm32f072
+cargo test # Will run all tests one after the other
+```
