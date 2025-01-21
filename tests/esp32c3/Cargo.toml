@@ -12,7 +12,7 @@ defmt-rtt = { version = "0.4.1"}
 
 # Esp32 related dependencies for main.rs. Note: embedded-test comes with its own panic handler and logging sink.
 esp-hal = { version = "0.22.0", features = ["esp32c3"] }
-esp-backtrace = { version = "0.14.0", features = [
+esp-backtrace = { version = "0.15.0", features = [
     "esp32c3",
     "exception-handler",
     "panic-handler",
