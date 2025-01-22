@@ -3,8 +3,10 @@
 
 use embedded_hal::i2c::I2c as I2C_HAL;
 use esp_backtrace as _;
+use esp_hal::clock::CpuClock;
+use esp_hal::delay::Delay;
+use esp_hal::esp_riscv_rt::entry;
 use esp_hal::i2c::master::I2c;
-use esp_hal::{delay::Delay, prelude::*};
 use tmag5273::types::{DeviceVersion, TMag5273Error};
 use tmag5273::TMag5273;
 
@@ -27,6 +29,7 @@ fn main() -> ! {
     esp_println::println!("Running 1 Basic Readings!");
     // Set up your I2C
     let i2c = I2c::new(peripherals.I2C0, esp_hal::i2c::master::Config::default())
+        .unwrap()
         .with_sda(peripherals.GPIO5)
         .with_scl(peripherals.GPIO6);
 
