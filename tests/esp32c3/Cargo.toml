@@ -18,7 +18,7 @@ esp-backtrace = { version = "0.15.0", features = [
     "panic-handler",
     "println",
 ] }
-esp-println = { version = "0.13.0", default-features = false, features = ["esp32c3", "jtag-serial", "colors"] }
+esp-println = { version = "0.13.0", default-features = false, features = ["esp32c3", "jtag-serial"] }
 # Driver to be Tested
 tmag5273 = { path = "../../" }
 
