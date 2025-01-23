@@ -1,0 +1,73 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+  contents: write
+
+jobs:
+  linting:
+    uses: ./.github/workflows/mega-linter.yaml
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      statuses: write
+
+  build:
+    uses: ./.github/workflows/continuous_build.yaml
+
+  tests:
+    uses: ./.github/workflows/continuous_integration.yaml
+
+  release:
+    name: Publish to crates.io
+    runs-on: ubuntu-latest
+    needs: [linting, build, tests]
+    timeout-minutes: 10
+    steps:
+      - name: Check if on main branch
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "This Tag is not on the main branch!"
+          exit 1
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Verify Version
+        run: |
+          TAG_VERSION=${GITHUB_REF#refs/tags/v}
+          CARGO_VERSION=$(grep '^version =' Cargo.toml | sed -E 's/version = "([^"]+)"/\1/')
+          if [ "$TAG_VERSION" != "$CARGO_VERSION" ]; then
+            echo "Version mismatch: tag is $TAG_VERSION but Cargo.toml is $CARGO_VERSION"
+            exit 1  # Exits with a non-zero status to fail the workflow
+          fi
+        shell: bash
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+      - name: Build project
+        run: cargo build --release
+      - name: Create GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes
+      - name: Publish to crates.io
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        # Publish to the main registry
+        # run: |
+        #   echo "Publishing to crates.io"
+        #   cargo publish
+        #  uncomment the following lines to perform a dry run
+        run: |
+          echo "Performing dry-run publish to crates.io"
+          cargo publish --dry-run
