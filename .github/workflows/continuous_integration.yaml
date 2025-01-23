@@ -50,7 +50,7 @@ jobs:
         run: |
           apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/download/v0.25.0/probe-rs-tools-installer.sh | sh
           source "$HOME"/.cargo/env
           rustup toolchain install nightly --component rust-src
           cargo install espflash ldproxy
@@ -71,7 +71,7 @@ jobs:
         run: |
           apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/download/v0.25.0/probe-rs-tools-installer.sh | sh
           source "$HOME"/.cargo/env
           rustup toolchain install nightly --component rust-src
           rustup target add thumbv6m-none-eabi
@@ -92,7 +92,7 @@ jobs:
         run: |
           apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/download/v0.25.0/probe-rs-tools-installer.sh | sh
           source "$HOME"/.cargo/env
           rustup toolchain install nightly --component rust-src
           rustup target add thumbv6m-none-eabi
