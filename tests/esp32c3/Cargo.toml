@@ -7,7 +7,7 @@ edition = "2021"
 [dependencies]
 
 # Dependencies for defmt
-defmt = { version = "0.3.8"}
+defmt = { version = "1.0.1"}
 defmt-rtt = { version = "1.0.0"}
 
 # Esp32 related dependencies for main.rs. Note: embedded-test comes with its own panic handler and logging sink.
