@@ -7,7 +7,9 @@ version: 2
 updates:
   - package-ecosystem: "cargo"
     directories:
-      - "**/*"
+      - "/" # Library Crate - This includes Workspace crates tests-common and utils based on the root Cargo.toml
+      - "/examples/*"
+      - "/tests/*"
     schedule:
       interval: "weekly"
     commit-message:
