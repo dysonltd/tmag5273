@@ -7,7 +7,7 @@ edition = "2021"
 rp-pico = "0.9.0"
 # dependencies for defmt
 defmt = { version = "1.0.1"}
-defmt-rtt = { version = "0.4.1"}
+defmt-rtt = { version = "1.0.0"}
 fugit = "0.3.7"
 portable-atomic = {version = "1.7.0", features = ["critical-section"]}
 
