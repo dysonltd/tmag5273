@@ -31,7 +31,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install Rust
-        run: |
+        run: | 
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
       - name: Raspberry Pi Tests
         run: |
@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Rust, probe-rs and ESP32C3 toolchain
         run: |
-          apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
+          apt-get update && apt-get install --yes clang curl git libudev-dev libssl-dev pkg-config python3-pip
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/download/v0.27.0/probe-rs-tools-installer.sh | sh
           source "$HOME"/.cargo/env

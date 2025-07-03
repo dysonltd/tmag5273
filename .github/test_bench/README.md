@@ -8,7 +8,7 @@ This part of the repo contains all the setup for the TMAG5273 CI Testing Platfor
 
 ## Useful Notes
 
-Sometimes the ESP32 JTAG is not recognised inside the container, when this happens its best to restart the pi and the container.
+Sometimes the ESP32 JTAG is not recognised inside the container, when this happens its best to recreate the container. This seems to happen only with the ESP32 and specifically only inside the docker container.
 
 ## How to Run (Raspberry Pi OS)
 
