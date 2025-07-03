@@ -44,7 +44,7 @@ pub fn setup_i2c() -> Result<FtdiI2c<Device>, Box<dyn Error>> {
     let hal = match hal::FtHal::init_freq(device, BAUDRATE) {
         Ok(hal) => hal,
         Err(err) => {
-            eprintln!("Failed to initialise HAL: {}", err);
+            eprintln!("Failed to initialise HAL: {err}");
             return Err(Box::new(err));
         }
     };
@@ -52,7 +52,7 @@ pub fn setup_i2c() -> Result<FtdiI2c<Device>, Box<dyn Error>> {
     let i2c = match hal.i2c() {
         Ok(i2c) => i2c,
         Err(err) => {
-            eprintln!("Failed to initialise I2C: {}", err);
+            eprintln!("Failed to initialise I2C: {err}");
             return Err(Box::new(err));
         }
     };
@@ -74,7 +74,7 @@ pub fn setup_i2c_and_gpio() -> Result<(FtdiI2c<Device>, hal::InputPin<Device>), 
     let hal = match hal::FtHal::init_freq(device, BAUDRATE) {
         Ok(hal) => hal,
         Err(err) => {
-            eprintln!("Failed to initialise HAL: {}", err);
+            eprintln!("Failed to initialise HAL: {err}");
             return Err(Box::new(err));
         }
     };
@@ -83,7 +83,7 @@ pub fn setup_i2c_and_gpio() -> Result<(FtdiI2c<Device>, hal::InputPin<Device>), 
         // The FAKE Interrupt pin
         Ok(pin) => pin,
         Err(err) => {
-            eprintln!("Failed to initialise GPIO: {}", err);
+            eprintln!("Failed to initialise GPIO: {err}");
             return Err(Box::new(err));
         }
     };
@@ -92,7 +92,7 @@ pub fn setup_i2c_and_gpio() -> Result<(FtdiI2c<Device>, hal::InputPin<Device>), 
     let i2c = match hal.i2c() {
         Ok(i2c) => i2c,
         Err(err) => {
-            eprintln!("Failed to initialise I2C: {}", err);
+            eprintln!("Failed to initialise I2C: {err}");
             return Err(Box::new(err));
         }
     };
