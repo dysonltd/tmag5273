@@ -6,9 +6,13 @@ This part of the repo contains all the setup for the TMAG5273 CI Testing Platfor
 
 ![Diagram](../../docs/ci%20pipeline%20diagram.drawio.svg)
 
+## Useful Notes
+
+Sometimes the ESP32 JTAG is not recognised inside the container, when this happens its best to restart the pi and the container.
+
 ## How to Run (Raspberry Pi OS)
 
-1. Follow the instructions outlined by Docker [here](https://docs.docker.com/engine/install/raspberry-pi-os/). If your using 64-bit Raspberry Pi OS Follow [these](https://docs.docker.com/engine/install/debian/) instead.
+1. Follow the instructions outlined by [Docker](https://docs.docker.com/engine/install/raspberry-pi-os/). If your using 64-bit Raspberry Pi OS Follow [these](https://docs.docker.com/engine/install/debian/) instead.
 2. Setup your github actions runner token
 3. Add the Token to your`.env` file
 4. Enable I2C using `raspi-config`
