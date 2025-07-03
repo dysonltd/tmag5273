@@ -68,11 +68,11 @@ cargo run --example example_1_basic_readings --no-default-features --features rp
 
 ### Running a BareMetal Example
 
-As the library adheres to the [embedded-hal](https://docs.rs/embedded-hal/latest/embedded_hal/), the library should be able to run in `no-std` environment. A [esp32c3](https://github.com/esp-rs/esp-rust-board) example is shown [here](./esp32c3/src/main.rs). Due to it using a baremetal environment its recommended to go to that directory and call `cargo run` from within it and flash the code on to the device.
+As the library adheres to the [embedded-hal](https://docs.rs/embedded-hal/latest/embedded_hal/), the library should be able to run in `no-std` environment. A [esp32c3](https://github.com/esp-rs/esp-rust-board) [example](./esp32c3/src/main.rs). Due to it using a baremetal environment its recommended to go to that directory and call `cargo run` from within it and flash the code on to the device.
 
 ### SparkFun Examples
 
-The examples provided for `std` targets are heavily based off the corresponding Arduino/C++ Library written by Sparkfun linked [here](https://github.com/sparkfun/SparkFun_TMAG5273_Arduino_Library).
+The examples provided for `std` targets are heavily based off the corresponding Arduino/C++ Library written by [Sparkfun](https://github.com/sparkfun/SparkFun_TMAG5273_Arduino_Library).
 
 ### F232H on MAC
 
@@ -91,4 +91,4 @@ Bus 000 Device 001: ID 1d6b:1100
 XHCI Linux Foundation USB 3.0 Bus
 ```
 
-These numbers should match the numbers inside [here](../utils/src/lib.rs).
+These numbers should match the numbers inside [utils lib.rs](../utils/src/lib.rs).

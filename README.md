@@ -17,7 +17,7 @@ of a user-configurable I2C address register. Each orderable part can be configur
 
 ## Examples
 
-Examples on how to use the driver across multiple platforms can be found [here](./examples/README.md)
+Examples on how to use the driver across multiple platforms can be found in the following [README](./examples/README.md)
 
 ![Multi Platform](./docs/multi%20platform%20diagram.drawio.svg)
 
@@ -36,7 +36,7 @@ In this repository we also have an internal crate called [utils](./utils/) which
 
 ## Continuous Integration Testing
 
-Within this repo we also run a Continuous Integration hardware in the loop test bench. The architecture of this is shown below and more information can be found [here](./.github/test_bench/README.md).
+Within this repo we also run a Continuous Integration hardware in the loop test bench. The architecture of this is shown below and more information can be found in the following [README]](./.github/test_bench/README.md).
 
 ![CI Architecture](./docs/ci%20pipeline%20diagram.drawio.svg)
 
@@ -54,7 +54,7 @@ You will need to have docker and Node installed to use this, more information ca
 
 ### Issues with rust fmt
 
-Currently at the time of this commit `rust fmt` is not supported as part of MegaLinter, thus to ensure it is correctly formatted we have added an extra build stage which can be seen [here](./.github/workflows/mega-linter.yaml). You can run this locally using
+Currently at the time of this commit `rust fmt` is not supported as part of MegaLinter, thus to ensure it is correctly formatted we have added an extra build stage which can be seen in the following [workflow](./.github/workflows/mega-linter.yaml). You can run this locally using
 
 ```bash
 cargo fmt --all
