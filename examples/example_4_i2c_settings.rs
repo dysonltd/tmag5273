@@ -37,9 +37,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // Set everything up again with the new address of the device
     let i2c = setup_i2c()?;
-    println!(
-        "Getting Address from Sensor on new Address {new_i2c_address:x}"
-    );
+    println!("Getting Address from Sensor on new Address {new_i2c_address:x}");
     let mut tmag5273 = TMag5273::new_with_address(i2c, new_i2c_address, DeviceVersion::TMAG5273A1)?;
 
     let register: I2cAddressRegister = tmag5273.get_config_register()?;
