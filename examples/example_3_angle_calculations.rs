@@ -24,8 +24,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     // Loop Round and get some data
     loop {
         match mag_sensor.get_angle() {
-            Ok(data) => println!("Angle: {:?}, ", data),
-            Err(err) => eprintln!("Failed to get Angle data: {:?}", err),
+            Ok(data) => println!("Angle: {data:?}, "),
+            Err(err) => eprintln!("Failed to get Angle data: {err:?}"),
         }
         std::thread::sleep(std::time::Duration::from_millis(100));
     }
@@ -55,8 +55,8 @@ where
     I2C: I2c<SevenBitAddress>,
 {
     let device_id = mag_sensor.get_device_id()?;
-    println!("Device ID: {:?}", device_id);
+    println!("Device ID: {device_id:?}");
     let manufacturer_id = mag_sensor.get_manufacturer_id()?;
-    println!("Manufacturer ID: {:?}", manufacturer_id);
+    println!("Manufacturer ID: {manufacturer_id:?}");
     Ok(())
 }

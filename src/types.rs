@@ -122,7 +122,7 @@ impl core::fmt::Display for TMag5273Error {
             TMag5273Error::WrongMode => write!(f, "The device is in the wrong mode for the operation"),
             TMag5273Error::OutOfRange => write!(f, "Input is out of range"),
             TMag5273Error::ChannelDisabled => write!(f, "Channel is not enabled"),
-            TMag5273Error::I2c(e) => write!(f, "An I2C error occurred: {:?}", e),
+            TMag5273Error::I2c(e) => write!(f, "An I2C error occurred: {e:?}"),
         }
     }
 }

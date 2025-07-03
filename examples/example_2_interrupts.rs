@@ -21,7 +21,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     //Set up the device for this example
     if let Err(err) = setup_device(&mut mag_sensor) {
-        panic!("Failed to set up device: {:?}", err);
+        panic!("Failed to set up device: {err:?}");
     }
 
     loop {
@@ -29,14 +29,14 @@ fn main() -> Result<(), Box<dyn Error>> {
             println!("Sensor has Finished its scan!!");
             //Get the X Threshold and print it out
             match mag_sensor.get_mag_threshold(Axis::X) {
-                Ok(x_threshold) => println!("X Threshold: {:?}", x_threshold),
-                Err(err) => println!("Failed to get X Threshold: {:?}", err),
+                Ok(x_threshold) => println!("X Threshold: {x_threshold:?}"),
+                Err(err) => println!("Failed to get X Threshold: {err:?}"),
             }
             println!("Sensor has now finished its scan!!");
             // Get the data
             match mag_sensor.get_all_data() {
-                Ok(data) => println!("Data: {:?}", data),
-                Err(err) => println!("Failed to get data: {:?}", err),
+                Ok(data) => println!("Data: {data:?}"),
+                Err(err) => println!("Failed to get data: {err:?}"),
             }
         }
     }
@@ -49,7 +49,7 @@ where
     match pin.is_low() {
         Ok(is_low) => is_low,
         Err(err) => {
-            eprintln!("Failed to read pin: {:?}", err);
+            eprintln!("Failed to read pin: {err:?}");
             false
         }
     }
@@ -69,11 +69,11 @@ where
     //Set X Threshold
     let threshold = 5.0;
     mag_sensor.set_mag_threshold(threshold, Axis::X)?; // 5mT
-    println!("Threshold Set to: {:?}", threshold);
+    println!("Threshold Set to: {threshold:?}");
 
     // Get Threshold
     let applied_threshold = mag_sensor.get_mag_threshold(Axis::X)?;
-    println!("Applied Threshold: {:?}", applied_threshold);
+    println!("Applied Threshold: {applied_threshold:?}");
     assert_eq!(applied_threshold, threshold);
 
     Ok(())
@@ -84,8 +84,8 @@ where
     I2C: I2c<SevenBitAddress>,
 {
     let device_id = mag_sensor.get_device_id()?;
-    println!("Device ID: {:?}", device_id);
+    println!("Device ID: {device_id:?}");
     let manufacturer_id = mag_sensor.get_manufacturer_id()?;
-    println!("Manufacturer ID: {:?}", manufacturer_id);
+    println!("Manufacturer ID: {manufacturer_id:?}");
     Ok(())
 }
