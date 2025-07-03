@@ -20,7 +20,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     // Loop Round and get some data
     loop {
         let data = mag_sensor.get_all_data()?;
-        println!("data: {:?}", data);
+        println!("data: {data:?}");
         std::thread::sleep(std::time::Duration::from_millis(100));
     }
 }
@@ -30,8 +30,8 @@ where
     I2C: I2c<SevenBitAddress>,
 {
     let device_id = mag_sensor.get_device_id()?;
-    println!("Device ID: {:?}", device_id);
+    println!("Device ID: {device_id:?}");
     let manufacturer_id = mag_sensor.get_manufacturer_id()?;
-    println!("Manufacturer ID: {:?}", manufacturer_id);
+    println!("Manufacturer ID: {manufacturer_id:?}");
     Ok(())
 }

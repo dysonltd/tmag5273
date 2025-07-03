@@ -24,8 +24,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     let register: I2cAddressRegister = mag_sensor.get_config_register()?;
 
     let i2c_address = register.i2c_address().value();
-    println!("Original I2C Address: {:x}", i2c_address);
-    println!("Setting I2C Address to: {:x}", new_i2c_address);
+    println!("Original I2C Address: {i2c_address:x}");
+    println!("Setting I2C Address to: {new_i2c_address:x}");
     let register_update = register
         .with_i2c_address(arbitrary_int::u7::new(new_i2c_address))
         .with_i2c_address_update_enabled(true);
@@ -38,8 +38,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     // Set everything up again with the new address of the device
     let i2c = setup_i2c()?;
     println!(
-        "Getting Address from Sensor on new Address {:x}",
-        new_i2c_address
+        "Getting Address from Sensor on new Address {new_i2c_address:x}"
     );
     let mut tmag5273 = TMag5273::new_with_address(i2c, new_i2c_address, DeviceVersion::TMAG5273A1)?;
 
@@ -53,8 +52,8 @@ where
     I2C: I2c<SevenBitAddress>,
 {
     let device_id = mag_sensor.get_device_id()?;
-    println!("Device ID: {:?}", device_id);
+    println!("Device ID: {device_id:?}");
     let manufacturer_id = mag_sensor.get_manufacturer_id()?;
-    println!("Manufacturer ID: {:?}", manufacturer_id);
+    println!("Manufacturer ID: {manufacturer_id:?}");
     Ok(())
 }
