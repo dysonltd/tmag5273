@@ -8,4 +8,4 @@ edition = "2021"
 tmag5273 = { path = "../" }
 embedded-hal-bus = { version = "0.3.0" }
 embedded-hal = { version = "1.0.0" }
-arbitrary-int = "1.2.7"
+arbitrary-int = "2.0.0"
