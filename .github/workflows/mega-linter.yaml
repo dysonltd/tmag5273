@@ -54,7 +54,7 @@ jobs:
     steps:
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
@@ -164,7 +164,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Rustfmt check on src
         run: cargo fmt --manifest-path Cargo.toml -- --check
       - name: Rustfmt check on utils
@@ -183,7 +183,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Clippy check on esp32 example
         run: |
           cd examples/esp32c3
